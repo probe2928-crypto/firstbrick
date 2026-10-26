@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>First Brick reel</title>
-<!-- 1080×1920 결정적 모션: window.seek(t)로 프레임을 그린다. 문구·장면은 reel.json(같은 폴더)에서 읽는다. -->
+<!-- 1080×1920 결정적 모션: window.seek(t)로 프레임을 그린다. 문구·장면은 reel.js(window.REEL = reel.json 내용)에서 읽는다. -->
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Literata:ital,opsz,wght@0,7..72,400..600;1,7..72,400&family=Noto+Sans+KR:wght@500;800&display=block" rel="stylesheet">
 <style>
 :root { --paper:#F4F5F0; --paper2:#E8ECE3; --ink:#16231E; --muted:#4E5C55; --blue:#22408C; --mari:#EFA52F; --b1:#A9482E; --b2:#BA5B3B; --b3:#8F3D27; --roof:#2B3A34; }
@@ -31,9 +31,10 @@ html,body { margin:0; width:1080px; height:1920px; overflow:hidden; background:v
 </head>
 <body>
 <div id="stage"></div>
+<script src="reel.js"></script>
 <script>
 (async function () {
-  const C = await fetch("reel.json").then(r => r.json()).catch(() => null) || window.REEL;
+  const C = window.REEL || await fetch("reel.json").then(r => r.json());
   window.DUR = C.dur || 15;
   const stage = document.getElementById("stage");
   if (C.lang === "ko") stage.classList.add("lang-ko");
