@@ -1,0 +1,4 @@
+// 로컬 미리보기: node scripts/serve.mjs → http://localhost:4400
+import http from "node:http"; import fs from "node:fs"; import path from "node:path";
+const D = path.resolve("dist"), T = { ".html": "text/html; charset=utf-8", ".css": "text/css", ".js": "text/javascript", ".svg": "image/svg+xml", ".png": "image/png", ".jpg": "image/jpeg", ".xml": "application/xml", ".txt": "text/plain" };
+http.createServer((q, r) => { let p = path.join(D, decodeURIComponent(q.url.split("?")[0])); if (fs.existsSync(p) && fs.statSync(p).isDirectory()) p = path.join(p, "index.html"); if (!fs.existsSync(p)) { r.writeHead(404); return r.end(fs.readFileSync(path.join(D, "404.html"))); } r.writeHead(200, { "content-type": T[path.extname(p)] || "application/octet-stream" }); r.end(fs.readFileSync(p)); }).listen(4400, () => console.log("http://localhost:4400"));

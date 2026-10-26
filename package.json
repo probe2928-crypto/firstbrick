@@ -1,0 +1,7 @@
+{
+  "name": "firstbrick",
+  "private": true,
+  "type": "module",
+  "description": "First Brick Foundation website",
+  "scripts": { "build": "node scripts/build.mjs", "serve": "node scripts/serve.mjs" }
+}
