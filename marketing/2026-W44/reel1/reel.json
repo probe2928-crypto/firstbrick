@@ -1,0 +1,63 @@
+{
+ "lang": "en",
+ "dur": 15,
+ "scenes": [
+  {
+   "type": "house",
+   "t0": 0,
+   "t1": 6,
+   "lines": [
+    "Every school",
+    "begins with",
+    "a first brick."
+   ],
+   "size": 132,
+   "caption": "A foundation in the making for children in Southeast Asia."
+  },
+  {
+   "type": "steps",
+   "t0": 6,
+   "t1": 10.5,
+   "title": "Learn. Live. Build.",
+   "items": [
+    [
+     "Learn",
+     "Tutoring, books and scholarships, run with local teachers."
+    ],
+    [
+     "Live",
+     "Meals, clean water, health checks, a safe way to school."
+    ],
+    [
+     "Build",
+     "Classrooms, libraries and, when a community asks, a school."
+    ]
+   ]
+  },
+  {
+   "type": "lines",
+   "t0": 10.5,
+   "t1": 13,
+   "title": "Every gift,<br>on-chain.",
+   "top": 470,
+   "size": 120,
+   "bodyTop": 820,
+   "body": [
+    "One public wallet.",
+    "A receipt for every payout.",
+    "Reports anyone can read."
+   ],
+   "wall": 3
+  },
+  {
+   "type": "end",
+   "t0": 13,
+   "t1": 15,
+   "last": true,
+   "title": "Lay the first brick with us.",
+   "text": "We're founding now. Join the founding circle.",
+   "url": "probe2928-crypto.github.io/firstbrick",
+   "foot": "Not yet taking donations. Giving opens after registration."
+  }
+ ]
+}
