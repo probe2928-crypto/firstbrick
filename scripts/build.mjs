@@ -24,7 +24,7 @@ const T = {
     lang: "en", htmlLang: "en", pre: "", other: "ko", otherLabel: "한국어", otherShort: "KO",
     name: S.name, tag: "Light for learning. Glass for giving.",
     desc: "Oriel is a foundation in the making for children in Southeast Asia: learning first, then everyday support, then the classrooms and schools a community asks for. Every gift traceable on-chain.",
-    nav: [["plan/", "Plan"], ["partners/", "Partners"], ["journal/", "Journal"], ["get-involved/", "Get involved", "Join"], ["about/", "About"]],
+    nav: [["plan/", "Plan"], ["partners/", "Partners"], ["journal/", "Journal"], ["columns/", "Column"], ["get-involved/", "Get involved", "Join"], ["about/", "About"]],
     join: "Join the founding circle", readPlan: "Read the plan",
     status: "Founding stage. We are not taking donations yet. Giving opens once the foundation is registered, and every transaction will be public from the first one.",
     heroLede: "We are a foundation in the making for children in Southeast Asia. We start with learning, add the everyday support that keeps a child in class, and grow toward the roads, buildings and schools a community needs.",
@@ -67,10 +67,10 @@ const T = {
     ctaTitle: "Open the first window with us",
     ctaText: "Join the founding circle and we'll write to you when giving opens, when we pick our first community, and when there's a way to help that fits what you do.",
     footStatus: "Oriel Foundation is in formation and not yet a registered charity.",
-    footLinks: [["notes/", "Notes"], ["faq/", "Questions"], ["partners/", "Partner process"], ["safeguarding/", "Safeguarding"], ["transparency/", "Transparency"], ["get-involved/", "Contact"]],
+    footLinks: [["columns/", "Column"], ["notes/", "Notes"], ["faq/", "Questions"], ["partners/", "Partner process"], ["safeguarding/", "Safeguarding"], ["transparency/", "Transparency"], ["get-involved/", "Contact"]],
     ledgerTitle: "The ledger so far", ledgerLede: "We keep our own progress the way we will keep every gift: in order, dated, and public. Each block is a set of things we actually finished.", block: "Block", nextBlock: "Next block", follow: "Follow", channels: "Channels",
     media: "Media partner",
-    notesTitle: "Notes", notesLede: "What we are reading on giving, children's education and on-chain transparency. Every item links to its source.", notesEmpty: "The first notes are on their way.", allNotes: "All notes", sources: "Sources", zhSummary: "繁體中文摘要",
+    colTitle: "Column", colLede: "Essays on giving, volunteering and keeping a public record: what we believe, and why.", colEmpty: "The first column is on its way.", allCols: "All columns", notesTitle: "Notes", notesLede: "What we are reading on giving, children's education and on-chain transparency. Every item links to its source.", notesEmpty: "The first notes are on their way.", allNotes: "All notes", sources: "Sources", zhSummary: "繁體中文摘要",
     rights: "Oriel Foundation (in formation)",
     readMore: "Read",
     posted: "Posted",
@@ -83,7 +83,7 @@ const T = {
     lang: "ko", htmlLang: "ko", pre: "ko/", other: "en", otherLabel: "English", otherShort: "EN",
     name: S.name_ko, tag: "배움에는 빛을, 기부에는 창을.",
     desc: "오리엘은 동남아시아 아이들을 위해 준비 중인 재단입니다. 배움에서 시작해 생활을 돕고, 마을이 원하는 교실과 학교까지 짓습니다. 모든 기부는 블록체인에 기록됩니다.",
-    nav: [["plan/", "계획"], ["partners/", "파트너"], ["journal/", "활동 일지"], ["get-involved/", "함께하기"], ["about/", "소개"]],
+    nav: [["plan/", "계획"], ["partners/", "파트너"], ["journal/", "활동 일지"], ["columns/", "칼럼"], ["get-involved/", "함께하기"], ["about/", "소개"]],
     join: "창립 서포터 신청", readPlan: "계획 보기",
     status: "설립 준비 단계입니다. 아직 기부를 받지 않습니다. 재단 등록을 마친 뒤 기부를 열고, 첫 거래부터 모두 공개합니다.",
     heroLede: "동남아시아 아이들을 위해 준비 중인 재단입니다. 배움에서 시작해, 아이가 계속 학교에 올 수 있게 하는 생활 지원을 더하고, 마을에 필요한 길과 건물, 학교까지 짓는 것이 목표입니다.",
@@ -126,10 +126,10 @@ const T = {
     ctaTitle: "첫 창을 함께 열어 주세요",
     ctaText: "창립 서포터로 신청하시면 기부가 열릴 때, 첫 마을을 정할 때, 하시는 일에 맞는 도움 방법이 생길 때 연락드립니다.",
     footStatus: "오리엘 재단은 설립 준비 중이며 아직 등록된 공익단체가 아닙니다.",
-    footLinks: [["notes/", "읽을거리"], ["faq/", "자주 묻는 질문"], ["partners/", "파트너 절차"], ["safeguarding/", "아동보호 정책"], ["transparency/", "투명성"], ["get-involved/", "문의"]],
+    footLinks: [["columns/", "칼럼"], ["notes/", "읽을거리"], ["faq/", "자주 묻는 질문"], ["partners/", "파트너 절차"], ["safeguarding/", "아동보호 정책"], ["transparency/", "투명성"], ["get-involved/", "문의"]],
     ledgerTitle: "지금까지의 장부", ledgerLede: "앞으로 모든 기부를 기록할 방식 그대로, 우리의 진행도 순서대로, 날짜와 함께, 공개로 남깁니다. 블록 하나는 실제로 끝낸 일들의 묶음입니다.", block: "블록", nextBlock: "다음 블록", follow: "팔로우", channels: "채널",
     media: "미디어 파트너",
-    notesTitle: "읽을거리", notesLede: "기부, 아이들의 교육, 온체인 투명성에 관해 우리가 읽고 있는 것들. 모든 항목에 출처를 답니다.", notesEmpty: "첫 읽을거리가 곧 올라옵니다.", allNotes: "전체 보기", sources: "출처", zhSummary: "繁體中文摘要",
+    colTitle: "칼럼", colLede: "기부와 봉사, 공개 기록에 대해 우리가 믿는 것과 그 이유를 씁니다.", colEmpty: "첫 칼럼이 곧 올라옵니다.", allCols: "전체 보기", notesTitle: "읽을거리", notesLede: "기부, 아이들의 교육, 온체인 투명성에 관해 우리가 읽고 있는 것들. 모든 항목에 출처를 답니다.", notesEmpty: "첫 읽을거리가 곧 올라옵니다.", allNotes: "전체 보기", sources: "출처", zhSummary: "繁體中文摘要",
     rights: "오리엘 재단 (설립 준비 중)",
     readMore: "읽기",
     posted: "게시",
@@ -177,8 +177,8 @@ function loadJournal() {
 const JOURNAL = loadJournal();
 
 /* ---------- 콘텐츠: 읽을거리(Notes) ---------- */
-function loadNotes() {
-  const dir = path.join(ROOT, "content", "notes");
+function loadNotes(sub = "notes") {
+  const dir = path.join(ROOT, "content", sub);
   if (!fs.existsSync(dir)) return [];
   return fs.readdirSync(dir).filter((f) => f.endsWith(".md")).map((f) => {
     const { data, body } = frontmatter(fs.readFileSync(path.join(dir, f), "utf8"));
@@ -190,6 +190,7 @@ function loadNotes() {
   }).filter((n) => !n.draft).sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 const NOTES = loadNotes();
+const COLUMNS = loadNotes("columns");
 
 /* ---------- 채널 ---------- */
 function socials(t) {
@@ -317,7 +318,12 @@ ${heroLight(t)}
   ${posts.length ? `<div class="posts">${posts.map((p) => postCard(t, p)).join("")}</div>` : `<p class="empty">${esc(t.journalEmpty)}</p>`}
 </section>
 
-${NOTES.length ? `<section class="wrap notes-sec">
+${COLUMNS.length ? `<section class="wrap notes-sec">
+  <header class="sec-head row"><div><h2>${esc(t.colTitle)}</h2><p>${esc(t.colLede)}</p></div><a class="text-link" href="${u(t, "columns/")}">${esc(t.allCols)}</a></header>
+  <ol class="notes">${COLUMNS.slice(0, 3).map((n) => noteRow(t, n, "columns/")).join("")}</ol>
+</section>
+
+` : ""}${NOTES.length ? `<section class="wrap notes-sec">
   <header class="sec-head row"><div><h2>${esc(t.notesTitle)}</h2><p>${esc(t.notesLede)}</p></div><a class="text-link" href="${u(t, "notes/")}">${esc(t.allNotes)}</a></header>
   <ol class="notes">${NOTES.slice(0, 3).map((n) => noteRow(t, n)).join("")}</ol>
 </section>
@@ -366,15 +372,19 @@ function plan(t) {
 <section class="band cta-band"><div class="wrap cta"><h2>${esc(t.ctaTitle)}</h2><p>${esc(t.ctaText)}</p><a class="btn btn-light" href="${u(t, "get-involved/")}#circle">${esc(t.join)}</a></div></section>`;
 }
 
-function noteRow(t, n) {
+function noteRow(t, n, base = "notes/") {
   const title = t.lang === "ko" ? n.title_ko : n.title, sum = t.lang === "ko" ? n.summary_ko : n.summary;
-  return `<li class="note-row"><a href="${u(t, `notes/${n.slug}/`)}"><span class="note-no">${n.no ? "No. " + esc(String(n.no)) : ""}</span><span class="note-main"><span class="note-title">${esc(title)}</span>${sum ? `<span class="note-sum">${esc(sum)}</span>` : ""}</span><time datetime="${n.date}">${esc(fmtDate(n.date, t))}</time></a></li>`;
+  return `<li class="note-row"><a href="${u(t, `${base}${n.slug}/`)}"><span class="note-no">${n.no ? "No. " + esc(String(n.no)) : ""}</span><span class="note-main"><span class="note-title">${esc(title)}</span>${sum ? `<span class="note-sum">${esc(sum)}</span>` : ""}</span><time datetime="${n.date}">${esc(fmtDate(n.date, t))}</time></a></li>`;
+}
+function colsIndex(t) {
+  return `${pageHead(t.colTitle, t.colLede)}
+<section class="wrap">${COLUMNS.length ? `<ol class="notes">${COLUMNS.map((n) => noteRow(t, n, "columns/")).join("")}</ol>` : `<p class="empty">${esc(t.colEmpty)}</p>`}</section>`;
 }
 function notesIndex(t) {
   return `${pageHead(t.notesTitle, t.notesLede)}
 <section class="wrap">${NOTES.length ? `<ol class="notes">${NOTES.map((n) => noteRow(t, n)).join("")}</ol>` : `<p class="empty">${esc(t.notesEmpty)}</p>`}</section>`;
 }
-function notePost(t, n) {
+function notePost(t, n, base = "notes/", allLabel = t.allNotes) {
   const title = t.lang === "ko" ? n.title_ko : n.title;
   const body = markdown(t.lang === "ko" ? n.ko : n.en);
   const zh = t.lang === "en" && n.zh ? `<aside class="zh" lang="zh-Hant"><p class="cap">${esc(t.zhSummary)}</p>${markdown(n.zh)}</aside>` : "";
@@ -382,7 +392,7 @@ function notePost(t, n) {
   <header class="post-head"><p class="post-meta">${n.no ? `<span>No. ${esc(String(n.no))}</span>` : ""}<time datetime="${n.date}">${esc(fmtDate(n.date, t))}</time></p><h1>${esc(title)}</h1></header>
   <div class="prose">${body}</div>
   ${zh}
-  <p><a class="text-link" href="${u(t, "notes/")}">${esc(t.allNotes)}</a></p>
+  <p><a class="text-link" href="${u(t, base)}">${esc(allLabel)}</a></p>
 </article>`;
 }
 
@@ -570,6 +580,8 @@ for (const t of [T.en, T.ko]) {
   write(P + "plan/index.html", layout(t, { title: PLAN[t.lang].title, desc: PLAN[t.lang].lede, p: "plan/", active: "plan/", body: plan(t) }));
   write(P + "journal/index.html", layout(t, { title: t.journalTitle, desc: t.journalLede, p: "journal/", active: "journal/", body: journalIndex(t) }));
   for (const post of JOURNAL) write(P + `journal/${post.slug}/index.html`, layout(t, { title: t.lang === "ko" ? post.title_ko : post.title, desc: t.lang === "ko" ? post.summary_ko : post.summary, p: `journal/${post.slug}/`, active: "journal/", body: journalPost(t, post), og: post.cover ? ABS + post.cover : "" }));
+  write(P + "columns/index.html", layout(t, { title: t.colTitle, desc: t.colLede, p: "columns/", active: "columns/", body: colsIndex(t) }));
+  for (const n of COLUMNS) write(P + `columns/${n.slug}/index.html`, layout(t, { title: t.lang === "ko" ? n.title_ko : n.title, desc: t.lang === "ko" ? n.summary_ko : n.summary, p: `columns/${n.slug}/`, active: "columns/", body: notePost(t, n, "columns/", t.allCols) }));
   write(P + "notes/index.html", layout(t, { title: t.notesTitle, desc: t.notesLede, p: "notes/", body: notesIndex(t) }));
   for (const n of NOTES) write(P + `notes/${n.slug}/index.html`, layout(t, { title: t.lang === "ko" ? n.title_ko : n.title, desc: t.lang === "ko" ? n.summary_ko : n.summary, p: `notes/${n.slug}/`, body: notePost(t, n) }));
   write(P + "get-involved/index.html", layout(t, { title: INV[t.lang].title, desc: INV[t.lang].lede, p: "get-involved/", active: "get-involved/", body: involve(t) }));
@@ -584,8 +596,8 @@ write("404.html", layout(T.en, { title: "Page not found", p: "", body: `${pageHe
 
 for (const f of fs.readdirSync(path.join(ROOT, "public"))) fs.cpSync(path.join(ROOT, "public", f), path.join(DIST, f), { recursive: true });
 copyDir(path.join(ROOT, "images"), "images");
-const pages = ["", "plan/", "partners/", "faq/", "journal/", "get-involved/", "safeguarding/", "transparency/", "about/", "notes/", ...JOURNAL.map((p) => `journal/${p.slug}/`), ...NOTES.map((n) => `notes/${n.slug}/`)];
+const pages = ["", "plan/", "partners/", "faq/", "journal/", "get-involved/", "safeguarding/", "transparency/", "about/", "notes/", "columns/", ...COLUMNS.map((n) => `columns/${n.slug}/`), ...JOURNAL.map((p) => `journal/${p.slug}/`), ...NOTES.map((n) => `notes/${n.slug}/`)];
 write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${pages.flatMap((p) => [ABS + p, ABS + "ko/" + p]).map((l) => `<url><loc>${l}</loc></url>`).join("")}</urlset>\n`);
 write("robots.txt", `User-agent: *\nAllow: /\nSitemap: ${ABS}sitemap.xml\n`);
 write(".nojekyll", "");
-console.log(`built → dist/ (journal ${JOURNAL.length}, notes ${NOTES.length}, base ${BASE})`);
+console.log(`built → dist/ (journal ${JOURNAL.length}, notes ${NOTES.length}, columns ${COLUMNS.length}, base ${BASE})`);
