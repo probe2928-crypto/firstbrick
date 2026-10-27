@@ -141,8 +141,8 @@ const T = {
 };
 
 /* ---------- 브랜드 도형 ---------- */
-// 오리엘 창: 벽에서 내민 창 하나, 왼쪽 위 유리 한 칸만 금빛, 아래는 받침(코벨)
-const logo = (cls = "logo-mark") => `<svg class="${cls}" viewBox="0 0 30 22" aria-hidden="true"><g class="lm-glow"><rect x="8.9" y="1.4" width="5.2" height="4.7" opacity="1"/><rect x="15.9" y="1.4" width="5.2" height="4.7" opacity=".78"/><rect x="8.9" y="7.9" width="5.2" height="4.7" opacity=".66"/><rect x="15.9" y="7.9" width="5.2" height="4.7" opacity=".5"/></g><path d="M8 0.5h14v13H8z"/><path class="lm-m" d="M15 0.5v13M8 7h14"/><path d="M8 13.5h14l-3.5 5h-7z"/></svg>`;
+// 로고: 보도니 'O' — 글자의 속(카운터)이 금빛 유리창, 가는 십자 창살
+const logo = (cls = "logo-mark") => `<svg class="${cls}" viewBox="0 0 40 56" aria-hidden="true"><path class="lm-o" fill-rule="evenodd" d="M20 6.5a15.5 21.5 0 1 0 0.001 0zM20 8.1a9.6 19.9 0 1 1 -0.001 0z"/><ellipse class="lm-glow" cx="20" cy="28" rx="9.6" ry="19.9"/><path class="lm-m" d="M20 8v40M10.4 28h19.2"/></svg>`;
 
 // 학교 입면도 — 건축 도면처럼 가는 선. 왼쪽 창은 벽에서 내민 오리엘 창이고, 그 유리만 금빛
 function schoolhouse(t) {

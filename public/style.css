@@ -56,11 +56,12 @@ a { color: inherit; }
 .nav a { flex: none; text-decoration: none; font: var(--caps); letter-spacing: var(--track); text-transform: uppercase; color: var(--text); padding: 4px 0; border-bottom: 1px solid transparent; }
 .nav .sh { display: none; }
 .nav a:hover, .nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--ink); }
-.logo-mark { width: 30px; height: 22px; fill: none; stroke: var(--ink); stroke-width: 1; flex: none; }
-.logo-mark .lm-glow { fill: var(--marigold); stroke: none; }
-.logo-mark .lm-m { stroke-width: .7; }
-.logo-mark.lg { width: 44px; height: 32px; }
-.logo-mark.xl { width: 72px; height: 52px; stroke: var(--line); }
+.logo-mark { width: 22px; height: 31px; flex: none; }
+.logo-mark .lm-o { fill: var(--ink); }
+.logo-mark .lm-glow { fill: var(--marigold); }
+.logo-mark .lm-m { fill: none; stroke: var(--paper, #F5F1EA); stroke-width: 1.1; }
+.logo-mark.lg { width: 32px; height: 45px; }
+.logo-mark.xl { width: 46px; height: 64px; }
 
 /* buttons — 각지고, 작은 대문자 */
 .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 34px; background: var(--ink); color: var(--paper); font: var(--caps); letter-spacing: var(--track); text-transform: uppercase; text-decoration: none; border: 1px solid var(--ink); border-radius: 0; cursor: pointer; transition: background .25s, color .25s; }
