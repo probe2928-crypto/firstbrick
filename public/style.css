@@ -56,12 +56,9 @@ a { color: inherit; }
 .nav a { flex: none; text-decoration: none; font: var(--caps); letter-spacing: var(--track); text-transform: uppercase; color: var(--text); padding: 4px 0; border-bottom: 1px solid transparent; }
 .nav .sh { display: none; }
 .nav a:hover, .nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--ink); }
-.logo-mark { width: 22px; height: 31px; flex: none; }
-.logo-mark .lm-o { fill: var(--ink); }
-.logo-mark .lm-glow { fill: var(--marigold); }
-.logo-mark .lm-m { fill: none; stroke: var(--paper, #F5F1EA); stroke-width: 1.1; }
-.logo-mark.lg { width: 32px; height: 45px; }
-.logo-mark.xl { width: 46px; height: 64px; }
+.logo-mark { width: 22px; height: 26px; flex: none; fill: var(--ink); }
+.logo-mark.lg { width: 34px; height: 40px; }
+.logo-mark.xl { width: 48px; height: 57px; fill: var(--line); }
 
 /* buttons — 각지고, 작은 대문자 */
 .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 34px; background: var(--ink); color: var(--paper); font: var(--caps); letter-spacing: var(--track); text-transform: uppercase; text-decoration: none; border: 1px solid var(--ink); border-radius: 0; cursor: pointer; transition: background .25s, color .25s; }
@@ -245,7 +242,7 @@ h3 { font-weight: 400; }
 .site-foot { margin-top: clamp(96px, 12vw, 160px); border-top: 1px solid var(--rule); padding-top: clamp(64px, 8vw, 96px); text-align: center; }
 .cta-band + .site-foot, main:has(> .cta-band:last-child) + .site-foot { margin-top: 0; }
 .foot-zh { font: 400 15px/1 "Noto Sans TC", sans-serif; letter-spacing: .5em; margin: -6px -.5em 18px 0; color: var(--muted); }
-.foot-mark { font: 400 clamp(30px, 4.4vw, 52px)/1 var(--f-disp); letter-spacing: .26em; text-transform: uppercase; margin: 0 -.26em 18px 0; }
+.foot-mark { font-variation-settings: "opsz" 72 !important; font: 500 clamp(32px, 4.6vw, 56px)/1 var(--f-disp); letter-spacing: .26em; text-transform: uppercase; margin: 0 -.26em 18px 0; }
 .foot-tag { font: italic 400 17px/1.5 var(--f-disp); color: var(--muted); margin: 0 0 44px; }
 .lang-ko .foot-tag { font-style: normal; font-family: "Nanum Myeongjo", serif; font-size: 15px; }
 .foot-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 34px; margin-bottom: 40px; }
