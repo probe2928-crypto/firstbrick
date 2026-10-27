@@ -224,7 +224,7 @@ function layout(t, { title, desc, p = "", body, active = "", og = "" }) {
     <nav class="nav" aria-label="${t.lang === "ko" ? "주요 메뉴" : "Main"}">${t.nav.map(([h, l]) => `<a href="${u(t, h)}"${active === h ? ' aria-current="page"' : ""}>${esc(l)}</a>`).join("")}</nav>
     <div class="head-end"><a class="lang" href="${altP}" hreflang="${t.other}" lang="${t.other}">${esc(t.otherLabel)}</a><a class="btn btn-sm" href="${u(t, "get-involved/")}#circle">${esc(t.join)}</a></div>
   </div>
-  <nav class="mobile-nav" aria-label="${t.lang === "ko" ? "주요 메뉴" : "Main"}">${t.nav.map(([h, l]) => `<a href="${u(t, h)}"${active === h ? ' aria-current="page"' : ""}>${esc(l)}</a>`).join("")}<a href="${u(t, "get-involved/")}#circle">${esc(t.join)}</a></nav>
+  <nav class="mobile-nav" aria-label="${t.lang === "ko" ? "주요 메뉴" : "Main"}">${t.nav.map(([h, l]) => `<a href="${u(t, h)}"${active === h ? ' aria-current="page"' : ""}>${esc(l)}</a>`).join("")}</nav>
 </header>
 <main id="main">
 ${body}
@@ -371,7 +371,7 @@ const INV = {
       ["volunteer", "Volunteer a skill", "Teachers, builders, engineers, nurses, translators, designers, developers and accountants. We match skills to what a local partner asks for, often remotely. We do not run short visits with children."],
       ["partner", "Partner with us", "Schools, community groups and registered NGOs in Southeast Asia; companies and web3 projects that want their giving to be traceable; media that want to follow the work."],
     ],
-    form: { name: "Your name", email: "Email", interest: "How would you like to help?", opts: ["Give when giving opens", "Volunteer a skill", "Partner organisation", "Spread the word", "Something else"], country: "Where are you based?", msg: "Anything you'd like us to know (optional)", send: "Send", privacy: "We use your details only to reply and to send founding updates. Ask us any time and we delete them." },
+    form: { title: "Sign up", name: "Your name", email: "Email", interest: "How would you like to help?", opts: ["Give when giving opens", "Volunteer a skill", "Partner organisation", "Spread the word", "Something else"], country: "Where are you based?", msg: "Anything you'd like us to know (optional)", send: "Send", privacy: "We use your details only to reply and to send founding updates. Ask us any time and we delete them." },
   },
   ko: {
     title: "함께하기", lede: "아이들을 위해서만이 아니라 사람들과 함께 만듭니다. 지금 함께할 수 있는 방법입니다.",
@@ -380,7 +380,7 @@ const INV = {
       ["volunteer", "재능 봉사", "선생님, 건축·토목, 엔지니어, 간호사, 통번역, 디자이너, 개발자, 회계사. 현지 파트너가 요청한 일에 맞춰 연결하며, 원격으로 하는 일도 많습니다. 아이들과의 단기 방문 봉사는 하지 않습니다."],
       ["partner", "파트너 되기", "동남아시아의 학교, 마을 단체, 등록된 NGO. 기부를 투명하게 하고 싶은 기업과 웹3 프로젝트. 활동을 함께 기록할 미디어."],
     ],
-    form: { name: "이름", email: "이메일", interest: "어떻게 함께하고 싶으세요?", opts: ["기부가 열리면 기부", "재능 봉사", "파트너 기관", "알리기", "기타"], country: "사는 곳", msg: "남기고 싶은 말 (선택)", send: "보내기", privacy: "남겨주신 정보는 답장과 창립 소식 안내에만 씁니다. 요청하시면 언제든 지웁니다." },
+    form: { title: "신청하기", name: "이름", email: "이메일", interest: "어떻게 함께하고 싶으세요?", opts: ["기부가 열리면 기부", "재능 봉사", "파트너 기관", "알리기", "기타"], country: "사는 곳", msg: "남기고 싶은 말 (선택)", send: "보내기", privacy: "남겨주신 정보는 답장과 창립 소식 안내에만 씁니다. 요청하시면 언제든 지웁니다." },
   },
 };
 
@@ -389,7 +389,7 @@ function involve(t) {
   return `${pageHead(I.title, I.lede)}
 <section class="wrap ways">${I.ways.map(([id, h, x]) => `<article id="${id}" class="way"><h2>${esc(h)}</h2><p>${esc(x)}</p></article>`).join("")}</section>
 <section class="wrap form-wrap" aria-labelledby="form-title">
-  <h2 id="form-title">${esc(t.join)}</h2>
+  <h2 id="form-title">${esc(F.title)}</h2>
   <form class="form" action="${esc(S.formEndpoint)}" method="POST">
     <input type="hidden" name="_subject" value="First Brick: new founding circle sign-up (${t.lang})">
     <input type="hidden" name="_next" value="${ABS + t.pre}thanks/">
