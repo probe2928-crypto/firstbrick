@@ -137,44 +137,52 @@ const T = {
 /* ---------- 브랜드 도형 ---------- */
 const logo = (cls = "logo-mark") => `<svg class="${cls}" viewBox="0 0 30 22" aria-hidden="true"><rect x="1" y="12" width="13" height="9" rx="1" class="lm-first"/><rect x="16" y="12" width="13" height="9" rx="1"/><rect x="8.5" y="1" width="13" height="9" rx="1"/></svg>`;
 
-// 벽돌로 쌓은 학교 — 첫 벽돌(왼쪽 아래)만 금잔화색. 창·문 둘레는 실제 벽처럼 잘린 벽돌로 맞춘다
+// 학교 입면도 — 건축 도면처럼 가는 선, 재료 표시는 왼쪽 아래 벽돌 몇 줄만, 색은 첫 벽돌 하나뿐
 function schoolhouse(t) {
-  const bw = 26, bh = 12, g = 3, U = bw + g, cols = 15, x0 = 18, ground = 338;
-  const Wpx = cols * U - g, rows = 10;
-  const rowY = (r) => ground - bh - r * (bh + g);
-  const holes = [
-    { x: 2 * U, w: 3 * U - g, r0: 4, r1: 7, kind: "win" },
-    { x: 10 * U, w: 3 * U - g, r0: 4, r1: 7, kind: "win" },
-    { x: 6.25 * U, w: 2.5 * U - g, r0: 0, r1: 6, kind: "door" },
-  ];
+  const L = (d, cls = "ln", i = 0) => `<path class="${cls}" pathLength="1" style="--d:${i}" d="${d}"/>`;
+  const G = 338; // 지면
+  const bx0 = 64, bx1 = 416, by0 = 176; // 건물 몸체
+  const parts = [];
+  let k = 0;
+  // 지면과 몸체, 지붕
+  parts.push(L(`M8 ${G}H472`, "ln ground", k++));
+  parts.push(L(`M${bx0} ${G}V${by0}H${bx1}V${G}`, "ln", k++));
+  parts.push(L(`M44 ${by0 + 2}L240 74L436 ${by0 + 2}`, "ln", k++));
+  parts.push(L(`M62 ${by0 - 6}L240 90L418 ${by0 - 6}`, "ln thin", k++));
+  // 박공 원창
+  parts.push(`<circle class="ln" pathLength="1" style="--d:${k++}" cx="240" cy="136" r="15"/>`);
+  parts.push(L(`M225 136H255M240 121V151`, "ln thin", k++));
+  // 창 두 개 (3×2 칸)
+  for (const x of [98, 304]) {
+    parts.push(L(`M${x} 214h78v58h-78z`, "ln", k++));
+    parts.push(L(`M${x + 26} 214v58M${x + 52} 214v58M${x} 243h78`, "ln thin", k++));
+    parts.push(L(`M${x - 6} 278h90`, "ln thin", k++));
+  }
+  // 문과 계단
+  parts.push(L(`M212 ${G}V250a28 28 0 0 1 56 0V${G}`, "ln", k++));
+  parts.push(L(`M240 222V${G}`, "ln thin", k++));
+  parts.push(L(`M200 ${G - 0.5}h80`, "ln thin", k++));
+  // 재료 표시: 왼쪽 아래 벽돌 4줄 (도면에서 쓰는 방식)
+  const bw = 22, bh = 9, g = 2.5;
   const bricks = [];
-  for (let r = 0; r < rows; r++) {
-    let segs = [[0, Wpx]];
-    for (const h of holes) if (r >= h.r0 && r < h.r1) segs = segs.flatMap(([a, b]) => { const out = []; if (h.x - g > a) out.push([a, Math.min(b, h.x - g)]); if (h.x + h.w + g < b) out.push([Math.max(a, h.x + h.w + g), b]); return out; });
-    const off = r % 2 ? U / 2 : 0;
-    for (const [a, b] of segs) {
-      for (let k = -1; k * U - off < b; k++) {
-        const s0 = Math.max(a, k * U - off), s1 = Math.min(b, k * U - off + bw);
-        if (s1 - s0 >= 6) bricks.push({ x: x0 + s0, y: rowY(r), w: s1 - s0, c: "" });
-      }
+  for (let r = 0; r < 4; r++) {
+    const off = r % 2 ? (bw + g) / 2 : 0, n = 5 - (r === 3 ? 2 : r === 2 ? 1 : 0);
+    for (let c = 0; c < n; c++) {
+      const x = bx0 + 4 + off + c * (bw + g), y = G - 4 - (r + 1) * (bh + g) + g;
+      if (r === 0 && c === 0) continue;
+      bricks.push(`<rect class="hatch" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${bw}" height="${bh}" style="--d:${k + r * 5 + c};--o:${(1 - (r * 0.18 + c * 0.13)).toFixed(2)}"/>`);
     }
   }
-  const nBody = bricks.length;
-  // 지붕: 어두운 기와가 한 층씩 좁아진다
-  for (let k = 0; k < 8; k++) {
-    const y = rowY(rows + k), inset = k * U / 2 - 12;
-    const a = inset, b = Wpx - inset;
-    for (let x = a; x < b - 4; x += U) bricks.push({ x: x0 + x, y, w: Math.min(bw, b - x), c: "roof" });
-  }
-  const tone = (i) => ["b1", "b2", "b3", "b2", "b1", "b3", "b2"][(i * 5 + (i >> 3)) % 7];
-  const rects = bricks.map((b, i) => `<rect class="brick ${i === 0 ? "first" : b.c ? b.c + (i % 3 ? "" : " roof2") : tone(i)}" style="--i:${i}" x="${b.x.toFixed(1)}" y="${b.y.toFixed(1)}" width="${b.w.toFixed(1)}" height="${bh}" rx="1.5"/>`).join("");
-  const fills = holes.map((h, n) => {
-    const x = x0 + h.x, y = rowY(h.r1 - 1), hh = (h.r1 - h.r0) * (bh + g) - g;
-    if (h.kind === "door") return `<g class="fill" style="--i:${nBody + n}"><rect class="door" x="${x}" y="${y}" width="${h.w}" height="${hh}" rx="1.5"/><circle class="knob" cx="${x + h.w - 9}" cy="${y + hh / 2 + 6}" r="2.6"/></g>`;
-    return `<g class="fill" style="--i:${nBody + n}"><rect class="pane" x="${x}" y="${y}" width="${h.w}" height="${hh}" rx="1.5"/><line class="mullion" x1="${x + h.w / 2}" y1="${y}" x2="${x + h.w / 2}" y2="${y + hh}"/><line class="mullion" x1="${x}" y1="${y + hh / 2}" x2="${x + h.w}" y2="${y + hh / 2}"/></g>`;
-  }).join("");
-  const fx = bricks[0].x, fy = bricks[0].y;
-  return `<figure class="house" aria-label="${esc(t.lang === "ko" ? "벽돌로 한 장씩 쌓아 올린 학교 그림" : "A schoolhouse drawn brick by brick")}"><svg viewBox="0 0 480 400" role="img"><title>${esc(t.firstBrick)}</title>${fills}${rects}<line class="ground" x1="0" y1="${ground + 1}" x2="480" y2="${ground + 1}"/><g class="callout"><line x1="${fx + 8}" y1="${fy + bh + 6}" x2="${fx + 8}" y2="${fy + bh + 30}"/><text x="${fx}" y="${fy + bh + 48}">${esc(t.firstBrick)}</text></g></svg></figure>`;
+  const fx = bx0 + 4, fy = G - 4 - bh;
+  // 치수선
+  const dim = `<g class="dim"><path d="M${bx0} ${G + 26}H${bx1}M${bx0} ${G + 20}v12M${bx1} ${G + 20}v12"/></g>`;
+  return `<figure class="house" aria-label="${esc(t.lang === "ko" ? "학교 입면도. 왼쪽 아래 첫 벽돌만 색이 칠해져 있다" : "Elevation drawing of a schoolhouse; only the first brick, bottom left, is coloured")}"><svg viewBox="0 0 480 400" role="img"><title>${esc(t.firstBrick)}</title>
+<g class="draw">${parts.join("")}</g>
+<g class="mat">${bricks.join("")}</g>
+<rect class="first" x="${fx}" y="${fy}" width="${bw}" height="${bh}"/>
+${dim}
+<g class="callout"><path d="M${fx + bw / 2} ${fy + bh + 3}V${G + 52}H${fx + 150}"/><text x="${fx + 156}" y="${G + 56}">${esc(t.firstBrick)}</text></g>
+</svg></figure>`;
 }
 
 /* ---------- 콘텐츠: 활동 일지 ---------- */
@@ -270,6 +278,21 @@ function ledger(t) {
   return `<ol class="chain">${blocks}${nb}</ol>`;
 }
 
+// 배움·생활·짓기 위의 작은 벽돌 단면 (층이 하나씩 늘어난다)
+function courses(i) {
+  const bw = 44, bh = 12, g = 4, rows = [];
+  for (let r = 0; r <= i; r++) {
+    const off = r % 2 ? (bw + g) / 2 : 0, y = 3 * (bh + g) - (r + 1) * (bh + g) + 2;
+    for (let c = 0; c < 4; c++) {
+      const x = off + c * (bw + g) + 1; if (x + bw > 4 * (bw + g) + 1) continue;
+      const first = i === 0 && r === 0 && c === 0;
+      rows.push(`<rect x="${x}" y="${y}" width="${bw}" height="${bh}" rx="1"${first ? ' class="f"' : ""}/>`);
+    }
+    if (off) rows.push(`<rect x="1" y="${y}" width="${off - g}" height="${bh}" rx="1"/>`);
+  }
+  return `<svg class="course" viewBox="0 0 ${4 * (bw + g) + 2} ${3 * (bh + g) + 2}" aria-hidden="true">${rows.join("")}</svg>`;
+}
+
 /* ---------- 페이지 ---------- */
 function home(t) {
   const posts = JOURNAL.slice(0, 3);
@@ -288,7 +311,7 @@ function home(t) {
 <section class="band path-band">
   <div class="wrap">
     <header class="sec-head"><h2>${esc(t.pathTitle)}</h2><p>${esc(t.pathLede)}</p></header>
-    <ol class="path">${t.path.map(([h, x], i) => `<li style="--step:${i}"><span class="course" aria-hidden="true">${"<i></i>".repeat(i + 1)}</span><h3>${esc(h)}</h3><p>${esc(x)}</p></li>`).join("")}</ol>
+    <ol class="path">${t.path.map(([h, x], i) => `<li style="--step:${i}">${courses(i)}<h3>${esc(h)}</h3><p>${esc(x)}</p></li>`).join("")}</ol>
   </div>
 </section>
 

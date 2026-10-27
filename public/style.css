@@ -39,8 +39,8 @@ a { color: inherit; }
 .head-row { display: flex; align-items: center; gap: 28px; height: 68px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
 .brand-name { font: 700 20px/1 "Bricolage Grotesque", sans-serif; letter-spacing: -0.01em; font-variation-settings: "opsz" 48; }
-.logo-mark { width: 30px; height: 22px; fill: var(--b1); flex: none; }
-.logo-mark .lm-first { fill: var(--marigold); }
+.logo-mark { width: 30px; height: 22px; fill: none; stroke: var(--ink); stroke-width: 1.3; flex: none; }
+.logo-mark .lm-first { fill: var(--marigold); stroke: var(--marigold); }
 .logo-mark.lg { width: 44px; height: 32px; }
 .logo-mark.xl { width: 88px; height: 64px; }
 .nav { display: flex; gap: 24px; margin-left: 8px; }
@@ -70,27 +70,24 @@ a { color: inherit; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .house { margin: 0; }
 .house svg { width: 100%; height: auto; overflow: visible; }
-.house .ground { stroke: var(--ink); stroke-width: 1.5; }
-.brick { fill: var(--b1); }
-.brick.b2 { fill: var(--b2); }
-.brick.b3 { fill: var(--b3); }
-.brick.first { fill: var(--marigold); }
-.brick.roof { fill: #2B3A34; }
-.brick.roof.roof2 { fill: #34463F; }
-.house .pane { fill: #C9D6EE; }
-.house .mullion { stroke: var(--paper); stroke-width: 3; }
-.house .door { fill: var(--blue); }
-.house .knob { fill: var(--marigold); }
-.js .house:not(.laid) .fill { opacity: 0; }
-.house .fill { transition: opacity .5s; transition-delay: calc(var(--i) * 11ms + 520ms); }
-.callout line { stroke: var(--ink); stroke-width: 1; }
-.callout text { font: italic 400 17px var(--f-read); fill: var(--ink); }
-.js .house:not(.laid) .brick { opacity: 0; transform: translateY(-14px); }
-.js .house:not(.laid) .callout { opacity: 0; }
-.house .brick { transition: opacity .28s ease-out, transform .32s cubic-bezier(.2,.8,.3,1); transition-delay: calc(var(--i) * 11ms + 520ms); }
-.house .brick.first { transition-delay: 0ms; transition-duration: .5s; }
-.house .callout { transition: opacity .6s 300ms; }
-@media (prefers-reduced-motion: reduce) { .house .brick, .house .callout, .house .fill { transition: none; } }
+.house .ln { fill: none; stroke: var(--ink); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.house .ln.thin { stroke-width: 0.9; stroke: #6F7B74; }
+.house .ln.ground { stroke-width: 1.6; }
+.house .hatch { fill: none; stroke: #8E9A92; stroke-width: 0.9; opacity: var(--o, 1); }
+.house .first { fill: var(--marigold); }
+.house .dim path { fill: none; stroke: #A9B2AB; stroke-width: 0.9; }
+.house .callout path { fill: none; stroke: var(--ink); stroke-width: 1; }
+.house .callout text { font: italic 400 16px var(--f-read); fill: var(--ink); }
+/* 한 번만: 선이 그려지고 → 재료 표시 → 첫 벽돌이 놓인다 */
+.js .house .ln { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.js .house.laid .ln { stroke-dashoffset: 0; transition: stroke-dashoffset 1.1s cubic-bezier(.6,.05,.3,1); transition-delay: calc(var(--d) * 70ms + 150ms); }
+.js .house .hatch { opacity: 0; }
+.js .house.laid .hatch { opacity: var(--o, 1); transition: opacity .4s; transition-delay: calc(var(--d) * 25ms + 1300ms); }
+.js .house .first { opacity: 0; transform: translateY(-18px); transform-box: fill-box; }
+.js .house.laid .first { opacity: 1; transform: none; transition: opacity .3s 2.1s, transform .55s cubic-bezier(.3,1.4,.5,1) 2.1s; }
+.js .house .callout, .js .house .dim { opacity: 0; }
+.js .house.laid .callout, .js .house.laid .dim { opacity: 1; transition: opacity .6s 2.5s; }
+@media (prefers-reduced-motion: reduce) { .js .house .ln, .js .house .hatch, .js .house .first, .js .house .callout, .js .house .dim { stroke-dashoffset: 0; opacity: 1; transform: none; transition: none; } }
 
 .status { display: flex; gap: 12px; align-items: flex-start; margin: 22px 0 0; padding: 14px 0 0; border-top: 1px solid var(--rule); font-size: 15px; color: var(--muted); max-width: 62em; }
 .status .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--marigold); margin-top: 6px; flex: none; box-shadow: 0 0 0 4px color-mix(in srgb, var(--marigold) 25%, transparent); }
@@ -115,11 +112,9 @@ section { padding-block: clamp(56px, 8vw, 104px) 0; }
 /* path: learn / live / build — 층이 하나씩 높아진다 */
 .path { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 3vw, 40px); align-items: end; }
 .path li { border-top: 2px solid var(--ink); padding-top: 18px; }
-.course { display: flex; flex-direction: column-reverse; gap: 4px; margin-bottom: 20px; min-height: 52px; justify-content: flex-start; }
-.course i { display: block; height: 12px; width: 100%; background: repeating-linear-gradient(90deg, var(--b1) 0 calc(25% - 4px), transparent calc(25% - 4px) 25%); }
-.course i:nth-child(2) { background-position: 12.5% 0; background-image: repeating-linear-gradient(90deg, var(--b2) 0 calc(25% - 4px), transparent calc(25% - 4px) 25%); }
-.course i:nth-child(3) { background-image: repeating-linear-gradient(90deg, var(--b3) 0 calc(25% - 4px), transparent calc(25% - 4px) 25%); }
-.path li:first-child .course i:first-child { background-image: linear-gradient(90deg, var(--marigold) 0 calc(25% - 4px), transparent 0), repeating-linear-gradient(90deg, var(--b1) 0 calc(25% - 4px), transparent calc(25% - 4px) 25%); }
+.course { display: block; width: 100%; max-width: 200px; height: auto; margin-bottom: 18px; }
+.course rect { fill: none; stroke: #6F7B74; stroke-width: 1; }
+.course rect.f { fill: var(--marigold); stroke: var(--marigold); }
 .path h3 { font: 750 var(--s3)/1.1 var(--f-head); margin: 0 0 10px; letter-spacing: -0.02em; }
 .path p { font: 400 17px/1.6 var(--f-read); margin: 0; color: var(--muted); max-width: 26em; }
 
@@ -262,13 +257,13 @@ section { padding-block: clamp(56px, 8vw, 104px) 0; }
 /* partner steps — 실제 순서라 번호 사용 */
 .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px clamp(24px, 4vw, 56px); }
 .steps li { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 14px; align-items: start; }
-.step-no { width: 44px; height: 30px; display: grid; place-items: center; background: var(--b1); color: #fff; font-weight: 700; border-radius: 2px; }
-.steps li:first-child .step-no { background: var(--marigold); color: var(--ink); }
+.step-no { width: 44px; height: 30px; display: grid; place-items: center; background: transparent; color: var(--ink); font-weight: 700; border: 1.25px solid var(--ink); border-radius: 1px; }
+.steps li:first-child .step-no { background: var(--marigold); border-color: var(--marigold); }
 .steps h3 { font: 700 var(--s2)/1.2 var(--f-head); margin: 2px 0 8px; }
 .steps p { font: 400 17px/1.6 var(--f-read); margin: 0; color: var(--muted); }
 .checks { list-style: none; margin: 0; padding: 0; }
 .checks li { font: 400 var(--s1)/1.55 var(--f-read); padding: 14px 0 14px 34px; border-top: 1px solid var(--rule); position: relative; }
-.checks li::before { content: ""; position: absolute; left: 0; top: 23px; width: 18px; height: 10px; background: var(--b2); border-radius: 1px; }
+.checks li::before { content: ""; position: absolute; left: 0; top: 23px; width: 18px; height: 9px; border: 1px solid var(--ink); border-radius: 1px; }
 .principles.plain p { color: var(--muted); }
 .faq { max-width: 52rem; }
 .faq details { border-top: 1px solid var(--rule); }
