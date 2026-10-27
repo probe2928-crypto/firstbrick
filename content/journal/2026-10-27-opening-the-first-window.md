@@ -12,7 +12,7 @@ Today Oriel has a name, a website and a plan. It does not yet have a bank accoun
 
 ## Why start this way
 
-The crypto industry is good at two things charity often struggles with: moving money across borders cheaply, and keeping records anyone can check. We want to use both for children in Southeast Asia, starting with learning and growing, step by step, toward classrooms and schools.
+The crypto industry is good at two things charity often struggles with: moving money across borders cheaply, and keeping records anyone can check. We want to use both for families who need a hand and the children we love, starting with learning and growing, step by step, toward classrooms and schools.
 
 ## What happens next
 
@@ -28,7 +28,7 @@ If you'd like to follow along, or help with a skill you already have, [join the 
 
 ## 왜 이렇게 시작하나
 
-크립토 업계는 기부 단체들이 어려워하는 두 가지를 잘합니다. 국경을 넘어 적은 비용으로 돈을 보내는 일, 그리고 누구나 확인할 수 있는 기록을 남기는 일. 이 두 가지를 동남아시아 아이들을 위해 쓰려고 합니다. 배움에서 시작해 한 걸음씩 교실과 학교로 나아가겠습니다.
+크립토 업계는 기부 단체들이 어려워하는 두 가지를 잘합니다. 국경을 넘어 적은 비용으로 돈을 보내는 일, 그리고 누구나 확인할 수 있는 기록을 남기는 일. 이 두 가지를 도움이 필요한 가정과 사랑스러운 아이들을 위해 쓰려고 합니다. 배움에서 시작해 한 걸음씩 교실과 학교로 나아가겠습니다.
 
 ## 다음에 할 일
 
