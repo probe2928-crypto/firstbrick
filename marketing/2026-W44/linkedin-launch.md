@@ -27,7 +27,7 @@ If that's you, or you know who it is, the website is below. I'd be grateful for 
 
 https://probe2928-crypto.github.io/oriel/
 
-#OrielFoundation #Education #SoutheastAsia #Web3 #Philanthropy #BuildInPublic
+#OrielFoundation #Education #Web3 #Philanthropy #BuildInPublic
 
 — Scott Park, founder
 

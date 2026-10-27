@@ -10,7 +10,7 @@ Every gift will be traceable on a public blockchain. We're not taking donations 
 Join the founding circle: link in bio.
 
 Music: "Eternal Hope" — Kevin MacLeod (incompetech.com), CC BY 3.0
-#OrielFoundation #SoutheastAsia #Education #ChildrensEducation #Web3ForGood #OnChainGiving #BuildInPublic
+#OrielFoundation #Education #ChildrensEducation #Web3ForGood #OnChainGiving #BuildInPublic
 
 ## Reel 2 — Instagram / Facebook
 Before we build anything, we wrote down the rules.
@@ -20,7 +20,7 @@ Local people lead. Children are never the attraction — no orphanage visits, no
 Read the full safeguarding policy: link in bio.
 
 Music: "Prelude No 1" — Chris Zabriskie, CC BY 4.0
-#OrielFoundation #ResponsibleVolunteering #ChildSafeguarding #SoutheastAsia #Web3ForGood #Transparency
+#OrielFoundation #ResponsibleVolunteering #ChildSafeguarding #Web3ForGood #Transparency
 
 ## Facebook (both reels) — add the link directly
 https://probe2928-crypto.github.io/oriel/
