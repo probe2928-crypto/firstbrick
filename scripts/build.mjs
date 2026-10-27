@@ -299,7 +299,7 @@ function home(t) {
   return `
 <section class="hero wrap">
   <div class="hero-copy">
-    <h1 class="display">${esc(t.tag)}</h1>
+    <h1 class="display">${t.lang === "ko" ? "모든 학교는<br>첫 벽돌 한 장에서<br>시작합니다." : esc(t.tag)}</h1>
     <p class="lede">${esc(t.heroLede)}</p>
     <p class="hero-note">${esc(t.heroNote)}</p>
     <div class="actions"><a class="btn" href="${u(t, "get-involved/")}#circle">${esc(t.join)}</a><a class="btn btn-quiet" href="${u(t, "plan/")}">${esc(t.readPlan)}</a></div>
