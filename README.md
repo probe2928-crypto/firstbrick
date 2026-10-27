@@ -1,6 +1,6 @@
 # Oriel Foundation
 
-Website of Oriel Foundation (오리엘 재단) — a foundation in formation for children in Southeast Asia: learning first, then everyday support, then classrooms and schools. Every gift will be traceable on-chain.
+Website of Oriel Foundation (오리엘 재단) — a foundation in formation for families in need and their lovely children: learning first, then everyday support, then classrooms and schools. Every gift will be traceable on-chain.
 
 - English at `/`, Korean at `/ko/`
 - Static build, Node 22, no dependencies: `node scripts/build.mjs` → `dist/`, preview with `node scripts/serve.mjs` (http://localhost:4400)
