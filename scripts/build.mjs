@@ -172,7 +172,7 @@ function schoolhouse(t) {
     for (let c = 0; c < n; c++) {
       const x = bx0 + 4 + off + c * (bw + g), y = G - 4 - (r + 1) * (bh + g) + g;
       if (r === 0 && c === 0) continue;
-      bricks.push(`<rect class="hatch" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${bw}" height="${bh}" style="--d:${k + r * 5 + c};--o:${(1 - (r * 0.18 + c * 0.13)).toFixed(2)}"/>`);
+      bricks.push(`<rect class="hatch" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${bw}" height="${bh}" style="--d:${k + r * 5 + c};--o:${(1 - (r * 0.1 + c * 0.07)).toFixed(2)}"/>`);
     }
   }
   const fx = bx0 + 4, fy = G - 4 - bh;
