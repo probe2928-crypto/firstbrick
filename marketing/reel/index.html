@@ -4,29 +4,37 @@
 <meta charset="utf-8">
 <title>First Brick reel</title>
 <!-- 1080×1920 결정적 모션: window.seek(t)로 프레임을 그린다. 문구·장면은 reel.js(window.REEL = reel.json 내용)에서 읽는다. -->
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Literata:ital,opsz,wght@0,7..72,400..600;1,7..72,400&family=Noto+Sans+KR:wght@500;800&display=block" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..500&family=Jost:wght@300..500&family=Noto+Sans+KR:wght@400;500&family=Nanum+Myeongjo:wght@400;700&display=block" rel="stylesheet">
 <style>
-:root { --paper:#F4F5F0; --paper2:#E8ECE3; --ink:#16231E; --muted:#4E5C55; --blue:#22408C; --mari:#EFA52F; --b1:#A9482E; --b2:#BA5B3B; --b3:#8F3D27; --roof:#2B3A34; }
+/* 메종 톤: 아이보리 · 먹 · 밤의 남색 · 금색은 첫 벽돌 하나에만 */
+:root { --paper:#F5F1EA; --ink:#141414; --muted:#6D665C; --line:#8F877B; --rule:#D9D1C3; --blue:#1B2440; --mari:#B8862D; }
 html,body { margin:0; width:1080px; height:1920px; overflow:hidden; background:var(--paper); }
-#stage { position:relative; width:1080px; height:1920px; overflow:hidden; font-family:"Bricolage Grotesque","Noto Sans KR",sans-serif; color:var(--ink); }
+#stage { position:relative; width:1080px; height:1920px; overflow:hidden; font-family:Jost,"Noto Sans KR",sans-serif; color:var(--ink); }
 .layer { position:absolute; inset:0; }
-.brand { position:absolute; left:96px; top:150px; display:flex; align-items:center; gap:18px; font:700 40px/1 "Bricolage Grotesque"; letter-spacing:-.01em; }
-.brand svg { width:62px; height:46px; }
-.h { position:absolute; left:96px; right:96px; font-weight:800; letter-spacing:-.035em; line-height:.98; font-variation-settings:"opsz" 96; }
-.p { position:absolute; left:96px; right:120px; font:400 44px/1.45 Literata, serif; color:var(--muted); }
-.lang-ko .h { font-family:"Noto Sans KR"; letter-spacing:-.04em; line-height:1.14; }
-.lang-ko .p { font-family:"Noto Sans KR"; font-weight:500; }
-.step { position:absolute; left:96px; right:96px; }
-.step .course { display:flex; gap:10px; margin-bottom:22px; }
-.step .course i { height:30px; flex:1; border-radius:2px; border:2px solid #6F7B74; box-sizing:border-box; }
-.step h3 { margin:0 0 10px; font:800 84px/1 "Bricolage Grotesque","Noto Sans KR"; letter-spacing:-.03em; }
-.step p { margin:0; font:400 40px/1.4 Literata,"Noto Sans KR",serif; color:var(--muted); max-width:820px; }
-.end { position:absolute; inset:0; background:var(--blue); color:#fff; }
-.end .h { color:#fff; }
-.end .p { color:#DCE3F5; }
-.url { position:absolute; left:96px; top:1240px; font:600 38px/1 "Bricolage Grotesque"; color:#fff; border-bottom:4px solid var(--mari); padding-bottom:10px; }
-.foot { position:absolute; left:96px; right:96px; top:1340px; font:400 30px/1.3 "Bricolage Grotesque","Noto Sans KR"; color:var(--muted); }
-.end .foot { color:#C9D3EE; }
+.brand { position:absolute; left:0; right:0; top:132px; text-align:center; }
+.brand b { display:block; font:500 46px/1 "Bodoni Moda",serif; letter-spacing:.3em; margin-right:-.3em; }
+.brand small { display:block; margin-top:16px; font:400 17px/1 Jost; letter-spacing:.5em; margin-right:-.5em; color:var(--muted); }
+.brand::after { content:""; display:block; width:60px; margin:34px auto 0; border-top:1.5px solid var(--rule); }
+.h { position:absolute; left:80px; right:80px; text-align:center; font:400 120px/1.04 "Bodoni Moda",serif; letter-spacing:-.01em; font-variation-settings:"opsz" 96; }
+.h.it { font-style:italic; }
+.p { position:absolute; left:120px; right:120px; text-align:center; font:400 42px/1.55 Jost,sans-serif; color:var(--muted); }
+.lang-ko .h { font-family:"Nanum Myeongjo",serif; letter-spacing:-.03em; line-height:1.3; }
+.lang-ko .h.it { font-style:normal; }
+.lang-ko .p { font-family:"Noto Sans KR"; }
+.step { position:absolute; left:120px; right:120px; text-align:center; }
+.step .course { display:flex; gap:10px; margin:0 auto 14px; width:440px; }
+.step .course i { height:24px; flex:1; box-sizing:border-box; border:1.5px solid var(--line); }
+.step h3 { margin:26px 0 12px; font:400 80px/1 "Bodoni Moda","Nanum Myeongjo",serif; }
+.step p { margin:0 auto; font:400 36px/1.5 Jost,"Noto Sans KR",sans-serif; color:var(--muted); max-width:780px; }
+.end { position:absolute; inset:0; background:var(--blue); color:var(--paper); }
+.end .h { color:var(--paper); }
+.end .p { color:#C3C7D3; }
+.end .brand small { color:#9EA4B5; }
+.end .brand::after { border-color:#3A4562; }
+.url { position:absolute; left:0; right:0; top:1250px; text-align:center; font:500 30px/1 Jost; letter-spacing:.16em; color:var(--paper); }
+.url span { border-bottom:2px solid var(--mari); padding-bottom:14px; }
+.foot { position:absolute; left:96px; right:96px; top:1400px; text-align:center; font:400 26px/1.4 Jost,"Noto Sans KR"; letter-spacing:.04em; color:var(--muted); }
+.end .foot { color:#9EA4B5; }
 </style>
 </head>
 <body>
@@ -41,7 +49,7 @@ html,body { margin:0; width:1080px; height:1920px; overflow:hidden; background:v
   const ease = (x) => x <= 0 ? 0 : x >= 1 ? 1 : 1 - Math.pow(1 - x, 3);
   const win = (t, a, b) => ease((t - a) / (b - a));
   const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
-  const logo = '<svg viewBox="0 0 30 22" style="fill:none;stroke:currentColor;stroke-width:1.3"><rect x="1" y="12" width="13" height="9" rx="1" fill="#EFA52F" stroke="#EFA52F"/><rect x="16" y="12" width="13" height="9" rx="1"/><rect x="8.5" y="1" width="13" height="9" rx="1"/></svg>';
+  const mark = '<b>FIRST BRICK</b><small>FOUNDATION</small>';
 
   // 학교 입면도 (사이트 히어로와 같은 그림: 가는 선, 첫 벽돌만 금잔화색)
   function houseSVG() {
@@ -57,7 +65,7 @@ html,body { margin:0; width:1080px; height:1920px; overflow:hidden; background:v
         H.push(`<rect class="hatch" data-d="${r * 5 + c}" data-o="${(1 - (r * 0.18 + c * 0.13)).toFixed(2)}" x="${x}" y="${y}" width="${bw}" height="${bh}"/>`); } }
     const fx = bx0 + 4, fy = G - 4 - bh;
     const wrap = document.createElement("div");
-    wrap.innerHTML = `<svg viewBox="0 0 480 400" style="width:100%;overflow:visible"><style>.ln{fill:none;stroke:#16231E;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1}.ln.thin{stroke-width:.9;stroke:#6F7B74}.ln.ground{stroke-width:1.6}.hatch{fill:none;stroke:#8E9A92;stroke-width:.9}.dim{fill:none;stroke:#A9B2AB;stroke-width:.9}.co path{fill:none;stroke:#16231E;stroke-width:1}.co text{font:italic 400 16px Literata,serif;fill:#16231E}</style>${P.join("")}${H.join("")}<rect class="first" x="${fx}" y="${fy}" width="${bw}" height="${bh}" fill="#EFA52F"/><path class="dim" d="M${bx0} ${G + 26}H${bx1}M${bx0} ${G + 20}v12M${bx1} ${G + 20}v12"/><g class="co"><path d="M${fx + bw / 2} ${fy + bh + 3}V${G + 52}H${fx + 150}"/><text x="${fx + 156}" y="${G + 56}">${C.lang === "ko" ? "첫 벽돌" : "The first brick"}</text></g></svg>`;
+    wrap.innerHTML = `<svg viewBox="0 0 480 400" style="width:100%;overflow:visible"><style>.ln{fill:none;stroke:#141414;stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1}.ln.thin{stroke-width:.75;stroke:#8F877B}.ln.ground{stroke-width:1.2}.hatch{fill:none;stroke:#A79E90;stroke-width:.75}.dim{fill:none;stroke:#BDB4A5;stroke-width:.75}.co path{fill:none;stroke:#141414;stroke-width:.75}.co text{font:italic 400 17px "Bodoni Moda",serif;fill:#141414}</style>${P.join("")}${H.join("")}<rect class="first" x="${fx}" y="${fy}" width="${bw}" height="${bh}" fill="#B8862D"/><path class="dim" d="M${bx0} ${G + 26}H${bx1}M${bx0} ${G + 20}v12M${bx1} ${G + 20}v12"/><g class="co"><path d="M${fx + bw / 2} ${fy + bh + 3}V${G + 52}H${fx + 150}"/><text x="${fx + 156}" y="${G + 56}">${C.lang === "ko" ? "첫 벽돌" : "The first brick"}</text></g></svg>`;
     const svg = wrap.firstChild;
     return { svg, lines: [...svg.querySelectorAll(".ln")], hatch: [...svg.querySelectorAll(".hatch")], first: svg.querySelector(".first"), late: [...svg.querySelectorAll(".dim, .co")] };
   }
@@ -66,32 +74,32 @@ html,body { margin:0; width:1080px; height:1920px; overflow:hidden; background:v
   const scenes = (C.scenes || []).map((s) => {
     const L = el("div", "layer"); L.style.opacity = 0; stage.appendChild(L); s.L = L;
     if (s.type === "house") {
-      const hs = houseSVG(); s.hs = hs; const wrap = el("div"); wrap.style.cssText = "position:absolute;left:70px;right:70px;top:880px;"; wrap.appendChild(hs.svg); hs.svg.style.width = "100%"; L.appendChild(wrap);
-      s.lines = (s.lines || []).map((txt, i) => { const h = el("div", "h", txt); h.style.cssText += `top:${330 + i * 150}px;font-size:${s.size || 140}px;`; L.appendChild(h); return h; });
-      const cap = el("div", "p", s.caption || ""); cap.style.cssText += "top:1730px;font-style:italic;font-size:38px;"; L.appendChild(cap); s.cap = cap;
+      const hs = houseSVG(); s.hs = hs; const wrap = el("div"); wrap.style.cssText = "position:absolute;left:110px;right:110px;top:930px;"; wrap.appendChild(hs.svg); hs.svg.style.width = "100%"; L.appendChild(wrap);
+      s.lines = (s.lines || []).map((txt, i, arr) => { const h = el("div", "h" + (i === arr.length - 1 && arr.length > 1 ? " it" : ""), txt); h.style.cssText += `top:${380 + i * 136}px;font-size:${s.size || 124}px;`; L.appendChild(h); return h; });
+      const cap = el("div", "p", s.caption || ""); cap.style.cssText += "top:1690px;font:italic 400 38px/1.4 'Bodoni Moda',serif;"; L.appendChild(cap); s.cap = cap;
     } else if (s.type === "steps") {
-      const head = el("div", "h", s.title || ""); head.style.cssText += "top:240px;font-size:96px;"; L.appendChild(head); s.head = head;
-      s.items = s.items.map((it, i) => { const d = el("div", "step"); d.style.top = (560 + i * 410) + "px";
+      const head = el("div", "h", s.title || ""); head.style.cssText += "top:350px;font-size:96px;"; L.appendChild(head); s.head = head;
+      s.items = s.items.map((it, i) => { const d = el("div", "step"); d.style.top = (620 + i * 410) + "px";
         const tone = ["var(--b1)", "var(--b2)", "var(--b3)"];
-        let courses = ""; for (let c = 0; c <= i; c++) courses += `<div class="course" style="margin-left:${c % 2 ? 40 : 0}px">${[0, 1, 2, 3].map((k) => `<i style="${i === 0 && c === 0 && k === 0 ? "background:var(--mari);border-color:var(--mari)" : ""}"></i>`).join("")}</div>`;
+        let courses = ""; for (let c = 0; c <= i; c++) courses += `<div class="course" style="transform:translateX(${c % 2 ? 22 : 0}px)">${[0, 1, 2, 3].map((k) => `<i style="${i === 0 && c === 0 && k === 0 ? "background:var(--mari);border-color:var(--mari)" : ""}"></i>`).join("")}</div>`;
         d.innerHTML = `<div style="display:flex;flex-direction:column-reverse">${courses}</div><h3>${it[0]}</h3><p>${it[1]}</p>`; L.appendChild(d); return d; });
     } else if (s.type === "lines") {
-      const t = el("div", "h", s.title); t.style.cssText += `top:${s.top || 420}px;font-size:${s.size || 112}px;`; L.appendChild(t);
-      const body = el("div", "p"); body.style.cssText += `top:${s.bodyTop || 800}px;color:var(--ink);`;
+      const t = el("div", "h", s.title); t.style.cssText += `top:${(s.top || 420) + 40}px;font-size:${s.size || 112}px;`; L.appendChild(t);
+      const body = el("div", "p"); body.style.cssText += `top:${(s.bodyTop || 800) + 40}px;color:var(--ink);`;
       s.parts = [t, ...(s.body || []).map((txt) => { const p = el("div", "", txt); p.style.marginBottom = "22px"; body.appendChild(p); return p; })];
       L.appendChild(body);
-      if (s.wall) { const w = el("div"); w.style.cssText = "position:absolute;left:96px;right:96px;top:1260px;display:flex;flex-direction:column-reverse;gap:10px;"; const tone = ["var(--b1)", "var(--b2)", "var(--b3)", "var(--b2)", "var(--b1)"];
-        s.courses = []; for (let c = 0; c < s.wall; c++) { const row = el("div"); row.style.cssText = `display:flex;gap:10px;margin-left:${c % 2 ? 46 : 0}px;margin-right:${c % 2 ? 0 : 46}px;`; row.innerHTML = [0, 1, 2, 3, 4].map((k) => `<i style="display:block;flex:1;height:40px;border-radius:2px;box-sizing:border-box;border:2px solid ${c === 0 && k === 0 ? "var(--mari)" : "#6F7B74"};background:${c === 0 && k === 0 ? "var(--mari)" : "transparent"}"></i>`).join(""); w.appendChild(row); s.courses.push(row); }
+      if (s.wall) { const w = el("div"); w.style.cssText = "position:absolute;left:230px;right:230px;top:1330px;display:flex;flex-direction:column-reverse;gap:10px;"; const tone = ["var(--b1)", "var(--b2)", "var(--b3)", "var(--b2)", "var(--b1)"];
+        s.courses = []; for (let c = 0; c < s.wall; c++) { const row = el("div"); row.style.cssText = `display:flex;gap:10px;margin-left:${c % 2 ? 36 : 0}px;margin-right:${c % 2 ? 0 : 36}px;`; row.innerHTML = [0, 1, 2, 3, 4].map((k) => `<i style="display:block;flex:1;height:30px;box-sizing:border-box;border:1.5px solid ${c === 0 && k === 0 ? "var(--mari)" : "var(--line)"};background:${c === 0 && k === 0 ? "var(--mari)" : "transparent"}"></i>`).join(""); w.appendChild(row); s.courses.push(row); }
         L.appendChild(w); }
     } else if (s.type === "end") {
       L.classList.add("end");
-      L.innerHTML = `<div class="brand" style="color:#fff">${logo}<span>First Brick</span></div>`;
-      s.parts = [el("div", "h", s.title), el("div", "p", s.text || ""), el("div", "url", s.url || "")];
-      s.parts[0].style.cssText += "top:520px;font-size:118px;"; s.parts[1].style.cssText += "top:900px;";
+      L.innerHTML = `<div class="brand">${mark}</div>`;
+      s.parts = [el("div", "h", s.title), el("div", "p", s.text || ""), el("div", "url", `<span>${s.url || ""}</span>`)];
+      s.parts[0].style.cssText += "top:560px;font-size:118px;"; s.parts[1].style.cssText += "top:960px;";
       s.parts.forEach((p) => L.appendChild(p));
       const f = el("div", "foot", s.foot || ""); L.appendChild(f); s.foot = f;
     }
-    if (s.brand !== false && s.type !== "end") { const b = el("div", "brand", `${logo}<span>First Brick</span>`); L.appendChild(b); }
+    if (s.brand !== false && s.type !== "end") { const b = el("div", "brand", mark); L.appendChild(b); }
     if (s.note) { const f = el("div", "foot", s.note); L.appendChild(f); }
     return s;
   });
