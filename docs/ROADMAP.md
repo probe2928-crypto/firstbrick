@@ -3,6 +3,9 @@
 The daily improvement task reads and updates this file. Top = highest priority. Finished items move to 완료 with a date.
 
 ## 사용자 조치 필요 (세준)
+- [ ] 브랜딩 방향: C(말뫼 — 복숭아색 한 면, 굵은 검정 'oriel', 가운데 오브젝트) 선택됨(2026-10-27). 오브젝트 안 1(터렐식 아치 개구부) 확정 여부
+- [ ] GitHub 저장소 이름 firstbrick → oriel (Settings > Repository name). 바뀌면 Claude가 링크·자동 작업 주소 정리
+- 운영 방향 (세준, 2026-10-27): 재단은 봉사·기부 성격이 강해서 천천히 고도화해도 됨. 가장 중요한 건 실제 활동 모습(한국·해외 현장 사진·영상). **분기 1회 현장 활동** 예정 → 활동 일지·릴스의 핵심 소재. 사이트·홍보물은 현장 사진이 주인공이 되도록 설계할 것
 - [ ] 인스타그램 새 계정 @oriel.foundation 직접 가입 (가입은 본인만 가능)
 - [ ] 메트리쿨에 링크드인·인스타·페이스북 연결 → 주 2회 예약 초안 자동 등록
 - [ ] 링크드인 개인 계정에 출범 글 올리기 (바탕화면 `오리엘_홍보\2026-W44-linkedin-launch.txt`, 릴스 1 첨부)
