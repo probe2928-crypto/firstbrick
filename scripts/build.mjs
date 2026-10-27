@@ -1,4 +1,4 @@
-// First Brick Foundation — 정적 사이트 빌드 (영어 기본 /, 한국어 /ko/)
+// Oriel Foundation — 정적 사이트 빌드 (영어 기본 /, 한국어 /ko/)
 // 외부 패키지 없음. 실행: node scripts/build.mjs → dist/
 import fs from "node:fs";
 import path from "node:path";
@@ -22,14 +22,14 @@ const copyDir = (from, to) => { if (!fs.existsSync(from)) return; fs.cpSync(from
 const T = {
   en: {
     lang: "en", htmlLang: "en", pre: "", other: "ko", otherLabel: "한국어", otherShort: "KO",
-    name: S.name, tag: "Every school begins with a first brick.",
-    desc: "First Brick is a foundation in the making for children in Southeast Asia: learning first, then everyday support, then the classrooms and schools a community asks for. Every gift traceable on-chain.",
+    name: S.name, tag: "Light for learning. Glass for giving.",
+    desc: "Oriel is a foundation in the making for children in Southeast Asia: learning first, then everyday support, then the classrooms and schools a community asks for. Every gift traceable on-chain.",
     nav: [["plan/", "Plan"], ["partners/", "Partners"], ["journal/", "Journal"], ["get-involved/", "Get involved", "Join"], ["about/", "About"]],
     join: "Join the founding circle", readPlan: "Read the plan",
     status: "Founding stage. We are not taking donations yet. Giving opens once the foundation is registered, and every transaction will be public from the first one.",
     heroLede: "We are a foundation in the making for children in Southeast Asia. We start with learning, add the everyday support that keeps a child in class, and grow toward the roads, buildings and schools a community needs.",
     heroNote: "Every gift will be traceable on a public blockchain.",
-    firstBrick: "The first brick",
+    oriel: "The oriel window",
     eyebrow: ["A foundation in formation", "Southeast Asia"], sub: "Foundation", joinShort: "Join",
     pathTitle: "Learn, live, build",
     pathLede: "Three steps, in this order. We take the next one only when the one before it works and a local partner asks for it.",
@@ -64,14 +64,14 @@ const T = {
     quratorText: "QURATOR, an art docent service from the same founders, has pledged a share of its revenue. Its gifts begin once we are registered and will be recorded in our public ledger.",
     partnerWanted: "We are looking for a first local partner in Southeast Asia: a school, community group or registered NGO already working with children.",
     becomePartner: "Talk to us about partnering",
-    ctaTitle: "Lay a brick with us",
+    ctaTitle: "Open the first window with us",
     ctaText: "Join the founding circle and we'll write to you when giving opens, when we pick our first community, and when there's a way to help that fits what you do.",
-    footStatus: "First Brick Foundation is in formation and not yet a registered charity.",
+    footStatus: "Oriel Foundation is in formation and not yet a registered charity.",
     footLinks: [["notes/", "Notes"], ["faq/", "Questions"], ["partners/", "Partner process"], ["safeguarding/", "Safeguarding"], ["transparency/", "Transparency"], ["get-involved/", "Contact"]],
     ledgerTitle: "The ledger so far", ledgerLede: "We keep our own progress the way we will keep every gift: in order, dated, and public. Each block is a set of things we actually finished.", block: "Block", nextBlock: "Next block", follow: "Follow", channels: "Channels",
     media: "Media partner",
     notesTitle: "Notes", notesLede: "What we are reading on giving, children's education and on-chain transparency. Every item links to its source.", notesEmpty: "The first notes are on their way.", allNotes: "All notes", sources: "Sources", zhSummary: "繁體中文摘要",
-    rights: "First Brick Foundation (in formation)",
+    rights: "Oriel Foundation (in formation)",
     readMore: "Read",
     posted: "Posted",
     photosNote: "Photos are published with consent under our safeguarding policy.",
@@ -81,14 +81,14 @@ const T = {
   },
   ko: {
     lang: "ko", htmlLang: "ko", pre: "ko/", other: "en", otherLabel: "English", otherShort: "EN",
-    name: S.name_ko, tag: "모든 학교는 첫 벽돌 한 장에서 시작합니다.",
-    desc: "퍼스트브릭은 동남아시아 아이들을 위해 준비 중인 재단입니다. 배움에서 시작해 생활을 돕고, 마을이 원하는 교실과 학교까지 짓습니다. 모든 기부는 블록체인에 기록됩니다.",
+    name: S.name_ko, tag: "배움에는 빛을, 기부에는 창을.",
+    desc: "오리엘은 동남아시아 아이들을 위해 준비 중인 재단입니다. 배움에서 시작해 생활을 돕고, 마을이 원하는 교실과 학교까지 짓습니다. 모든 기부는 블록체인에 기록됩니다.",
     nav: [["plan/", "계획"], ["partners/", "파트너"], ["journal/", "활동 일지"], ["get-involved/", "함께하기"], ["about/", "소개"]],
     join: "창립 서포터 신청", readPlan: "계획 보기",
     status: "설립 준비 단계입니다. 아직 기부를 받지 않습니다. 재단 등록을 마친 뒤 기부를 열고, 첫 거래부터 모두 공개합니다.",
     heroLede: "동남아시아 아이들을 위해 준비 중인 재단입니다. 배움에서 시작해, 아이가 계속 학교에 올 수 있게 하는 생활 지원을 더하고, 마을에 필요한 길과 건물, 학교까지 짓는 것이 목표입니다.",
     heroNote: "모든 기부는 공개 블록체인에서 확인할 수 있게 됩니다.",
-    firstBrick: "첫 벽돌",
+    oriel: "오리엘 창",
     eyebrow: ["설립 준비 중", "동남아시아"], sub: "Foundation", joinShort: "참여하기",
     pathTitle: "배우고, 살고, 짓는다",
     pathLede: "세 단계를 이 순서대로 밟습니다. 앞 단계가 제대로 돌아가고 현지 파트너가 원할 때만 다음으로 넘어갑니다.",
@@ -123,14 +123,14 @@ const T = {
     quratorText: "같은 운영진이 만든 미술 도슨트 서비스 QURATOR가 수익의 일부를 기부하기로 약정했습니다. 기부는 재단 등록 후 시작되고, 공개 장부에 기록됩니다.",
     partnerWanted: "동남아시아에서 함께할 첫 현지 파트너를 찾고 있습니다. 이미 아이들과 일하고 있는 학교, 마을 단체, 등록된 NGO라면 연락 주세요.",
     becomePartner: "파트너 문의하기",
-    ctaTitle: "벽돌 한 장을 함께 놓아 주세요",
+    ctaTitle: "첫 창을 함께 열어 주세요",
     ctaText: "창립 서포터로 신청하시면 기부가 열릴 때, 첫 마을을 정할 때, 하시는 일에 맞는 도움 방법이 생길 때 연락드립니다.",
-    footStatus: "퍼스트브릭 재단은 설립 준비 중이며 아직 등록된 공익단체가 아닙니다.",
+    footStatus: "오리엘 재단은 설립 준비 중이며 아직 등록된 공익단체가 아닙니다.",
     footLinks: [["notes/", "읽을거리"], ["faq/", "자주 묻는 질문"], ["partners/", "파트너 절차"], ["safeguarding/", "아동보호 정책"], ["transparency/", "투명성"], ["get-involved/", "문의"]],
     ledgerTitle: "지금까지의 장부", ledgerLede: "앞으로 모든 기부를 기록할 방식 그대로, 우리의 진행도 순서대로, 날짜와 함께, 공개로 남깁니다. 블록 하나는 실제로 끝낸 일들의 묶음입니다.", block: "블록", nextBlock: "다음 블록", follow: "팔로우", channels: "채널",
     media: "미디어 파트너",
     notesTitle: "읽을거리", notesLede: "기부, 아이들의 교육, 온체인 투명성에 관해 우리가 읽고 있는 것들. 모든 항목에 출처를 답니다.", notesEmpty: "첫 읽을거리가 곧 올라옵니다.", allNotes: "전체 보기", sources: "출처", zhSummary: "繁體中文摘要",
-    rights: "퍼스트브릭 재단 (설립 준비 중)",
+    rights: "오리엘 재단 (설립 준비 중)",
     readMore: "읽기",
     posted: "게시",
     photosNote: "사진은 아동보호 정책에 따라 동의를 받아 게시합니다.",
@@ -141,9 +141,10 @@ const T = {
 };
 
 /* ---------- 브랜드 도형 ---------- */
-const logo = (cls = "logo-mark") => `<svg class="${cls}" viewBox="0 0 30 22" aria-hidden="true"><rect x="1" y="12" width="13" height="9" rx="1" class="lm-first"/><rect x="16" y="12" width="13" height="9" rx="1"/><rect x="8.5" y="1" width="13" height="9" rx="1"/></svg>`;
+// 오리엘 창: 벽에서 내민 창 하나, 왼쪽 위 유리 한 칸만 금빛, 아래는 받침(코벨)
+const logo = (cls = "logo-mark") => `<svg class="${cls}" viewBox="0 0 30 22" aria-hidden="true"><g class="lm-glow"><rect x="8.9" y="1.4" width="5.2" height="4.7" opacity="1"/><rect x="15.9" y="1.4" width="5.2" height="4.7" opacity=".78"/><rect x="8.9" y="7.9" width="5.2" height="4.7" opacity=".66"/><rect x="15.9" y="7.9" width="5.2" height="4.7" opacity=".5"/></g><path d="M8 0.5h14v13H8z"/><path class="lm-m" d="M15 0.5v13M8 7h14"/><path d="M8 13.5h14l-3.5 5h-7z"/></svg>`;
 
-// 학교 입면도 — 건축 도면처럼 가는 선, 재료 표시는 왼쪽 아래 벽돌 몇 줄만, 색은 첫 벽돌 하나뿐
+// 학교 입면도 — 건축 도면처럼 가는 선. 왼쪽 창은 벽에서 내민 오리엘 창이고, 그 유리만 금빛
 function schoolhouse(t) {
   const L = (d, cls = "ln", i = 0) => `<path class="${cls}" pathLength="1" style="--d:${i}" d="${d}"/>`;
   const G = 338; // 지면
@@ -158,8 +159,20 @@ function schoolhouse(t) {
   // 박공 원창
   parts.push(`<circle class="ln" pathLength="1" style="--d:${k++}" cx="240" cy="136" r="15"/>`);
   parts.push(L(`M225 136H255M240 121V151`, "ln thin", k++));
-  // 창 두 개 (3×2 칸)
-  for (const x of [98, 304]) {
+  // 왼쪽: 오리엘 창 (지붕 모자 + 내민 틀 + 받침)
+  const ox = 98, oy = 214, ow = 78, oh = 58;
+  const glow = [];
+  for (let r = 0; r < 2; r++) for (let c = 0; c < 3; c++) {
+    glow.push(`<rect class="glow" x="${ox + c * 26 + 2}" y="${oy + r * 29 + 2}" width="22" height="25" style="--g:${r * 3 + c};--o:${(0.98 - (r * 3 + c) * 0.06).toFixed(2)}"/>`);
+  }
+  parts.push(L(`M${ox - 8} ${oy - 8}h${ow + 16}v${oh + 16}h-${ow + 16}z`, "ln", k++));
+  parts.push(L(`M${ox} ${oy}h${ow}v${oh}h-${ow}z`, "ln thin", k++));
+  parts.push(L(`M${ox + 26} ${oy}v${oh}M${ox + 52} ${oy}v${oh}M${ox} ${oy + 29}h${ow}`, "ln thin", k++));
+  parts.push(L(`M${ox - 14} ${oy - 8}L${ox + ow / 2} ${oy - 26}L${ox + ow + 14} ${oy - 8}`, "ln", k++));
+  parts.push(L(`M${ox - 8} ${oy + oh + 8}L${ox + 18} ${oy + oh + 30}H${ox + ow - 18}L${ox + ow + 8} ${oy + oh + 8}`, "ln", k++));
+  parts.push(L(`M${ox + 6} ${oy + oh + 13}H${ox + ow - 6}`, "ln thin", k++));
+  // 오른쪽: 보통 창 (3×2 칸)
+  for (const x of [304]) {
     parts.push(L(`M${x} 214h78v58h-78z`, "ln", k++));
     parts.push(L(`M${x + 26} 214v58M${x + 52} 214v58M${x} 243h78`, "ln thin", k++));
     parts.push(L(`M${x - 6} 278h90`, "ln thin", k++));
@@ -168,26 +181,25 @@ function schoolhouse(t) {
   parts.push(L(`M212 ${G}V250a28 28 0 0 1 56 0V${G}`, "ln", k++));
   parts.push(L(`M240 222V${G}`, "ln thin", k++));
   parts.push(L(`M200 ${G - 0.5}h80`, "ln thin", k++));
-  // 재료 표시: 왼쪽 아래 벽돌 4줄 (도면에서 쓰는 방식)
+  // 재료 표시: 오른쪽 아래 벽돌 2줄 (도면에서 쓰는 방식)
   const bw = 22, bh = 9, g = 2.5;
-  const bricks = [];
-  for (let r = 0; r < 4; r++) {
-    const off = r % 2 ? (bw + g) / 2 : 0, n = 5 - (r === 3 ? 2 : r === 2 ? 1 : 0);
+  const mat = [];
+  for (let r = 0; r < 2; r++) {
+    const off = r % 2 ? (bw + g) / 2 : 0, n = r ? 4 : 5;
     for (let c = 0; c < n; c++) {
-      const x = bx0 + 4 + off + c * (bw + g), y = G - 4 - (r + 1) * (bh + g) + g;
-      if (r === 0 && c === 0) continue;
-      bricks.push(`<rect class="hatch" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${bw}" height="${bh}" style="--d:${k + r * 5 + c};--o:${(1 - (r * 0.1 + c * 0.07)).toFixed(2)}"/>`);
+      const x = bx1 - 4 - bw - off - c * (bw + g), y = G - 4 - (r + 1) * (bh + g) + g;
+      mat.push(`<rect class="hatch" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${bw}" height="${bh}" style="--d:${k + r * 5 + c};--o:${(1 - (r * 0.15 + c * 0.1)).toFixed(2)}"/>`);
     }
   }
-  const fx = bx0 + 4, fy = G - 4 - bh;
   // 치수선
   const dim = `<g class="dim"><path d="M${bx0} ${G + 26}H${bx1}M${bx0} ${G + 20}v12M${bx1} ${G + 20}v12"/></g>`;
-  return `<figure class="house" aria-label="${esc(t.lang === "ko" ? "학교 입면도. 왼쪽 아래 첫 벽돌만 색이 칠해져 있다" : "Elevation drawing of a schoolhouse; only the first brick, bottom left, is coloured")}"><svg viewBox="0 0 480 400" role="img"><title>${esc(t.firstBrick)}</title>
+  const cx = ox + ow / 2, cy = oy + oh + 34;
+  return `<figure class="house" aria-label="${esc(t.lang === "ko" ? "학교 입면도. 왼쪽 오리엘 창의 유리만 금빛으로 밝혀져 있다" : "Elevation drawing of a schoolhouse; only the glass of the oriel window, left, is lit in gold")}"><svg viewBox="0 0 480 400" role="img"><title>${esc(t.oriel)}</title>
+<g class="lit">${glow.join("")}</g>
 <g class="draw">${parts.join("")}</g>
-<g class="mat">${bricks.join("")}</g>
-<rect class="first" x="${fx}" y="${fy}" width="${bw}" height="${bh}"/>
+<g class="mat">${mat.join("")}</g>
 ${dim}
-<g class="callout"><path d="M${fx + bw / 2} ${fy + bh + 3}V${G + 52}H${fx + 150}"/><text x="${fx + 156}" y="${G + 56}">${esc(t.firstBrick)}</text></g>
+<g class="callout"><path d="M${cx} ${cy}V${G + 52}H${cx + 120}"/><text x="${cx + 126}" y="${G + 56}">${esc(t.oriel)}</text></g>
 </svg></figure>`;
 }
 
@@ -258,7 +270,7 @@ function layout(t, { title, desc, p = "", body, active = "", og = "" }) {
 <header class="site-head">
   <div class="wrap head-row">
     <a class="lang" href="${altP}" hreflang="${t.other}" lang="${t.other}">${esc(t.otherLabel)}</a>
-    <a class="brand" href="${u(t)}" aria-label="${esc(t.name)}"><span class="brand-name">First Brick</span><span class="brand-sub">${esc(t.sub)}</span></a>
+    <a class="brand" href="${u(t)}" aria-label="${esc(t.name)}"><span class="brand-name">${esc(S.short)}</span><span class="brand-sub">${esc(t.sub)}</span></a>
     <a class="head-join" href="${u(t, "get-involved/")}#circle">${esc(t.joinShort)}</a>
   </div>
   <nav class="nav" aria-label="${t.lang === "ko" ? "주요 메뉴" : "Main"}">${t.nav.map(([h, l, sh]) => `<a href="${u(t, h)}"${active === h ? ' aria-current="page"' : ""}>${sh ? `<span class="lg">${esc(l)}</span><span class="sh">${esc(sh)}</span>` : esc(l)}</a>`).join("")}</nav>
@@ -268,7 +280,7 @@ ${body}
 </main>
 <footer class="site-foot">
   <div class="wrap">
-    <p class="foot-mark">First Brick</p>
+    <p class="foot-mark">${esc(S.short)}</p><p class="foot-zh" lang="zh-Hant">${esc(S.name_zh)}</p>
     <p class="foot-tag">${esc(t.tag)}</p>
     <nav class="foot-links" aria-label="${t.lang === "ko" ? "바닥 메뉴" : "Footer"}">${t.footLinks.map(([h, l]) => `<a href="${u(t, h)}">${esc(l)}</a>`).join("")}<a class="mail" href="mailto:${S.email}">${esc(S.email)}</a></nav>
     <div class="foot-partner"><p class="small">${esc(t.media)}</p><a class="cb" href="${S.chainbrief}" target="_blank" rel="noopener">CHAINBRIEF</a>${socials(t)}</div>
@@ -300,19 +312,14 @@ function ledger(t) {
   return `<ol class="chain">${blocks}${nb}</ol>`;
 }
 
-// 배움·생활·짓기 위의 작은 벽돌 단면 (층이 하나씩 늘어난다)
+// 배움·생활·짓기 위의 작은 창: 단계마다 밝혀진 유리가 늘어난다 (2 → 4 → 6칸)
 function courses(i) {
-  const bw = 44, bh = 12, g = 4, rows = [];
-  for (let r = 0; r <= i; r++) {
-    const off = r % 2 ? (bw + g) / 2 : 0, y = 3 * (bh + g) - (r + 1) * (bh + g) + 2;
-    for (let c = 0; c < 4; c++) {
-      const x = off + c * (bw + g) + 1; if (x + bw > 4 * (bw + g) + 1) continue;
-      const first = i === 0 && r === 0 && c === 0;
-      rows.push(`<rect x="${x}" y="${y}" width="${bw}" height="${bh}" rx="1"${first ? ' class="f"' : ""}/>`);
-    }
-    if (off) rows.push(`<rect x="1" y="${y}" width="${off - g}" height="${bh}" rx="1"/>`);
+  const lit = [2, 4, 6][i] || 6, cells = [];
+  for (let r = 0; r < 2; r++) for (let c = 0; c < 3; c++) {
+    const n = r * 3 + c;
+    if (n < lit) cells.push(`<rect class="f" x="${3 + c * 40}" y="${3 + r * 22}" width="34" height="16" style="opacity:${(1 - n * 0.08).toFixed(2)}"/>`);
   }
-  return `<svg class="course" viewBox="0 0 ${4 * (bw + g) + 2} ${3 * (bh + g) + 2}" aria-hidden="true">${rows.join("")}</svg>`;
+  return `<svg class="course" viewBox="0 0 126 50" aria-hidden="true">${cells.join("")}<path d="M0.5 0.5h120v44h-120z"/><path class="m" d="M40.5 0.5v44M80.5 0.5v44M0.5 22.5h120"/></svg>`;
 }
 
 /* ---------- 페이지 ---------- */
@@ -321,7 +328,7 @@ function home(t) {
   return `
 <section class="hero wrap">
   <p class="eyebrow">${t.eyebrow.map((x) => `<span>${esc(x)}</span>`).join('<span class="sep" aria-hidden="true"> · </span>')}</p>
-  <h1 class="display">${t.lang === "ko" ? "모든 학교는<br><em>첫 벽돌 한 장에서</em><br>시작합니다." : "Every school begins <em>with a first brick.</em>"}</h1>
+  <h1 class="display">${t.lang === "ko" ? "배움에는 빛을,<br><em>기부에는 창을.</em>" : "Light for learning.<br><em>Glass for giving.</em>"}</h1>
   <p class="lede">${esc(t.heroLede)}</p>
   <div class="actions"><a class="btn" href="${u(t, "get-involved/")}#circle">${esc(t.join)}</a><a class="btn btn-quiet" href="${u(t, "plan/")}">${esc(t.readPlan)}</a></div>
   ${schoolhouse(t)}
@@ -381,7 +388,7 @@ ${NOTES.length ? `<section class="wrap notes-sec">
 
 const PLAN = {
   en: {
-    title: "The plan", lede: "What First Brick will do, in what order, and how we will know it is working.",
+    title: "The plan", lede: "What Oriel will do, in what order, and how we will know it is working.",
     sections: [
       ["Why Southeast Asia, why children", "Across parts of Southeast Asia, many children still leave school early, often because of costs, distance or work at home rather than lack of interest. Small, steady help close to the classroom can change that. We will choose our first community with a local partner, after visiting, listening and checking what others already do there, so we add to existing work instead of duplicating it."],
       ["Learn: keep children learning", "Our first programs support learning that is already happening: after-school tutoring with local teachers, books and supplies, reading corners in existing schools, and scholarships that cover the costs that make families pull children out. Every program has a local lead and a simple measure we report on, such as attendance or reading levels."],
@@ -392,7 +399,7 @@ const PLAN = {
     ],
   },
   ko: {
-    title: "계획", lede: "퍼스트브릭이 무엇을, 어떤 순서로 하고, 잘되고 있는지 어떻게 확인할지 정리했습니다.",
+    title: "계획", lede: "오리엘이 무엇을, 어떤 순서로 하고, 잘되고 있는지 어떻게 확인할지 정리했습니다.",
     sections: [
       ["왜 동남아시아, 왜 아이들인가", "동남아시아 곳곳에는 아직도 일찍 학교를 그만두는 아이들이 많습니다. 공부가 싫어서라기보다 비용, 거리, 집안일 때문인 경우가 많습니다. 교실 가까이에서 작고 꾸준하게 돕는 일이 그 흐름을 바꿀 수 있습니다. 첫 마을은 현지 파트너와 함께 직접 가서 듣고, 이미 그곳에서 일하는 단체들을 확인한 뒤 정합니다. 있는 일을 겹치게 하지 않고 보태기 위해서입니다."],
       ["배움: 아이가 계속 배우게", "첫 프로그램은 이미 일어나고 있는 배움을 돕습니다. 현지 선생님과의 방과후 보충수업, 책과 학용품, 기존 학교 안의 독서 공간, 가정이 아이를 학교에서 빼게 만드는 비용을 덮는 장학금. 모든 프로그램에는 현지 책임자와 출석률·읽기 수준 같은 간단한 지표가 있고, 이를 보고합니다."],
@@ -480,7 +487,7 @@ function involve(t) {
 <section class="wrap form-wrap" aria-labelledby="form-title">
   <h2 id="form-title">${esc(F.title)}</h2>
   <form class="form" action="${esc(S.formEndpoint)}" method="POST">
-    <input type="hidden" name="_subject" value="First Brick: new founding circle sign-up (${t.lang})">
+    <input type="hidden" name="_subject" value="Oriel: new founding circle sign-up (${t.lang})">
     <input type="hidden" name="_next" value="${ABS + t.pre}thanks/">
     <input type="hidden" name="_template" value="table">
     <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -514,26 +521,26 @@ const SAFE = {
 const TRANS = {
   en: { title: "Transparency", lede: "How every gift will be recorded, and what is true today.",
     items: [
-      ["Today", ["We are in formation and do not accept donations of any kind yet.", "We have no wallet address yet. Anyone asking you to send crypto to First Brick today is not us.", "When giving opens, the address will be published only on this page and announced from our official channels at the same time."]],
+      ["Today", ["We are in formation and do not accept donations of any kind yet.", "We have no wallet address yet. Anyone asking you to send crypto to Oriel today is not us.", "When giving opens, the address will be published only on this page and announced from our official channels at the same time."]],
       ["When giving opens", ["One public wallet per network, listed here with links to a block explorer.", "Every outgoing payment labelled with the partner, the purpose and a receipt.", "Card and bank gifts recorded in the same ledger, with totals reconciled each quarter.", "A quarterly report in English and Korean, and annual accounts once the foundation is registered."]],
     ] },
   ko: { title: "투명성", lede: "모든 기부를 어떻게 기록할지, 그리고 지금 사실인 것.",
     items: [
-      ["지금", ["설립 준비 중이며 어떤 형태의 기부도 아직 받지 않습니다.", "지갑 주소는 아직 없습니다. 지금 퍼스트브릭 이름으로 암호화폐를 보내 달라는 연락은 저희가 아닙니다.", "기부가 열리면 주소는 이 페이지에만 게시하고, 같은 시점에 공식 채널에서 알립니다."]],
+      ["지금", ["설립 준비 중이며 어떤 형태의 기부도 아직 받지 않습니다.", "지갑 주소는 아직 없습니다. 지금 오리엘 이름으로 암호화폐를 보내 달라는 연락은 저희가 아닙니다.", "기부가 열리면 주소는 이 페이지에만 게시하고, 같은 시점에 공식 채널에서 알립니다."]],
       ["기부가 열리면", ["네트워크마다 공개 지갑 하나를 블록 탐색기 링크와 함께 여기에 올립니다.", "모든 지출에 받은 파트너, 용도, 영수증을 붙입니다.", "카드·계좌 기부도 같은 장부에 기록하고, 분기마다 합계를 맞춥니다.", "분기별 영어·한국어 보고서를 내고, 재단 등록 후에는 연간 결산을 공개합니다."]],
     ] },
 };
 const policyPage = (t, D) => `${pageHead(D.title, D.lede)}<section class="wrap prose policy">${D.items.map(([h, list]) => `<h2>${esc(h)}</h2>${list.length > 1 ? `<ul>${list.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : `<p>${esc(list[0])}</p>`}`).join("")}${D === SAFE[t.lang] ? `<p><a class="btn btn-quiet" href="mailto:${S.email}?subject=Safeguarding">${esc(S.email)}</a></p>` : ""}</section>`;
 
 const ABOUT = {
-  en: { title: "About", lede: "Who is starting First Brick, and why.",
+  en: { title: "About", lede: "Who is starting Oriel, and why.",
     founderH: "Founder", founder: "Sejun Park", founderRole: "Founder",
-    bio: ["Sejun has spent seven years in the crypto exchange industry, working with global exchanges including Bitget, MEXC, Digifinex and Huobi. He studied history in Incheon, has organised or taken part in more than twenty art exhibitions in Seoul and Incheon, and has run restaurant and investment businesses.", "He is starting First Brick to put what the crypto industry does well, open ledgers and fast cross-border payments, to work for children's education, and he plans to spend time in the field himself, travelling and volunteering alongside local partners."],
-    whyH: "Why the name", why: "Every school, library and bridge starts with one brick laid by someone who decided to begin. In blockchain, every record starts with a first block. First Brick holds both ideas: start small, and keep a record of every step." },
-  ko: { title: "소개", lede: "누가, 왜 퍼스트브릭을 시작하는지.",
+    bio: ["Sejun has spent seven years in the crypto exchange industry, working with global exchanges including Bitget, MEXC, Digifinex and Huobi. He studied history in Incheon, has organised or taken part in more than twenty art exhibitions in Seoul and Incheon, and has run restaurant and investment businesses.", "He is starting Oriel to put what the crypto industry does well, open ledgers and fast cross-border payments, to work for children's education, and he plans to spend time in the field himself, travelling and volunteering alongside local partners."],
+    whyH: "Why the name", why: "An oriel is a window that leans out from a wall to catch more light and a wider view. We want to be that for children's learning: more light, in places that have too little of it. It is also how we want to be seen: through clear glass, with every gift and every payout in view on a public chain. Our Chinese name, 明窗, comes from 明窗淨几, the bright window and clean desk of a good place to study." },
+  ko: { title: "소개", lede: "누가, 왜 오리엘을 시작하는지.",
     founderH: "설립자", founder: "박세준", founderRole: "설립자",
-    bio: ["박세준은 비트겟, MEXC, 디지파이넥스, 후오비 등 글로벌 거래소와 함께 7년간 암호화폐 거래소 업계에서 일했습니다. 인천에서 사학을 공부했고, 서울과 인천에서 20회 넘는 미술 전시를 열거나 참여했으며, 요식업과 투자 사업도 운영했습니다.", "공개 장부와 빠른 국경 간 송금이라는 크립토 업계의 강점을 아이들의 교육에 쓰기 위해 퍼스트브릭을 시작합니다. 직접 현장을 다니며 현지 파트너와 함께 봉사할 계획입니다."],
-    whyH: "이름의 뜻", why: "모든 학교와 도서관, 다리는 시작하기로 마음먹은 누군가가 놓은 벽돌 한 장에서 시작합니다. 블록체인의 모든 기록도 첫 블록에서 시작합니다. 퍼스트브릭은 두 가지를 함께 담았습니다. 작게 시작할 것, 그리고 모든 걸음을 기록할 것." },
+    bio: ["박세준은 비트겟, MEXC, 디지파이넥스, 후오비 등 글로벌 거래소와 함께 7년간 암호화폐 거래소 업계에서 일했습니다. 인천에서 사학을 공부했고, 서울과 인천에서 20회 넘는 미술 전시를 열거나 참여했으며, 요식업과 투자 사업도 운영했습니다.", "공개 장부와 빠른 국경 간 송금이라는 크립토 업계의 강점을 아이들의 교육에 쓰기 위해 오리엘을 시작합니다. 직접 현장을 다니며 현지 파트너와 함께 봉사할 계획입니다."],
+    whyH: "이름의 뜻", why: "오리엘은 벽에서 바깥으로 내민 창입니다. 빛을 더 들이고, 더 멀리 보게 해 줍니다. 우리는 아이들의 배움에 그런 창이 되고 싶습니다. 빛이 모자란 곳에 빛을 더 들이는 일입니다. 동시에 우리 자신도 그렇게 보이고 싶습니다. 맑은 유리 너머로, 모든 기부와 지출이 공개 블록체인에 그대로 보이도록. 중국어 이름 明窗(밝은 창)은 공부하기 좋은 방을 뜻하는 明窗淨几에서 따왔습니다." },
 };
 function about(t) {
   const A = ABOUT[t.lang];
@@ -544,7 +551,7 @@ function about(t) {
 }
 
 const PARTNERS = {
-  en: { title: "Partner with us", lede: "How a school, community group or NGO becomes a First Brick partner, step by step. We move slowly on purpose: trust first, money second.",
+  en: { title: "Partner with us", lede: "How a school, community group or NGO becomes a Oriel partner, step by step. We move slowly on purpose: trust first, money second.",
     stepsTitle: "How it works",
     steps: [
       ["Introduce yourself", "Write to us with who you are, where you work and the children you already serve. A short email is enough to start."],
@@ -559,7 +566,7 @@ const PARTNERS = {
     otherTitle: "Companies, web3 projects and media",
     other: [["Sponsor a program", "Fund one partner's program for a year, with every payout visible on-chain."], ["Match gifts", "Match what your community gives once giving opens."], ["Lend skills", "Accounting, legal, design, engineering or translation, usually remote."], ["Tell the story", "Media partners follow the work; CHAINBRIEF already reports our progress."]],
     cta: "Start a conversation", ctaBtn: "Write to us" },
-  ko: { title: "파트너 되기", lede: "학교·마을 단체·NGO가 퍼스트브릭 파트너가 되는 과정입니다. 일부러 천천히 갑니다. 신뢰가 먼저, 돈은 그다음.",
+  ko: { title: "파트너 되기", lede: "학교·마을 단체·NGO가 오리엘 파트너가 되는 과정입니다. 일부러 천천히 갑니다. 신뢰가 먼저, 돈은 그다음.",
     stepsTitle: "진행 순서",
     steps: [
       ["소개", "누구인지, 어디서 일하는지, 이미 돕고 있는 아이들에 대해 알려 주세요. 짧은 이메일이면 충분합니다."],
@@ -587,17 +594,17 @@ function partners(t) {
 
 const FAQ = {
   en: { title: "Questions", lede: "Short answers to what people ask us most.", qs: [
-    ["Are you a registered charity?", "Not yet. First Brick is in formation. We will register before we accept any donation, and we will say so on this site the day it happens."],
-    ["Can I donate now?", "No. We are not taking donations of any kind yet. If anyone asks you to send money or crypto to First Brick today, it is not us."],
+    ["Are you a registered charity?", "Not yet. Oriel is in formation. We will register before we accept any donation, and we will say so on this site the day it happens."],
+    ["Can I donate now?", "No. We are not taking donations of any kind yet. If anyone asks you to send money or crypto to Oriel today, it is not us."],
     ["Where will you work first?", "In Southeast Asia, in one community, chosen with a local partner after visits and conversations. We will name it once a partner agrees."],
     ["How will on-chain giving work?", "Gifts in stablecoins and crypto will go to one published wallet, so anyone can see them arrive. Each payout will be logged with a receipt and the partner who received it, and card or bank gifts will be recorded on the same ledger."],
     ["Can I volunteer?", "Yes, with a skill a partner needs: teaching, building, health, translation, design, accounting, development. Much of it is remote. We do not organise short visits with children."],
-    ["Who is behind First Brick?", "Founder Sejun Park, who spent seven years in the crypto exchange industry. Advisers will be listed here as they join."],
+    ["Who is behind Oriel?", "Founder Sejun Park, who spent seven years in the crypto exchange industry. Advisers will be listed here as they join."],
     ["How is CHAINBRIEF involved?", "CHAINBRIEF, a crypto news outlet, is our media partner and reports our progress."],
   ] },
   ko: { title: "자주 묻는 질문", lede: "가장 많이 받는 질문에 짧게 답합니다.", qs: [
     ["등록된 공익단체인가요?", "아직 아닙니다. 설립 준비 중이며, 어떤 기부도 받기 전에 등록을 마치고 그날 이 사이트에 알립니다."],
-    ["지금 기부할 수 있나요?", "아니요. 아직 어떤 형태의 기부도 받지 않습니다. 지금 퍼스트브릭 이름으로 돈이나 암호화폐를 보내 달라는 연락은 저희가 아닙니다."],
+    ["지금 기부할 수 있나요?", "아니요. 아직 어떤 형태의 기부도 받지 않습니다. 지금 오리엘 이름으로 돈이나 암호화폐를 보내 달라는 연락은 저희가 아닙니다."],
     ["어디서 먼저 활동하나요?", "동남아시아의 한 마을에서, 직접 방문하고 대화한 뒤 현지 파트너와 함께 정합니다. 파트너가 동의하면 공개합니다."],
     ["온체인 기부는 어떻게 하나요?", "스테이블코인·암호화폐 기부는 공개된 지갑 하나로 받아 누구나 들어오는 것을 볼 수 있게 합니다. 모든 지출에 영수증과 받은 파트너를 기록하고, 카드·계좌 기부도 같은 장부에 남깁니다."],
     ["봉사할 수 있나요?", "네, 파트너에게 필요한 재능으로요. 교육·건축·보건·번역·디자인·회계·개발 등이며 원격으로 하는 일도 많습니다. 아이들과의 단기 방문은 운영하지 않습니다."],

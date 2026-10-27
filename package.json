@@ -1,7 +1,7 @@
 {
-  "name": "firstbrick",
+  "name": "oriel",
   "private": true,
   "type": "module",
-  "description": "First Brick Foundation website",
+  "description": "Oriel Foundation website",
   "scripts": { "build": "node scripts/build.mjs", "serve": "node scripts/serve.mjs" }
 }

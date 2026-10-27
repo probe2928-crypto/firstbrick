@@ -2,8 +2,8 @@
 
 | # | What | Where | Status |
 |---|---|---|---|
-| 1 | Reel 1 "Every school begins with a first brick" (15s) | reel1/ | ready to post |
-| 2 | Reel 2 "Before we lay a single brick, we wrote down the rules" (15s) | reel2/ | ready to post |
+| 1 | Reel 1 "Light for learning. Glass for giving." (15s) | reel1/ | ready to post |
+| 2 | Reel 2 "Before we build anything, we wrote down the rules" (15s) | reel2/ | ready to post |
 | 3 | LinkedIn founding announcement (EN + KO) | linkedin-launch.md | ready |
 | 4 | Instagram / Facebook captions | captions.md | ready |
 

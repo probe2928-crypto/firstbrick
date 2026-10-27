@@ -1,5 +1,5 @@
-/* First Brick Foundation — maison
-   ivoire(종이) · encre(먹) · bleu nuit(밤의 남색) · or(첫 벽돌 하나에만) */
+/* Oriel Foundation — maison
+   ivoire(종이) · encre(먹) · bleu nuit(밤의 남색) · or(오리엘 창의 유리에만) */
 :root {
   --paper: #F5F1EA;
   --paper-2: #EDE7DC;
@@ -57,7 +57,8 @@ a { color: inherit; }
 .nav .sh { display: none; }
 .nav a:hover, .nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--ink); }
 .logo-mark { width: 30px; height: 22px; fill: none; stroke: var(--ink); stroke-width: 1; flex: none; }
-.logo-mark .lm-first { fill: var(--marigold); stroke: var(--marigold); }
+.logo-mark .lm-glow { fill: var(--marigold); stroke: none; }
+.logo-mark .lm-m { stroke-width: .7; }
 .logo-mark.lg { width: 44px; height: 32px; }
 .logo-mark.xl { width: 72px; height: 52px; stroke: var(--line); }
 
@@ -86,23 +87,23 @@ a { color: inherit; }
 .house .ln.thin { stroke-width: 1; stroke: var(--line); }
 .house .ln.ground { stroke-width: 1.7; }
 .house .hatch { fill: none; stroke: #857C6F; stroke-width: 1; opacity: var(--o, 1); }
-.house .first { fill: var(--marigold); }
+.house .glow { fill: var(--marigold); opacity: var(--o, 1); }
 .house .dim path { fill: none; stroke: #9C9385; stroke-width: .9; }
 .house .callout path { fill: none; stroke: var(--ink); stroke-width: 1; }
 .house .callout text { font: italic 500 19px var(--f-disp); fill: var(--ink); }
 .lang-ko .house .callout text { font-style: normal; font-size: 15px; }
 .hero-note { font: italic 400 19px/1.5 var(--f-disp); color: var(--text); margin: 26px auto 0; }
 .lang-ko .hero-note { font-style: normal; font-size: 15px; }
-/* 한 번만: 선이 그려지고 → 재료 표시 → 첫 벽돌이 놓인다 */
+/* 한 번만: 선이 그려지고 → 재료 표시 → 오리엘 창에 불이 들어온다 */
 .js .house .ln { stroke-dasharray: 1; stroke-dashoffset: 1; }
 .js .house.laid .ln { stroke-dashoffset: 0; transition: stroke-dashoffset 1.4s cubic-bezier(.6,.05,.3,1); transition-delay: calc(var(--d) * 80ms + 200ms); }
 .js .house .hatch { opacity: 0; }
 .js .house.laid .hatch { opacity: var(--o, 1); transition: opacity .5s; transition-delay: calc(var(--d) * 25ms + 1500ms); }
-.js .house .first { opacity: 0; transform: translateY(-16px); transform-box: fill-box; }
-.js .house.laid .first { opacity: 1; transform: none; transition: opacity .4s 2.4s, transform .7s cubic-bezier(.25,1.2,.4,1) 2.4s; }
+.js .house .glow { opacity: 0; }
+.js .house.laid .glow { opacity: var(--o, 1); transition: opacity .9s ease-out; transition-delay: calc(var(--g) * 140ms + 2300ms); }
 .js .house .callout, .js .house .dim { opacity: 0; }
 .js .house.laid .callout, .js .house.laid .dim { opacity: 1; transition: opacity .8s 2.9s; }
-@media (prefers-reduced-motion: reduce) { .js .house .ln, .js .house .hatch, .js .house .first, .js .house .callout, .js .house .dim { stroke-dashoffset: 0; opacity: 1; transform: none; transition: none; } }
+@media (prefers-reduced-motion: reduce) { .js .house .ln, .js .house .hatch, .js .house .glow, .js .house .callout, .js .house .dim { stroke-dashoffset: 0; opacity: 1; transform: none; transition: none; } }
 
 .status { display: flex; gap: 12px; align-items: baseline; justify-content: center; text-align: center; margin: clamp(48px, 7vw, 80px) auto 0; padding: 22px 0 0; border-top: 1px solid var(--rule); font-size: 15px; line-height: 1.65; color: var(--text); max-width: 62em; }
 .status .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--marigold); flex: none; transform: translateY(-1px); }
@@ -133,8 +134,9 @@ h3 { font-weight: 400; }
 .path { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 4vw, 64px); align-items: start; }
 .path li { border-top: 1px solid var(--ink); padding-top: 22px; }
 .course { display: block; width: 100%; max-width: 180px; height: auto; margin-bottom: 26px; }
-.course rect { fill: none; stroke: var(--line); stroke-width: 1.2; }
-.course rect.f { fill: var(--marigold); stroke: var(--marigold); }
+.course path { fill: none; stroke: var(--ink); stroke-width: 1.2; }
+.course path.m { stroke: var(--line); stroke-width: 1; }
+.course rect.f { fill: var(--marigold); }
 .path h3 { font: 500 var(--s3)/1.1 var(--f-disp); margin: 0 0 12px; }
 .path p { font: 400 17px/1.7 var(--f-read); margin: 0; color: var(--text); max-width: 26em; }
 
@@ -241,6 +243,7 @@ h3 { font-weight: 400; }
 /* footer — 가운데 워드마크 */
 .site-foot { margin-top: clamp(96px, 12vw, 160px); border-top: 1px solid var(--rule); padding-top: clamp(64px, 8vw, 96px); text-align: center; }
 .cta-band + .site-foot, main:has(> .cta-band:last-child) + .site-foot { margin-top: 0; }
+.foot-zh { font: 400 15px/1 "Noto Sans TC", sans-serif; letter-spacing: .5em; margin: -6px -.5em 18px 0; color: var(--muted); }
 .foot-mark { font: 400 clamp(30px, 4.4vw, 52px)/1 var(--f-disp); letter-spacing: .26em; text-transform: uppercase; margin: 0 -.26em 18px 0; }
 .foot-tag { font: italic 400 17px/1.5 var(--f-disp); color: var(--muted); margin: 0 0 44px; }
 .lang-ko .foot-tag { font-style: normal; font-family: "Nanum Myeongjo", serif; font-size: 15px; }

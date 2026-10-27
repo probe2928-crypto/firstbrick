@@ -1,7 +1,8 @@
 {
-  "name": "First Brick Foundation",
-  "short": "First Brick",
-  "name_ko": "퍼스트브릭 재단",
+  "name": "Oriel Foundation",
+  "short": "Oriel",
+  "name_ko": "오리엘 재단",
+  "name_zh": "明窗基金會",
   "domain": "",
   "email": "probe2928@gmail.com",
   "formEndpoint": "https://formsubmit.co/probe2928@gmail.com",
@@ -58,14 +59,14 @@
       "block": 0,
       "date": "2026-10-27",
       "items": [
-        "Name chosen: First Brick Foundation",
+        "Name chosen: Oriel Foundation (明窗基金會)",
         "Website, plan and field journal published",
         "Safeguarding and transparency principles written",
         "CHAINBRIEF signs on as media partner",
         "QURATOR pledges a share of its revenue"
       ],
       "items_ko": [
-        "이름 확정: 퍼스트브릭 재단",
+        "이름 확정: 오리엘 재단 (明窗基金會)",
         "홈페이지·계획·활동 일지 공개",
         "아동보호·투명성 원칙 작성",
         "체인브리프 미디어 파트너 합류",

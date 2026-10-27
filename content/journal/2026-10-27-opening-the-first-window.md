@@ -1,14 +1,14 @@
 ---
-title: Laying the first brick
-title_ko: 첫 벽돌을 놓으며
+title: Opening the first window
+title_ko: 첫 창을 열며
 date: 2026-10-27
 place: Incheon, Korea
 place_ko: 대한민국 인천
 kind: founder
-summary: Why First Brick exists, what we will do first, and what we will not do.
-summary_ko: 퍼스트브릭을 왜 시작하는지, 무엇을 먼저 하고 무엇은 하지 않을지.
+summary: Why Oriel exists, what we will do first, and what we will not do.
+summary_ko: 오리엘을 왜 시작하는지, 무엇을 먼저 하고 무엇은 하지 않을지.
 ---
-Today First Brick has a name, a website and a plan. It does not yet have a bank account, a wallet or a single donation, and that is on purpose.
+Today Oriel has a name, a website and a plan. It does not yet have a bank account, a wallet or a single donation, and that is on purpose.
 
 ## Why start this way
 
@@ -24,7 +24,7 @@ We will not run orphanage visits or short trips to play with children. We will n
 
 If you'd like to follow along, or help with a skill you already have, [join the founding circle](get-involved/).
 <!-- ko -->
-오늘 퍼스트브릭은 이름과 홈페이지, 계획을 갖게 됐습니다. 아직 은행 계좌도, 지갑도, 기부금 한 푼도 없습니다. 일부러 그렇게 시작합니다.
+오늘 오리엘은 이름과 홈페이지, 계획을 갖게 됐습니다. 아직 은행 계좌도, 지갑도, 기부금 한 푼도 없습니다. 일부러 그렇게 시작합니다.
 
 ## 왜 이렇게 시작하나
 

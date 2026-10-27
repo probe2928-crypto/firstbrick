@@ -7,11 +7,10 @@
    "t0": 0,
    "t1": 6,
    "lines": [
-    "Every school",
-    "begins with",
-    "a first brick."
+    "Light for learning.",
+    "Glass for giving."
    ],
-   "size": 132,
+   "size": 104,
    "caption": "A foundation in the making for children in Southeast Asia."
   },
   {
@@ -54,9 +53,9 @@
    "t0": 13,
    "t1": 15,
    "last": true,
-   "title": "Lay the first brick with us.",
+   "title": "Open the first window with us.",
    "text": "We're founding now. Join the founding circle.",
-   "url": "probe2928-crypto.github.io/firstbrick",
+   "url": "probe2928-crypto.github.io/oriel",
    "foot": "Not yet taking donations. Giving opens after registration."
   }
  ]
