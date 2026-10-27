@@ -141,67 +141,23 @@ const T = {
 };
 
 /* ---------- 브랜드 도형 ---------- */
-// 로고 모노그램: 보도니(고대비) 대문자 O 하나. 글꼴 없이도 보이게 윤곽선 path로 넣는다
-const O_PATH = "M735 -20Q580 -20 459 39Q338 98 254 204Q170 310 126 449Q83 589 83 750Q83 911 129 1051Q176 1190 261 1296Q347 1402 467 1461Q588 1520 735 1520Q882 1520 1001 1461Q1121 1402 1207 1296Q1293 1190 1339 1051Q1385 911 1385 750Q1385 589 1342 449Q1298 310 1214 204Q1131 98 1010 39Q889 -20 735 -20ZM735 -16Q858 -16 934 50Q1010 115 1051 225Q1092 335 1107 472Q1121 609 1121 750Q1121 892 1104 1028Q1087 1165 1044 1275Q1001 1385 925 1450Q850 1516 735 1516Q619 1516 543 1450Q468 1385 425 1275Q382 1165 364 1028Q346 892 346 750Q346 609 361 472Q377 335 417 225Q458 115 535 50Q612 -16 735 -16Z";
-const logo = (cls = "logo-mark") => `<svg class="${cls}" viewBox="60 -1545 1350 1590" aria-hidden="true"><path transform="scale(1,-1)" d="${O_PATH}"/></svg>`;
+// 워드마크: Familjen Grotesk 800, 자간 -0.055em, 소문자 'oriel' — 윤곽선 path라 글꼴 없이도 똑같이 보인다
+const WM = `<g transform="scale(1,-1)"><path transform="translate(0 0)" d="M330 -15Q181 -15 108 70Q34 156 34 300Q34 444 108 530Q181 615 330 615Q479 615 552 530Q626 444 626 300Q626 156 552 70Q479 -15 330 -15ZM330 93Q396 93 427 145Q458 197 458 300Q458 404 427 456Q396 507 330 507Q264 507 233 456Q202 404 202 300Q202 197 233 145Q264 93 330 93Z"/><path transform="translate(594 0)" d="M72 0V600H220V490H244Q250 520 266 546Q283 573 317 590Q351 606 408 606H440V460H396Q311 460 272 417Q234 374 234 288V0Z"/><path transform="translate(998 0)" d="M74 0V600H236V0ZM155 669Q112 669 90 692Q68 714 68 750Q68 786 90 808Q112 831 155 831Q198 831 220 808Q242 786 242 750Q242 714 220 692Q198 669 155 669Z"/><path transform="translate(1242 0)" d="M325 -15Q183 -15 108 70Q34 155 34 301Q34 399 68 469Q101 539 166 577Q230 615 323 615Q457 615 528 534Q600 453 600 296V262H192Q197 186 232 142Q266 99 325 99Q372 99 400 127Q429 155 438 192H592Q583 137 552 90Q521 43 465 14Q409 -15 325 -15ZM192 364H442Q438 432 408 470Q378 507 322 507Q267 507 234 472Q200 436 192 364Z"/><path transform="translate(1806 0)" d="M123 0Q95 32 84 72Q72 113 72 179V800H234V196Q234 120 251 78Q268 35 296 6V0Z"/></g>`;
+const wordmark = (cls = "wm") => `<svg class="${cls}" viewBox="20 -845 2110 875" role="img" aria-label="Oriel"><title>Oriel</title>${WM}</svg>`;
+const logo = (cls = "logo-mark") => wordmark(cls);
 
-// 학교 입면도 — 건축 도면처럼 가는 선. 왼쪽 창은 벽에서 내민 오리엘 창이고, 그 유리만 금빛
-function schoolhouse(t) {
-  const L = (d, cls = "ln", i = 0) => `<path class="${cls}" pathLength="1" style="--d:${i}" d="${d}"/>`;
-  const G = 338; // 지면
-  const bx0 = 64, bx1 = 416, by0 = 176; // 건물 몸체
-  const parts = [];
-  let k = 0;
-  // 지면과 몸체, 지붕
-  parts.push(L(`M8 ${G}H472`, "ln ground", k++));
-  parts.push(L(`M${bx0} ${G}V${by0}H${bx1}V${G}`, "ln", k++));
-  parts.push(L(`M44 ${by0 + 2}L240 74L436 ${by0 + 2}`, "ln", k++));
-  parts.push(L(`M62 ${by0 - 6}L240 90L418 ${by0 - 6}`, "ln thin", k++));
-  // 박공 원창
-  parts.push(`<circle class="ln" pathLength="1" style="--d:${k++}" cx="240" cy="136" r="15"/>`);
-  parts.push(L(`M225 136H255M240 121V151`, "ln thin", k++));
-  // 왼쪽: 오리엘 창 (지붕 모자 + 내민 틀 + 받침)
-  const ox = 98, oy = 214, ow = 78, oh = 58;
-  const glow = [];
-  for (let r = 0; r < 2; r++) for (let c = 0; c < 3; c++) {
-    glow.push(`<rect class="glow" x="${ox + c * 26 + 2}" y="${oy + r * 29 + 2}" width="22" height="25" style="--g:${r * 3 + c};--o:${(0.98 - (r * 3 + c) * 0.06).toFixed(2)}"/>`);
-  }
-  parts.push(L(`M${ox - 8} ${oy - 8}h${ow + 16}v${oh + 16}h-${ow + 16}z`, "ln", k++));
-  parts.push(L(`M${ox} ${oy}h${ow}v${oh}h-${ow}z`, "ln thin", k++));
-  parts.push(L(`M${ox + 26} ${oy}v${oh}M${ox + 52} ${oy}v${oh}M${ox} ${oy + 29}h${ow}`, "ln thin", k++));
-  parts.push(L(`M${ox - 14} ${oy - 8}L${ox + ow / 2} ${oy - 26}L${ox + ow + 14} ${oy - 8}`, "ln", k++));
-  parts.push(L(`M${ox - 8} ${oy + oh + 8}L${ox + 18} ${oy + oh + 30}H${ox + ow - 18}L${ox + ow + 8} ${oy + oh + 8}`, "ln", k++));
-  parts.push(L(`M${ox + 6} ${oy + oh + 13}H${ox + ow - 6}`, "ln thin", k++));
-  // 오른쪽: 보통 창 (3×2 칸)
-  for (const x of [304]) {
-    parts.push(L(`M${x} 214h78v58h-78z`, "ln", k++));
-    parts.push(L(`M${x + 26} 214v58M${x + 52} 214v58M${x} 243h78`, "ln thin", k++));
-    parts.push(L(`M${x - 6} 278h90`, "ln thin", k++));
-  }
-  // 문과 계단
-  parts.push(L(`M212 ${G}V250a28 28 0 0 1 56 0V${G}`, "ln", k++));
-  parts.push(L(`M240 222V${G}`, "ln thin", k++));
-  parts.push(L(`M200 ${G - 0.5}h80`, "ln thin", k++));
-  // 재료 표시: 오른쪽 아래 벽돌 2줄 (도면에서 쓰는 방식)
-  const bw = 22, bh = 9, g = 2.5;
-  const mat = [];
-  for (let r = 0; r < 2; r++) {
-    const off = r % 2 ? (bw + g) / 2 : 0, n = r ? 4 : 5;
-    for (let c = 0; c < n; c++) {
-      const x = bx1 - 4 - bw - off - c * (bw + g), y = G - 4 - (r + 1) * (bh + g) + g;
-      mat.push(`<rect class="hatch" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${bw}" height="${bh}" style="--d:${k + r * 5 + c};--o:${(1 - (r * 0.15 + c * 0.1)).toFixed(2)}"/>`);
-    }
-  }
-  // 치수선
-  const dim = `<g class="dim"><path d="M${bx0} ${G + 26}H${bx1}M${bx0} ${G + 20}v12M${bx1} ${G + 20}v12"/></g>`;
-  const cx = ox + ow / 2, cy = oy + oh + 34;
-  return `<figure class="house" aria-label="${esc(t.lang === "ko" ? "학교 입면도. 왼쪽 오리엘 창의 유리만 금빛으로 밝혀져 있다" : "Elevation drawing of a schoolhouse; only the glass of the oriel window, left, is lit in gold")}"><svg viewBox="0 0 480 400" role="img"><title>${esc(t.oriel)}</title>
-<g class="lit">${glow.join("")}</g>
-<g class="draw">${parts.join("")}</g>
-<g class="mat">${mat.join("")}</g>
-${dim}
-<g class="callout"><path d="M${cx} ${cy}V${G + 52}H${cx + 120}"/><text x="${cx + 126}" y="${G + 56}">${esc(t.oriel)}</text></g>
-</svg></figure>`;
+// 첫 화면: 창으로 들어온 햇빛이 떨어진 복숭아색 회벽(렌더 이미지, 워드마크 포함) + 둘레의 작은 라벨
+function heroLight(t) {
+  const ko = t.lang === "ko";
+  const labs = ko
+    ? [["01 배움", "현지 선생님과 함께하는 보충수업, 책, 장학금"], ["02 생활", "급식, 깨끗한 물, 안전한 등굣길"], ["03 짓기", "마을이 원할 때만 교실과 도서관"], ["온체인", "모든 기부와 지출을 공개 장부에"]]
+    : [["01 Learn", "Tutoring, books and scholarships with local teachers"], ["02 Live", "Meals, clean water, a safe way to school"], ["03 Build", "Classrooms and libraries, only when a community asks"], ["On-chain", "Every gift and payout on a public ledger"]];
+  return `<section class="hero-light" aria-labelledby="hero-title">
+  <picture><source media="(max-width: 720px)" srcset="${BASE}brand/hero-tall.jpg"><img class="hero-img" src="${BASE}brand/hero-wide.jpg" alt="${esc(ko ? "창으로 들어온 햇빛이 복숭아색 벽에 떨어져 있고, 그 위에 oriel이라고 쓰여 있다" : "Sunlight from an arched window falls across a peach plaster wall painted with the word oriel")}" width="2880" height="1710" fetchpriority="high"></picture>
+  <h1 id="hero-title" class="vh">${esc(t.name)} — ${esc(t.tag)}</h1>
+  <ul class="hero-labs">${labs.map(([h, x], i) => `<li class="hl hl${i}"><b>${esc(h)}</b>${esc(x)}</li>`).join("")}</ul>
+  <div class="hero-foot"><p class="hero-tag">${esc(t.tag)}</p><p class="hero-zh" lang="zh-Hant">明窗基金會</p><p class="hero-st">${esc(ko ? "설립 준비 중 · 아직 기부를 받지 않습니다" : "In formation · Not taking donations yet")}</p></div>
+</section>`;
 }
 
 /* ---------- 콘텐츠: 활동 일지 ---------- */
@@ -258,10 +214,10 @@ function layout(t, { title, desc, p = "", body, active = "", og = "" }) {
 <link rel="canonical" href="${ABS + t.pre + p}">
 <link rel="alternate" hreflang="en" href="${ABS + p}"><link rel="alternate" hreflang="ko" href="${ABS + "ko/" + p}"><link rel="alternate" hreflang="x-default" href="${ABS + p}">
 <meta property="og:type" content="website"><meta property="og:site_name" content="${esc(S.name)}"><meta property="og:title" content="${esc(full)}"><meta property="og:description" content="${esc(desc || t.desc)}"><meta property="og:image" content="${og || ogImg}"><meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#F5F1EA">
+<meta name="theme-color" content="#E9CFBB">
 <link rel="icon" href="${BASE}favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..500&family=Jost:wght@300..500&family=Noto+Sans+KR:wght@400;500&family=Nanum+Myeongjo:wght@400;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${BASE}style.css?v=${V.css}">
 <script>document.documentElement.classList.add("js")</script>
 <script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@type": "Organization", name: S.name, alternateName: S.name_ko, url: ABS, email: S.email, description: T.en.desc, logo: ABS + "favicon.svg" })}</script>
@@ -270,18 +226,17 @@ function layout(t, { title, desc, p = "", body, active = "", og = "" }) {
 <a class="skip" href="#main">${esc(t.skip)}</a>
 <header class="site-head">
   <div class="wrap head-row">
-    <a class="lang" href="${altP}" hreflang="${t.other}" lang="${t.other}">${esc(t.otherLabel)}</a>
-    <a class="brand" href="${u(t)}" aria-label="${esc(t.name)}"><span class="brand-name">${esc(S.short)}</span><span class="brand-sub">${esc(t.sub)}</span></a>
-    <a class="head-join" href="${u(t, "get-involved/")}#circle">${esc(t.joinShort)}</a>
+    <a class="brand" href="${u(t)}" aria-label="${esc(t.name)}">${wordmark("brand-wm")}</a>
+    <nav class="nav" aria-label="${t.lang === "ko" ? "주요 메뉴" : "Main"}">${t.nav.map(([h, l, sh]) => `<a href="${u(t, h)}"${active === h ? ' aria-current="page"' : ""}>${sh ? `<span class="lg">${esc(l)}</span><span class="sh">${esc(sh)}</span>` : esc(l)}</a>`).join("")}</nav>
+    <div class="head-end"><a class="lang" href="${altP}" hreflang="${t.other}" lang="${t.other}">${esc(t.otherShort)}</a><a class="head-join" href="${u(t, "get-involved/")}#circle">${esc(t.joinShort)} →</a></div>
   </div>
-  <nav class="nav" aria-label="${t.lang === "ko" ? "주요 메뉴" : "Main"}">${t.nav.map(([h, l, sh]) => `<a href="${u(t, h)}"${active === h ? ' aria-current="page"' : ""}>${sh ? `<span class="lg">${esc(l)}</span><span class="sh">${esc(sh)}</span>` : esc(l)}</a>`).join("")}</nav>
 </header>
 <main id="main">
 ${body}
 </main>
 <footer class="site-foot">
   <div class="wrap">
-    <p class="foot-mark">${esc(S.short)}</p><p class="foot-zh" lang="zh-Hant">${esc(S.name_zh)}</p>
+    <p class="foot-mark">${wordmark("foot-wm")}</p><p class="foot-zh" lang="zh-Hant">${esc(S.name_zh)}</p>
     <p class="foot-tag">${esc(t.tag)}</p>
     <nav class="foot-links" aria-label="${t.lang === "ko" ? "바닥 메뉴" : "Footer"}">${t.footLinks.map(([h, l]) => `<a href="${u(t, h)}">${esc(l)}</a>`).join("")}<a class="mail" href="mailto:${S.email}">${esc(S.email)}</a></nav>
     <div class="foot-partner"><p class="small">${esc(t.media)}</p><a class="cb" href="${S.chainbrief}" target="_blank" rel="noopener">CHAINBRIEF</a>${socials(t)}</div>
@@ -313,27 +268,17 @@ function ledger(t) {
   return `<ol class="chain">${blocks}${nb}</ol>`;
 }
 
-// 배움·생활·짓기 위의 작은 창: 단계마다 밝혀진 유리가 늘어난다 (2 → 4 → 6칸)
-function courses(i) {
-  const lit = [2, 4, 6][i] || 6, cells = [];
-  for (let r = 0; r < 2; r++) for (let c = 0; c < 3; c++) {
-    const n = r * 3 + c;
-    if (n < lit) cells.push(`<rect class="f" x="${3 + c * 40}" y="${3 + r * 22}" width="34" height="16" style="opacity:${(1 - n * 0.08).toFixed(2)}"/>`);
-  }
-  return `<svg class="course" viewBox="0 0 126 50" aria-hidden="true">${cells.join("")}<path d="M0.5 0.5h120v44h-120z"/><path class="m" d="M40.5 0.5v44M80.5 0.5v44M0.5 22.5h120"/></svg>`;
-}
+// 배움·생활·짓기 번호
+function courses(i) { return `<span class="path-no">0${i + 1}</span>`; }
 
 /* ---------- 페이지 ---------- */
 function home(t) {
   const posts = JOURNAL.slice(0, 3);
   return `
-<section class="hero wrap">
-  <p class="eyebrow">${t.eyebrow.map((x) => `<span>${esc(x)}</span>`).join('<span class="sep" aria-hidden="true"> · </span>')}</p>
-  <h1 class="display">${t.lang === "ko" ? "배움에는 빛을,<br><em>기부에는 창을.</em>" : "Light for learning.<br><em>Glass for giving.</em>"}</h1>
+${heroLight(t)}
+<section class="wrap intro">
   <p class="lede">${esc(t.heroLede)}</p>
   <div class="actions"><a class="btn" href="${u(t, "get-involved/")}#circle">${esc(t.join)}</a><a class="btn btn-quiet" href="${u(t, "plan/")}">${esc(t.readPlan)}</a></div>
-  ${schoolhouse(t)}
-  <p class="hero-note">${esc(t.heroNote)}</p>
 </section>
 <div class="wrap">${statusBar(t)}</div>
 
