@@ -1,0 +1,11 @@
+<!doctype html><meta charset="utf-8"><title>relay</title><meta name="robots" content="noindex">
+<script>
+// 브랜드 이미지를 연 창(opener)으로 넘겨주는 작은 중계 페이지 — SNS 프로필 이미지 업로드용
+(async () => {
+  const files = (new URLSearchParams(location.search).get("f") || "").split(",").filter(Boolean);
+  const out = {};
+  for (const f of files) out[f] = await fetch(f, { cache: "no-store" }).then((r) => r.arrayBuffer());
+  (window.opener || window.parent).postMessage({ fbRelay: out }, "*");
+  document.body.textContent = "sent " + Object.keys(out).length;
+})();
+</script>
