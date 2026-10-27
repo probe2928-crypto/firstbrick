@@ -67,9 +67,10 @@ const T = {
     ctaTitle: "Lay a brick with us",
     ctaText: "Join the founding circle and we'll write to you when giving opens, when we pick our first community, and when there's a way to help that fits what you do.",
     footStatus: "First Brick Foundation is in formation and not yet a registered charity.",
-    footLinks: [["faq/", "Questions"], ["partners/", "Partner process"], ["safeguarding/", "Safeguarding"], ["transparency/", "Transparency"], ["get-involved/", "Contact"]],
+    footLinks: [["notes/", "Notes"], ["faq/", "Questions"], ["partners/", "Partner process"], ["safeguarding/", "Safeguarding"], ["transparency/", "Transparency"], ["get-involved/", "Contact"]],
     ledgerTitle: "The ledger so far", ledgerLede: "We keep our own progress the way we will keep every gift: in order, dated, and public. Each block is a set of things we actually finished.", block: "Block", nextBlock: "Next block", follow: "Follow", channels: "Channels",
     media: "Media partner",
+    notesTitle: "Notes", notesLede: "What we are reading on giving, children's education and on-chain transparency. Every item links to its source.", notesEmpty: "The first notes are on their way.", allNotes: "All notes", sources: "Sources", zhSummary: "繁體中文摘要",
     rights: "First Brick Foundation (in formation)",
     readMore: "Read",
     posted: "Posted",
@@ -125,9 +126,10 @@ const T = {
     ctaTitle: "벽돌 한 장을 함께 놓아 주세요",
     ctaText: "창립 서포터로 신청하시면 기부가 열릴 때, 첫 마을을 정할 때, 하시는 일에 맞는 도움 방법이 생길 때 연락드립니다.",
     footStatus: "퍼스트브릭 재단은 설립 준비 중이며 아직 등록된 공익단체가 아닙니다.",
-    footLinks: [["faq/", "자주 묻는 질문"], ["partners/", "파트너 절차"], ["safeguarding/", "아동보호 정책"], ["transparency/", "투명성"], ["get-involved/", "문의"]],
+    footLinks: [["notes/", "읽을거리"], ["faq/", "자주 묻는 질문"], ["partners/", "파트너 절차"], ["safeguarding/", "아동보호 정책"], ["transparency/", "투명성"], ["get-involved/", "문의"]],
     ledgerTitle: "지금까지의 장부", ledgerLede: "앞으로 모든 기부를 기록할 방식 그대로, 우리의 진행도 순서대로, 날짜와 함께, 공개로 남깁니다. 블록 하나는 실제로 끝낸 일들의 묶음입니다.", block: "블록", nextBlock: "다음 블록", follow: "팔로우", channels: "채널",
     media: "미디어 파트너",
+    notesTitle: "읽을거리", notesLede: "기부, 아이들의 교육, 온체인 투명성에 관해 우리가 읽고 있는 것들. 모든 항목에 출처를 답니다.", notesEmpty: "첫 읽을거리가 곧 올라옵니다.", allNotes: "전체 보기", sources: "출처", zhSummary: "繁體中文摘要",
     rights: "퍼스트브릭 재단 (설립 준비 중)",
     readMore: "읽기",
     posted: "게시",
@@ -205,6 +207,21 @@ function loadJournal() {
 }
 const JOURNAL = loadJournal();
 
+/* ---------- 콘텐츠: 읽을거리(Notes) ---------- */
+function loadNotes() {
+  const dir = path.join(ROOT, "content", "notes");
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir).filter((f) => f.endsWith(".md")).map((f) => {
+    const { data, body } = frontmatter(fs.readFileSync(path.join(dir, f), "utf8"));
+    const parts = { en: "", zh: "", ko: "" }; let cur = "en";
+    for (const line of body.split("\n")) { const m = line.match(/^<!--\s*(zh|ko)\s*-->\s*$/); if (m) { cur = m[1]; continue; } parts[cur] += line + "\n"; }
+    const slug = f.replace(/\.md$/, "");
+    return { slug, date: data.date || slug.slice(0, 10), no: data.no || "", title: data.title || slug, title_ko: data.title_ko || data.title || slug,
+      summary: data.summary || "", summary_ko: data.summary_ko || data.summary || "", en: parts.en.trim(), zh: parts.zh.trim(), ko: parts.ko.trim() || parts.en.trim(), draft: data.draft === "true" };
+  }).filter((n) => !n.draft).sort((a, b) => (a.date < b.date ? 1 : -1));
+}
+const NOTES = loadNotes();
+
 /* ---------- 채널 ---------- */
 function socials(t) {
   const list = [["Telegram", S.tgChannel ? `https://t.me/${S.tgChannel.replace(/^@/, "")}` : ""], ["LinkedIn", S.linkedinPage || S.linkedin], ["Instagram", S.instagram], ["Facebook", S.facebook]].filter(([, h]) => h);
@@ -231,7 +248,7 @@ function layout(t, { title, desc, p = "", body, active = "", og = "" }) {
 <meta name="theme-color" content="#F5F1EA">
 <link rel="icon" href="${BASE}favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..500&family=Jost:wght@300..500&family=Noto+Sans+KR:wght@400;500&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..500&family=Jost:wght@300..500&family=Noto+Sans+KR:wght@400;500&family=Nanum+Myeongjo:wght@400;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${BASE}style.css?v=${V.css}">
 <script>document.documentElement.classList.add("js")</script>
 <script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@type": "Organization", name: S.name, alternateName: S.name_ko, url: ABS, email: S.email, description: T.en.desc, logo: ABS + "favicon.svg" })}</script>
@@ -347,7 +364,12 @@ function home(t) {
   ${posts.length ? `<div class="posts">${posts.map((p) => postCard(t, p)).join("")}</div>` : `<p class="empty">${esc(t.journalEmpty)}</p>`}
 </section>
 
-<section class="wrap split partners">
+${NOTES.length ? `<section class="wrap notes-sec">
+  <header class="sec-head row"><div><h2>${esc(t.notesTitle)}</h2><p>${esc(t.notesLede)}</p></div><a class="text-link" href="${u(t, "notes/")}">${esc(t.allNotes)}</a></header>
+  <ol class="notes">${NOTES.slice(0, 3).map((n) => noteRow(t, n)).join("")}</ol>
+</section>
+
+` : ""}<section class="wrap split partners">
   <header class="sec-head"><h2>${esc(t.partnerTitle)}</h2></header>
   <div><p class="partner-line"><a class="cb" href="${S.chainbrief}" target="_blank" rel="noopener">CHAINBRIEF</a><span>${esc(t.partnerText)}</span></p>${S.qurator ? `<p class="partner-line"><a class="cb" href="${S.qurator}" target="_blank" rel="noopener">QURATOR</a><span>${esc(t.quratorText)}</span></p>` : ""}<p>${esc(t.partnerWanted)}</p><p><a class="text-link" href="${u(t, "get-involved/")}#partner">${esc(t.becomePartner)}</a></p></div>
 </section>
@@ -389,6 +411,26 @@ function plan(t) {
 <section class="wrap prose-grid">${P.sections.map(([h, x]) => `<article class="prose-block"><h2>${esc(h)}</h2><p>${esc(x)}</p></article>`).join("")}</section>
 <section class="wrap"><header class="sec-head"><h2>${esc(t.roadTitle)}</h2></header>${roadmap(t, true)}</section>
 <section class="band cta-band"><div class="wrap cta"><h2>${esc(t.ctaTitle)}</h2><p>${esc(t.ctaText)}</p><a class="btn btn-light" href="${u(t, "get-involved/")}#circle">${esc(t.join)}</a></div></section>`;
+}
+
+function noteRow(t, n) {
+  const title = t.lang === "ko" ? n.title_ko : n.title, sum = t.lang === "ko" ? n.summary_ko : n.summary;
+  return `<li class="note-row"><a href="${u(t, `notes/${n.slug}/`)}"><span class="note-no">${n.no ? "No. " + esc(String(n.no)) : ""}</span><span class="note-main"><span class="note-title">${esc(title)}</span>${sum ? `<span class="note-sum">${esc(sum)}</span>` : ""}</span><time datetime="${n.date}">${esc(fmtDate(n.date, t))}</time></a></li>`;
+}
+function notesIndex(t) {
+  return `${pageHead(t.notesTitle, t.notesLede)}
+<section class="wrap">${NOTES.length ? `<ol class="notes">${NOTES.map((n) => noteRow(t, n)).join("")}</ol>` : `<p class="empty">${esc(t.notesEmpty)}</p>`}</section>`;
+}
+function notePost(t, n) {
+  const title = t.lang === "ko" ? n.title_ko : n.title;
+  const body = markdown(t.lang === "ko" ? n.ko : n.en);
+  const zh = t.lang === "en" && n.zh ? `<aside class="zh" lang="zh-Hant"><p class="cap">${esc(t.zhSummary)}</p>${markdown(n.zh)}</aside>` : "";
+  return `<article class="post wrap note-post">
+  <header class="post-head"><p class="post-meta">${n.no ? `<span>No. ${esc(String(n.no))}</span>` : ""}<time datetime="${n.date}">${esc(fmtDate(n.date, t))}</time></p><h1>${esc(title)}</h1></header>
+  <div class="prose">${body}</div>
+  ${zh}
+  <p><a class="text-link" href="${u(t, "notes/")}">${esc(t.allNotes)}</a></p>
+</article>`;
 }
 
 function journalIndex(t) {
@@ -575,6 +617,8 @@ for (const t of [T.en, T.ko]) {
   write(P + "plan/index.html", layout(t, { title: PLAN[t.lang].title, desc: PLAN[t.lang].lede, p: "plan/", active: "plan/", body: plan(t) }));
   write(P + "journal/index.html", layout(t, { title: t.journalTitle, desc: t.journalLede, p: "journal/", active: "journal/", body: journalIndex(t) }));
   for (const post of JOURNAL) write(P + `journal/${post.slug}/index.html`, layout(t, { title: t.lang === "ko" ? post.title_ko : post.title, desc: t.lang === "ko" ? post.summary_ko : post.summary, p: `journal/${post.slug}/`, active: "journal/", body: journalPost(t, post), og: post.cover ? ABS + post.cover : "" }));
+  write(P + "notes/index.html", layout(t, { title: t.notesTitle, desc: t.notesLede, p: "notes/", body: notesIndex(t) }));
+  for (const n of NOTES) write(P + `notes/${n.slug}/index.html`, layout(t, { title: t.lang === "ko" ? n.title_ko : n.title, desc: t.lang === "ko" ? n.summary_ko : n.summary, p: `notes/${n.slug}/`, body: notePost(t, n) }));
   write(P + "get-involved/index.html", layout(t, { title: INV[t.lang].title, desc: INV[t.lang].lede, p: "get-involved/", active: "get-involved/", body: involve(t) }));
   write(P + "thanks/index.html", layout(t, { title: t.lang === "ko" ? "고맙습니다" : "Thank you", p: "thanks/", body: thanks(t) }));
   write(P + "safeguarding/index.html", layout(t, { title: SAFE[t.lang].title, desc: SAFE[t.lang].lede, p: "safeguarding/", body: policyPage(t, SAFE[t.lang]) }));
@@ -587,8 +631,8 @@ write("404.html", layout(T.en, { title: "Page not found", p: "", body: `${pageHe
 
 for (const f of fs.readdirSync(path.join(ROOT, "public"))) fs.cpSync(path.join(ROOT, "public", f), path.join(DIST, f), { recursive: true });
 copyDir(path.join(ROOT, "images"), "images");
-const pages = ["", "plan/", "partners/", "faq/", "journal/", "get-involved/", "safeguarding/", "transparency/", "about/", ...JOURNAL.map((p) => `journal/${p.slug}/`)];
+const pages = ["", "plan/", "partners/", "faq/", "journal/", "get-involved/", "safeguarding/", "transparency/", "about/", "notes/", ...JOURNAL.map((p) => `journal/${p.slug}/`), ...NOTES.map((n) => `notes/${n.slug}/`)];
 write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${pages.flatMap((p) => [ABS + p, ABS + "ko/" + p]).map((l) => `<url><loc>${l}</loc></url>`).join("")}</urlset>\n`);
 write("robots.txt", `User-agent: *\nAllow: /\nSitemap: ${ABS}sitemap.xml\n`);
 write(".nojekyll", "");
-console.log(`built → dist/ (journal ${JOURNAL.length}, base ${BASE})`);
+console.log(`built → dist/ (journal ${JOURNAL.length}, notes ${NOTES.length}, base ${BASE})`);
