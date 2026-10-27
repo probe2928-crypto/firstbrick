@@ -22,6 +22,7 @@ The daily improvement task reads and updates this file. Top = highest priority. 
 - [ ] 페이지별 og 이미지
 
 ## 완료
+- 2026-10-27 페이스북 페이지: 이름 Oriel Foundation(승인됨), 프로필·커버 C 디자인, 소개(어려운 가정 포함), 웹사이트 /oriel/ 로 교체
 - 2026-10-27 홈 모션: 창빛 위로 흔들리는 나뭇잎 그림자·지나가는 구름(sun-*.webp 마스크 + leaves.webp, multiply), 배움·생활·짓기에 아침·한낮·오후 빛 렌더(path-*.jpg), 흐르는 띠, 스크롤 등장, 마지막 띠 따라오는 빛. reduced-motion 대응. 텔레그램 @btcbullit 문의(함께하기·푸터·FAQ·CTA). 설립자 소개 Scott Park로 교체. 생활비 지원 문구 추가.
 - 2026-10-27 저장소 이름 변경 firstbrick → oriel (사이트 주소 probe2928-crypto.github.io/oriel). 디자인 C(말뫼) 적용: 햇빛 든 복숭아색 벽 첫 화면(scripts 밖에서 렌더한 public/brand/hero-wide.jpg·hero-tall.jpg), Familjen Grotesk 하나, 복숭아 #E9CFBB·크림 #F1DCCB·검정 #161514, 작은 문장형 라벨. **금색·세리프·로마 숫자는 더 쓰지 않음.**
 - 2026-10-27 이름 변경: First Brick → **Oriel Foundation / 오리엘 재단 / 明窗基金會**. 오리엘 = 벽에서 내민, 빛을 더 들이는 창(배움에는 빛, 기부에는 맑은 창). 카피 'Light for learning. Glass for giving.' / '배움에는 빛을, 기부에는 창을.' 히어로 입면도 왼쪽 창을 오리엘 창으로(유리만 금색), 로고·파비콘 = 받침 달린 창 + 금빛 유리 4칸, 배움/생활/짓기 아이콘 = 밝혀진 유리 2→4→6칸. og·프로필·커버 이미지, 릴스 템플릿 같은 그림으로 교체. **금색은 창 유리에만, 벽돌 모티프는 쓰지 않음.**
