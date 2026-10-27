@@ -86,6 +86,7 @@ html,body { margin:0; width:1080px; height:1920px; overflow:hidden; background:v
     } else if (s.type === "lines") {
       const t = el("div", "h", s.title); t.style.cssText += `top:${(s.top || 420) + 40}px;font-size:${s.size || 112}px;`; L.appendChild(t);
       const body = el("div", "p"); body.style.cssText += `top:${(s.bodyTop || 800) + 40}px;color:var(--ink);`;
+      s.tEl = t; s.bodyEl = body;
       s.parts = [t, ...(s.body || []).map((txt) => { const p = el("div", "", txt); p.style.marginBottom = "22px"; body.appendChild(p); return p; })];
       L.appendChild(body);
       if (s.wall) { const w = el("div"); w.style.cssText = "position:absolute;left:230px;right:230px;top:1330px;display:flex;flex-direction:column-reverse;gap:10px;"; const tone = ["var(--b1)", "var(--b2)", "var(--b3)", "var(--b2)", "var(--b1)"];
@@ -129,6 +130,8 @@ html,body { margin:0; width:1080px; height:1920px; overflow:hidden; background:v
   };
   window.seek(0);
   await document.fonts.ready;
+  // 제목이 길어 줄이 늘면 본문을 그만큼 내린다 (겹침 방지)
+  for (const s of scenes) if (s.bodyEl) { const need = s.tEl.offsetTop + s.tEl.offsetHeight + 70; if (s.bodyEl.offsetTop < need) s.bodyEl.style.top = need + "px"; }
   window.READY = true;
 })();
 </script>
