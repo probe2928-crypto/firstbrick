@@ -4,7 +4,6 @@ The daily improvement task reads and updates this file. Top = highest priority. 
 
 ## 사용자 조치 필요 (세준)
 - [ ] 브랜딩 방향: C(말뫼 — 복숭아색 한 면, 굵은 검정 'oriel', 가운데 오브젝트) 선택됨(2026-10-27). 오브젝트 안 1(터렐식 아치 개구부) 확정 여부
-- [ ] GitHub 저장소 이름 firstbrick → oriel (Settings > Repository name). 바뀌면 Claude가 링크·자동 작업 주소 정리
 - 운영 방향 (세준, 2026-10-27): 재단은 봉사·기부 성격이 강해서 천천히 고도화해도 됨. 가장 중요한 건 실제 활동 모습(한국·해외 현장 사진·영상). **분기 1회 현장 활동** 예정 → 활동 일지·릴스의 핵심 소재. 사이트·홍보물은 현장 사진이 주인공이 되도록 설계할 것
 - [ ] 인스타그램 새 계정 @oriel.foundation 직접 가입 (가입은 본인만 가능)
 - [ ] 메트리쿨에 링크드인·인스타·페이스북 연결 → 주 2회 예약 초안 자동 등록
@@ -22,6 +21,7 @@ The daily improvement task reads and updates this file. Top = highest priority. 
 - [ ] 페이지별 og 이미지
 
 ## 완료
+- 2026-10-27 저장소 이름 변경 firstbrick → oriel (사이트 주소 probe2928-crypto.github.io/oriel). 디자인 C(말뫼) 적용: 햇빛 든 복숭아색 벽 첫 화면(scripts 밖에서 렌더한 public/brand/hero-wide.jpg·hero-tall.jpg), Familjen Grotesk 하나, 복숭아 #E9CFBB·크림 #F1DCCB·검정 #161514, 작은 문장형 라벨. **금색·세리프·로마 숫자는 더 쓰지 않음.**
 - 2026-10-27 이름 변경: First Brick → **Oriel Foundation / 오리엘 재단 / 明窗基金會**. 오리엘 = 벽에서 내민, 빛을 더 들이는 창(배움에는 빛, 기부에는 맑은 창). 카피 'Light for learning. Glass for giving.' / '배움에는 빛을, 기부에는 창을.' 히어로 입면도 왼쪽 창을 오리엘 창으로(유리만 금색), 로고·파비콘 = 받침 달린 창 + 금빛 유리 4칸, 배움/생활/짓기 아이콘 = 밝혀진 유리 2→4→6칸. og·프로필·커버 이미지, 릴스 템플릿 같은 그림으로 교체. **금색은 창 유리에만, 벽돌 모티프는 쓰지 않음.**
 - 2026-10-27 링크드인 프로필 연결 (linkedin.com/in/parksejun1004) — 소개 페이지·푸터
 - 2026-10-27 가독성 고도화: 본문 먹색·17px, 작은 대문자 13px, 선 굵게, 보도니 opsz 11 고정(가로획 보이게)
