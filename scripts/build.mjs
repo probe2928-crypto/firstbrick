@@ -61,6 +61,7 @@ const T = {
     allPosts: "See every post",
     partnerTitle: "Partners",
     partnerText: "CHAINBRIEF, a crypto news outlet, is our media partner and will report our progress gift by gift.",
+    quratorText: "QURATOR, an art docent service from the same founders, has pledged a share of its revenue. Its gifts begin once we are registered and will be recorded in our public ledger.",
     partnerWanted: "We are looking for a first local partner in Southeast Asia: a school, community group or registered NGO already working with children.",
     becomePartner: "Talk to us about partnering",
     ctaTitle: "Lay a brick with us",
@@ -118,6 +119,7 @@ const T = {
     allPosts: "전체 보기",
     partnerTitle: "파트너",
     partnerText: "코인 뉴스 매체 체인브리프(CHAINBRIEF)가 미디어 파트너로서 기부 하나하나의 진행을 보도합니다.",
+    quratorText: "같은 운영진이 만든 미술 도슨트 서비스 QURATOR가 수익의 일부를 기부하기로 약정했습니다. 기부는 재단 등록 후 시작되고, 공개 장부에 기록됩니다.",
     partnerWanted: "동남아시아에서 함께할 첫 현지 파트너를 찾고 있습니다. 이미 아이들과 일하고 있는 학교, 마을 단체, 등록된 NGO라면 연락 주세요.",
     becomePartner: "파트너 문의하기",
     ctaTitle: "벽돌 한 장을 함께 놓아 주세요",
@@ -347,7 +349,7 @@ function home(t) {
 
 <section class="wrap split partners">
   <header class="sec-head"><h2>${esc(t.partnerTitle)}</h2></header>
-  <div><p class="partner-line"><a class="cb" href="${S.chainbrief}" target="_blank" rel="noopener">CHAINBRIEF</a><span>${esc(t.partnerText)}</span></p><p>${esc(t.partnerWanted)}</p><p><a class="text-link" href="${u(t, "get-involved/")}#partner">${esc(t.becomePartner)}</a></p></div>
+  <div><p class="partner-line"><a class="cb" href="${S.chainbrief}" target="_blank" rel="noopener">CHAINBRIEF</a><span>${esc(t.partnerText)}</span></p>${S.qurator ? `<p class="partner-line"><a class="cb" href="${S.qurator}" target="_blank" rel="noopener">QURATOR</a><span>${esc(t.quratorText)}</span></p>` : ""}<p>${esc(t.partnerWanted)}</p><p><a class="text-link" href="${u(t, "get-involved/")}#partner">${esc(t.becomePartner)}</a></p></div>
 </section>
 
 <section class="band cta-band">
@@ -496,7 +498,7 @@ function about(t) {
   return `${pageHead(A.title, A.lede)}
 <section class="wrap split"><header class="sec-head"><h2>${esc(A.founderH)}</h2></header><div class="prose"><p class="person"><strong>${esc(A.founder)}</strong></p>${A.bio.map((x) => `<p>${esc(x)}</p>`).join("")}${S.linkedin ? `<p><a class="text-link" href="${esc(S.linkedin)}" target="_blank" rel="noopener">LinkedIn</a></p>` : ""}</div></section>
 <section class="wrap split"><header class="sec-head"><h2>${esc(A.whyH)}</h2></header><div class="prose"><p>${esc(A.why)}</p></div></section>
-<section class="wrap split partners"><header class="sec-head"><h2>${esc(t.partnerTitle)}</h2></header><div><p class="partner-line"><a class="cb" href="${S.chainbrief}" target="_blank" rel="noopener">CHAINBRIEF</a><span>${esc(t.partnerText)}</span></p><p>${esc(t.partnerWanted)}</p></div></section>`;
+<section class="wrap split partners"><header class="sec-head"><h2>${esc(t.partnerTitle)}</h2></header><div><p class="partner-line"><a class="cb" href="${S.chainbrief}" target="_blank" rel="noopener">CHAINBRIEF</a><span>${esc(t.partnerText)}</span></p>${S.qurator ? `<p class="partner-line"><a class="cb" href="${S.qurator}" target="_blank" rel="noopener">QURATOR</a><span>${esc(t.quratorText)}</span></p>` : ""}<p>${esc(t.partnerWanted)}</p></div></section>`;
 }
 
 const PARTNERS = {

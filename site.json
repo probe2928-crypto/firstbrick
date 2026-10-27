@@ -10,6 +10,7 @@
   "facebook": "",
   "telegram": "btcbullit",
   "chainbrief": "https://probe2928-crypto.github.io/chainbrief/",
+  "qurator": "https://probe2928-crypto.github.io/qurator/",
   "stage": "founding",
   "givingOpen": false,
   "wallets": [],
@@ -60,13 +61,15 @@
         "Name chosen: First Brick Foundation",
         "Website, plan and field journal published",
         "Safeguarding and transparency principles written",
-        "CHAINBRIEF signs on as media partner"
+        "CHAINBRIEF signs on as media partner",
+        "QURATOR pledges a share of its revenue"
       ],
       "items_ko": [
         "이름 확정: 퍼스트브릭 재단",
         "홈페이지·계획·활동 일지 공개",
         "아동보호·투명성 원칙 작성",
-        "체인브리프 미디어 파트너 합류"
+        "체인브리프 미디어 파트너 합류",
+        "QURATOR, 수익 일부 기부 약정"
       ]
     }
   ],

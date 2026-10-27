@@ -209,6 +209,9 @@ h3 { font-weight: 400; }
 .partners p { font: 400 17px/1.75 var(--f-read); }
 .partners p:not(.partner-line) { color: var(--text); }
 .cb { font: 500 15px/1 "Bodoni Moda", Didot, "Times New Roman", serif; letter-spacing: .32em; text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 4px; white-space: nowrap; }
+.partner-line { display: grid; grid-template-columns: 170px 1fr; column-gap: 22px; }
+.partner-line > .cb { justify-self: start; }
+@media (max-width: 640px) { .partner-line { grid-template-columns: 1fr; row-gap: 12px; } }
 
 /* cta */
 .cta { text-align: center; }
