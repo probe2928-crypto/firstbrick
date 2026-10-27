@@ -24,12 +24,13 @@ const T = {
     lang: "en", htmlLang: "en", pre: "", other: "ko", otherLabel: "한국어", otherShort: "KO",
     name: S.name, tag: "Every school begins with a first brick.",
     desc: "First Brick is a foundation in the making for children in Southeast Asia: learning first, then everyday support, then the classrooms and schools a community asks for. Every gift traceable on-chain.",
-    nav: [["plan/", "Plan"], ["partners/", "Partners"], ["journal/", "Journal"], ["get-involved/", "Get involved"], ["about/", "About"]],
+    nav: [["plan/", "Plan"], ["partners/", "Partners"], ["journal/", "Journal"], ["get-involved/", "Get involved", "Join"], ["about/", "About"]],
     join: "Join the founding circle", readPlan: "Read the plan",
     status: "Founding stage. We are not taking donations yet. Giving opens once the foundation is registered, and every transaction will be public from the first one.",
     heroLede: "We are a foundation in the making for children in Southeast Asia. We start with learning, add the everyday support that keeps a child in class, and grow toward the roads, buildings and schools a community needs.",
     heroNote: "Every gift will be traceable on a public blockchain.",
     firstBrick: "The first brick",
+    eyebrow: ["A foundation in formation", "Southeast Asia"], sub: "Foundation", joinShort: "Join",
     pathTitle: "Learn, live, build",
     pathLede: "Three steps, in this order. We take the next one only when the one before it works and a local partner asks for it.",
     path: [
@@ -86,6 +87,7 @@ const T = {
     heroLede: "동남아시아 아이들을 위해 준비 중인 재단입니다. 배움에서 시작해, 아이가 계속 학교에 올 수 있게 하는 생활 지원을 더하고, 마을에 필요한 길과 건물, 학교까지 짓는 것이 목표입니다.",
     heroNote: "모든 기부는 공개 블록체인에서 확인할 수 있게 됩니다.",
     firstBrick: "첫 벽돌",
+    eyebrow: ["설립 준비 중", "동남아시아"], sub: "Foundation", joinShort: "참여하기",
     pathTitle: "배우고, 살고, 짓는다",
     pathLede: "세 단계를 이 순서대로 밟습니다. 앞 단계가 제대로 돌아가고 현지 파트너가 원할 때만 다음으로 넘어갑니다.",
     path: [
@@ -224,10 +226,10 @@ function layout(t, { title, desc, p = "", body, active = "", og = "" }) {
 <link rel="canonical" href="${ABS + t.pre + p}">
 <link rel="alternate" hreflang="en" href="${ABS + p}"><link rel="alternate" hreflang="ko" href="${ABS + "ko/" + p}"><link rel="alternate" hreflang="x-default" href="${ABS + p}">
 <meta property="og:type" content="website"><meta property="og:site_name" content="${esc(S.name)}"><meta property="og:title" content="${esc(full)}"><meta property="og:description" content="${esc(desc || t.desc)}"><meta property="og:image" content="${og || ogImg}"><meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#F4F5F0">
+<meta name="theme-color" content="#F5F1EA">
 <link rel="icon" href="${BASE}favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Literata:ital,opsz,wght@0,7..72,400..600;1,7..72,400&family=Noto+Sans+KR:wght@400;500;700;800&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..500&family=Jost:wght@300..500&family=Noto+Sans+KR:wght@400;500&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${BASE}style.css?v=${V.css}">
 <script>document.documentElement.classList.add("js")</script>
 <script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@type": "Organization", name: S.name, alternateName: S.name_ko, url: ABS, email: S.email, description: T.en.desc, logo: ABS + "favicon.svg" })}</script>
@@ -236,19 +238,20 @@ function layout(t, { title, desc, p = "", body, active = "", og = "" }) {
 <a class="skip" href="#main">${esc(t.skip)}</a>
 <header class="site-head">
   <div class="wrap head-row">
-    <a class="brand" href="${u(t)}" aria-label="${esc(t.name)}">${logo()}<span class="brand-name">First Brick</span></a>
-    <nav class="nav" aria-label="${t.lang === "ko" ? "주요 메뉴" : "Main"}">${t.nav.map(([h, l]) => `<a href="${u(t, h)}"${active === h ? ' aria-current="page"' : ""}>${esc(l)}</a>`).join("")}</nav>
-    <div class="head-end"><a class="lang" href="${altP}" hreflang="${t.other}" lang="${t.other}">${esc(t.otherLabel)}</a><a class="btn btn-sm" href="${u(t, "get-involved/")}#circle">${esc(t.join)}</a></div>
+    <a class="lang" href="${altP}" hreflang="${t.other}" lang="${t.other}">${esc(t.otherLabel)}</a>
+    <a class="brand" href="${u(t)}" aria-label="${esc(t.name)}"><span class="brand-name">First Brick</span><span class="brand-sub">${esc(t.sub)}</span></a>
+    <a class="head-join" href="${u(t, "get-involved/")}#circle">${esc(t.joinShort)}</a>
   </div>
-  <nav class="mobile-nav" aria-label="${t.lang === "ko" ? "주요 메뉴" : "Main"}">${t.nav.map(([h, l]) => `<a href="${u(t, h)}"${active === h ? ' aria-current="page"' : ""}>${esc(l)}</a>`).join("")}</nav>
+  <nav class="nav" aria-label="${t.lang === "ko" ? "주요 메뉴" : "Main"}">${t.nav.map(([h, l, sh]) => `<a href="${u(t, h)}"${active === h ? ' aria-current="page"' : ""}>${sh ? `<span class="lg">${esc(l)}</span><span class="sh">${esc(sh)}</span>` : esc(l)}</a>`).join("")}</nav>
 </header>
 <main id="main">
 ${body}
 </main>
 <footer class="site-foot">
-  <div class="wrap foot-grid">
-    <div class="foot-brand">${logo("logo-mark lg")}<p class="foot-name">${esc(t.name)}</p><p class="foot-tag">${esc(t.tag)}</p></div>
-    <nav class="foot-links" aria-label="${t.lang === "ko" ? "바닥 메뉴" : "Footer"}">${t.footLinks.map(([h, l]) => `<a href="${u(t, h)}">${esc(l)}</a>`).join("")}<a href="mailto:${S.email}">${esc(S.email)}</a></nav>
+  <div class="wrap">
+    <p class="foot-mark">First Brick</p>
+    <p class="foot-tag">${esc(t.tag)}</p>
+    <nav class="foot-links" aria-label="${t.lang === "ko" ? "바닥 메뉴" : "Footer"}">${t.footLinks.map(([h, l]) => `<a href="${u(t, h)}">${esc(l)}</a>`).join("")}<a class="mail" href="mailto:${S.email}">${esc(S.email)}</a></nav>
     <div class="foot-partner"><p class="small">${esc(t.media)}</p><a class="cb" href="${S.chainbrief}" target="_blank" rel="noopener">CHAINBRIEF</a>${socials(t)}</div>
   </div>
   <div class="wrap foot-base"><p>${esc(t.footStatus)}</p><p>© 2026 ${esc(t.rights)}</p></div>
@@ -298,13 +301,12 @@ function home(t) {
   const posts = JOURNAL.slice(0, 3);
   return `
 <section class="hero wrap">
-  <div class="hero-copy">
-    <h1 class="display">${t.lang === "ko" ? "모든 학교는<br>첫 벽돌 한 장에서<br>시작합니다." : esc(t.tag)}</h1>
-    <p class="lede">${esc(t.heroLede)}</p>
-    <p class="hero-note">${esc(t.heroNote)}</p>
-    <div class="actions"><a class="btn" href="${u(t, "get-involved/")}#circle">${esc(t.join)}</a><a class="btn btn-quiet" href="${u(t, "plan/")}">${esc(t.readPlan)}</a></div>
-  </div>
+  <p class="eyebrow">${t.eyebrow.map((x) => `<span>${esc(x)}</span>`).join('<span class="sep" aria-hidden="true"> · </span>')}</p>
+  <h1 class="display">${t.lang === "ko" ? "모든 학교는<br><em>첫 벽돌 한 장에서</em><br>시작합니다." : "Every school begins <em>with a first brick.</em>"}</h1>
+  <p class="lede">${esc(t.heroLede)}</p>
+  <div class="actions"><a class="btn" href="${u(t, "get-involved/")}#circle">${esc(t.join)}</a><a class="btn btn-quiet" href="${u(t, "plan/")}">${esc(t.readPlan)}</a></div>
   ${schoolhouse(t)}
+  <p class="hero-note">${esc(t.heroNote)}</p>
 </section>
 <div class="wrap">${statusBar(t)}</div>
 
@@ -533,7 +535,7 @@ function partners(t) {
   const P = PARTNERS[t.lang];
   return `${pageHead(P.title, P.lede)}
 <section class="wrap"><header class="sec-head"><h2>${esc(P.stepsTitle)}</h2></header>
-<ol class="steps">${P.steps.map(([h, x], i) => `<li><span class="step-no" aria-hidden="true">${i + 1}</span><div><h3>${esc(h)}</h3><p>${esc(x)}</p></div></li>`).join("")}</ol></section>
+<ol class="steps">${P.steps.map(([h, x], i) => `<li><span class="step-no" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span><div><h3>${esc(h)}</h3><p>${esc(x)}</p></div></li>`).join("")}</ol></section>
 <section class="wrap split"><header class="sec-head"><h2>${esc(P.lookTitle)}</h2></header><ul class="checks">${P.look.map((x) => `<li>${esc(x)}</li>`).join("")}</ul></section>
 <section class="wrap"><header class="sec-head"><h2>${esc(P.otherTitle)}</h2></header><div class="principles plain">${P.other.map(([h, x]) => `<div><h3>${esc(h)}</h3><p>${esc(x)}</p></div>`).join("")}</div></section>
 <section class="band cta-band"><div class="wrap cta"><h2>${esc(P.cta)}</h2><p>${esc(t.partnerWanted)}</p><a class="btn btn-light" href="${u(t, "get-involved/")}#partner">${esc(P.ctaBtn)}</a></div></section>`;
