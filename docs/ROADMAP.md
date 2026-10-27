@@ -11,6 +11,7 @@ The daily improvement task reads and updates this file. Top = highest priority. 
 - 현장 사진 올리는 법: PC의 `문서\FirstBrick\inbox\<날짜-장소>\` 폴더에 사진 + note.txt(무슨 일이 있었는지, 아이 얼굴이 나온 사진이 있으면 보호자 동의를 받았는지 `consent: yes`) → 다음 날 아침 고도화 작업이 활동 일지로 올림
 
 ## 다음 작업 (Claude)
+- [ ] 텔레그램 채널 @firstbrick_foundation 개설 후 site.json tgChannel 입력
 - [ ] /journal/ 사진 갤러리 라이트박스 (키보드·스와이프)
 - [ ] 영어 FAQ 페이지 (Are you a registered charity? Where does the money go? Can I volunteer?)
 - [ ] 뉴스레터 아카이브: 창립 서포터에게 보낸 소식을 /updates/ 로
@@ -19,5 +20,6 @@ The daily improvement task reads and updates this file. Top = highest priority. 
 - [ ] 페이지별 og 이미지
 
 ## 완료
+- 2026-10-27 고도화 2: 파트너 절차 페이지(/partners/ 6단계·선정 기준·기업 협력), FAQ(/faq/), 홈 '지금까지의 장부' 블록 체인, 푸터 채널 링크 자리
 - 2026-10-27 홍보: 릴스 템플릿(marketing/reel), 44주차 런칭 릴스 2편·캡션·링크드인 글, 예약 작업 2개(사이트 매일 10:37, 홍보 월·목 07:53)
 - 2026-10-27 사이트 개설: 영어·한국어, 계획·활동 일지·함께하기·아동보호·투명성·소개, 벽돌 학교 히어로, og 이미지, Pages 배포

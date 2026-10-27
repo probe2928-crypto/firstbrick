@@ -24,7 +24,7 @@ const T = {
     lang: "en", htmlLang: "en", pre: "", other: "ko", otherLabel: "한국어", otherShort: "KO",
     name: S.name, tag: "Every school begins with a first brick.",
     desc: "First Brick is a foundation in the making for children in Southeast Asia: learning first, then everyday support, then the classrooms and schools a community asks for. Every gift traceable on-chain.",
-    nav: [["plan/", "Plan"], ["journal/", "Journal"], ["get-involved/", "Get involved"], ["about/", "About"]],
+    nav: [["plan/", "Plan"], ["partners/", "Partners"], ["journal/", "Journal"], ["get-involved/", "Get involved"], ["about/", "About"]],
     join: "Join the founding circle", readPlan: "Read the plan",
     status: "Founding stage. We are not taking donations yet. Giving opens once the foundation is registered, and every transaction will be public from the first one.",
     heroLede: "We are a foundation in the making for children in Southeast Asia. We start with learning, add the everyday support that keeps a child in class, and grow toward the roads, buildings and schools a community needs.",
@@ -65,7 +65,8 @@ const T = {
     ctaTitle: "Lay a brick with us",
     ctaText: "Join the founding circle and we'll write to you when giving opens, when we pick our first community, and when there's a way to help that fits what you do.",
     footStatus: "First Brick Foundation is in formation and not yet a registered charity.",
-    footLinks: [["safeguarding/", "Safeguarding"], ["transparency/", "Transparency"], ["journal/", "Journal"], ["get-involved/", "Contact"]],
+    footLinks: [["faq/", "Questions"], ["partners/", "Partner process"], ["safeguarding/", "Safeguarding"], ["transparency/", "Transparency"], ["get-involved/", "Contact"]],
+    ledgerTitle: "The ledger so far", ledgerLede: "We keep our own progress the way we will keep every gift: in order, dated, and public. Each block is a set of things we actually finished.", block: "Block", nextBlock: "Next block", follow: "Follow", channels: "Channels",
     media: "Media partner",
     rights: "First Brick Foundation (in formation)",
     readMore: "Read",
@@ -79,7 +80,7 @@ const T = {
     lang: "ko", htmlLang: "ko", pre: "ko/", other: "en", otherLabel: "English", otherShort: "EN",
     name: S.name_ko, tag: "모든 학교는 첫 벽돌 한 장에서 시작합니다.",
     desc: "퍼스트브릭은 동남아시아 아이들을 위해 준비 중인 재단입니다. 배움에서 시작해 생활을 돕고, 마을이 원하는 교실과 학교까지 짓습니다. 모든 기부는 블록체인에 기록됩니다.",
-    nav: [["plan/", "계획"], ["journal/", "활동 일지"], ["get-involved/", "함께하기"], ["about/", "소개"]],
+    nav: [["plan/", "계획"], ["partners/", "파트너"], ["journal/", "활동 일지"], ["get-involved/", "함께하기"], ["about/", "소개"]],
     join: "창립 서포터 신청", readPlan: "계획 보기",
     status: "설립 준비 단계입니다. 아직 기부를 받지 않습니다. 재단 등록을 마친 뒤 기부를 열고, 첫 거래부터 모두 공개합니다.",
     heroLede: "동남아시아 아이들을 위해 준비 중인 재단입니다. 배움에서 시작해, 아이가 계속 학교에 올 수 있게 하는 생활 지원을 더하고, 마을에 필요한 길과 건물, 학교까지 짓는 것이 목표입니다.",
@@ -120,7 +121,8 @@ const T = {
     ctaTitle: "벽돌 한 장을 함께 놓아 주세요",
     ctaText: "창립 서포터로 신청하시면 기부가 열릴 때, 첫 마을을 정할 때, 하시는 일에 맞는 도움 방법이 생길 때 연락드립니다.",
     footStatus: "퍼스트브릭 재단은 설립 준비 중이며 아직 등록된 공익단체가 아닙니다.",
-    footLinks: [["safeguarding/", "아동보호 정책"], ["transparency/", "투명성"], ["journal/", "활동 일지"], ["get-involved/", "문의"]],
+    footLinks: [["faq/", "자주 묻는 질문"], ["partners/", "파트너 절차"], ["safeguarding/", "아동보호 정책"], ["transparency/", "투명성"], ["get-involved/", "문의"]],
+    ledgerTitle: "지금까지의 장부", ledgerLede: "앞으로 모든 기부를 기록할 방식 그대로, 우리의 진행도 순서대로, 날짜와 함께, 공개로 남깁니다. 블록 하나는 실제로 끝낸 일들의 묶음입니다.", block: "블록", nextBlock: "다음 블록", follow: "팔로우", channels: "채널",
     media: "미디어 파트너",
     rights: "퍼스트브릭 재단 (설립 준비 중)",
     readMore: "읽기",
@@ -191,6 +193,12 @@ function loadJournal() {
 }
 const JOURNAL = loadJournal();
 
+/* ---------- 채널 ---------- */
+function socials(t) {
+  const list = [["Telegram", S.tgChannel ? `https://t.me/${S.tgChannel.replace(/^@/, "")}` : ""], ["LinkedIn", S.linkedinPage || S.linkedin], ["Instagram", S.instagram], ["Facebook", S.facebook]].filter(([, h]) => h);
+  return list.length ? `<p class="small foot-ch">${esc(t.follow)}</p><ul class="socials">${list.map(([n, h]) => `<li><a href="${esc(h)}" target="_blank" rel="noopener">${n}</a></li>`).join("")}</ul>` : "";
+}
+
 /* ---------- 레이아웃 ---------- */
 const u = (t, p = "") => BASE + t.pre + p;
 const fmtDate = (d, t) => { try { return new Date(d + "T00:00:00Z").toLocaleDateString(t.lang === "ko" ? "ko-KR" : "en-GB", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" }); } catch { return d; } };
@@ -233,7 +241,7 @@ ${body}
   <div class="wrap foot-grid">
     <div class="foot-brand">${logo("logo-mark lg")}<p class="foot-name">${esc(t.name)}</p><p class="foot-tag">${esc(t.tag)}</p></div>
     <nav class="foot-links" aria-label="${t.lang === "ko" ? "바닥 메뉴" : "Footer"}">${t.footLinks.map(([h, l]) => `<a href="${u(t, h)}">${esc(l)}</a>`).join("")}<a href="mailto:${S.email}">${esc(S.email)}</a></nav>
-    <div class="foot-partner"><p class="small">${esc(t.media)}</p><a class="cb" href="${S.chainbrief}" target="_blank" rel="noopener">CHAINBRIEF</a></div>
+    <div class="foot-partner"><p class="small">${esc(t.media)}</p><a class="cb" href="${S.chainbrief}" target="_blank" rel="noopener">CHAINBRIEF</a>${socials(t)}</div>
   </div>
   <div class="wrap foot-base"><p>${esc(t.footStatus)}</p><p>© 2026 ${esc(t.rights)}</p></div>
 </footer>
@@ -253,6 +261,13 @@ function roadmap(t, full = false) {
 function postCard(t, p) {
   const title = t.lang === "ko" ? p.title_ko : p.title, sum = t.lang === "ko" ? p.summary_ko : p.summary, place = t.lang === "ko" ? p.place_ko : p.place;
   return `<article class="post-card"><a href="${u(t, `journal/${p.slug}/`)}">${p.cover ? `<img src="${BASE}${esc(p.cover)}" alt="" loading="lazy">` : `<div class="post-ph" aria-hidden="true">${logo("logo-mark xl")}</div>`}<p class="post-meta"><time datetime="${p.date}">${esc(fmtDate(p.date, t))}</time>${place ? `<span>${esc(place)}</span>` : ""}</p><h3>${esc(title)}</h3>${sum ? `<p>${esc(sum)}</p>` : ""}</a></article>`;
+}
+
+function ledger(t) {
+  const ko = t.lang === "ko";
+  const blocks = (S.ledger || []).map((b) => `<li class="blk"><p class="blk-no">${esc(t.block)} ${b.block}</p><time datetime="${b.date}">${esc(fmtDate(b.date, t))}</time><ul>${(ko ? b.items_ko : b.items).map((x) => `<li>${esc(x)}</li>`).join("")}</ul></li>`).join("");
+  const nb = S.nextBlock ? `<li class="blk next"><p class="blk-no">${esc(t.nextBlock)}</p><span class="blk-when">${esc(ko ? S.nextBlock.when_ko : S.nextBlock.when)}</span><ul>${(ko ? S.nextBlock.items_ko : S.nextBlock.items).map((x) => `<li>${esc(x)}</li>`).join("")}</ul></li>` : "";
+  return `<ol class="chain">${blocks}${nb}</ol>`;
 }
 
 /* ---------- 페이지 ---------- */
@@ -280,6 +295,11 @@ function home(t) {
 <section class="wrap split">
   <header class="sec-head"><h2>${esc(t.chainTitle)}</h2><p>${esc(t.chainLede)}</p></header>
   <div><dl class="defs">${t.chain.map(([h, x]) => `<div><dt>${esc(h)}</dt><dd>${esc(x)}</dd></div>`).join("")}</dl><p class="small">${esc(t.chainNote)} <a href="${u(t, "transparency/")}">${t.lang === "ko" ? "투명성 원칙 자세히" : "How transparency will work"}</a></p></div>
+</section>
+
+<section class="wrap ledger-sec">
+  <header class="sec-head"><h2>${esc(t.ledgerTitle)}</h2><p>${esc(t.ledgerLede)}</p></header>
+  ${ledger(t)}
 </section>
 
 <section class="band ink-band">
@@ -454,6 +474,73 @@ function about(t) {
 <section class="wrap split partners"><header class="sec-head"><h2>${esc(t.partnerTitle)}</h2></header><div><p class="partner-line"><a class="cb" href="${S.chainbrief}" target="_blank" rel="noopener">CHAINBRIEF</a><span>${esc(t.partnerText)}</span></p><p>${esc(t.partnerWanted)}</p></div></section>`;
 }
 
+const PARTNERS = {
+  en: { title: "Partner with us", lede: "How a school, community group or NGO becomes a First Brick partner, step by step. We move slowly on purpose: trust first, money second.",
+    stepsTitle: "How it works",
+    steps: [
+      ["Introduce yourself", "Write to us with who you are, where you work and the children you already serve. A short email is enough to start."],
+      ["Call and documents", "We meet by video and ask for your registration, your safeguarding policy (or a plan to adopt one with us) and any recent report."],
+      ["Visit", "Our founder visits in person to meet teachers, parents and your team. No photos of children are taken without a guardian's consent."],
+      ["Plan together", "You propose one small program, a budget and one simple measure of success. We agree it in writing."],
+      ["Fund and record", "Funds go out in stages. Every payment carries a receipt and is logged on our public record."],
+      ["Report and decide", "A short report every quarter. After a year we decide together whether to continue, grow, or build."],
+    ],
+    lookTitle: "What we look for",
+    look: ["Already working with children in the community, led by local people", "A written child safeguarding policy, or the will to adopt one", "Registered locally, or hosted by a registered organisation", "Comfortable with publishing receipts and results, including misses"],
+    otherTitle: "Companies, web3 projects and media",
+    other: [["Sponsor a program", "Fund one partner's program for a year, with every payout visible on-chain."], ["Match gifts", "Match what your community gives once giving opens."], ["Lend skills", "Accounting, legal, design, engineering or translation, usually remote."], ["Tell the story", "Media partners follow the work; CHAINBRIEF already reports our progress."]],
+    cta: "Start a conversation", ctaBtn: "Write to us" },
+  ko: { title: "파트너 되기", lede: "학교·마을 단체·NGO가 퍼스트브릭 파트너가 되는 과정입니다. 일부러 천천히 갑니다. 신뢰가 먼저, 돈은 그다음.",
+    stepsTitle: "진행 순서",
+    steps: [
+      ["소개", "누구인지, 어디서 일하는지, 이미 돕고 있는 아이들에 대해 알려 주세요. 짧은 이메일이면 충분합니다."],
+      ["화상 미팅·서류", "화상으로 만나고 등록 서류, 아동보호 정책(없다면 함께 만들 계획), 최근 보고서를 받습니다."],
+      ["방문", "설립자가 직접 방문해 선생님·부모님·팀을 만납니다. 보호자 동의 없이 아이 사진은 찍지 않습니다."],
+      ["함께 계획", "작은 프로그램 하나, 예산, 간단한 성과 지표 하나를 제안해 주시면 서면으로 합의합니다."],
+      ["지원과 기록", "지원금은 단계별로 나갑니다. 모든 지급에 영수증을 붙이고 공개 기록에 남깁니다."],
+      ["보고와 결정", "분기마다 짧은 보고서를 내고, 1년 뒤 계속할지·키울지·지을지 함께 정합니다."],
+    ],
+    lookTitle: "이런 파트너를 찾습니다",
+    look: ["현지 사람들이 이끌며 이미 마을의 아이들과 일하고 있는 곳", "서면 아동보호 정책이 있거나 만들 의지가 있는 곳", "현지에 등록됐거나 등록된 단체의 지원을 받는 곳", "실패를 포함한 영수증과 결과를 공개하는 데 동의하는 곳"],
+    otherTitle: "기업·웹3 프로젝트·미디어",
+    other: [["프로그램 후원", "한 파트너의 프로그램을 1년간 후원하고, 모든 지급을 온체인으로 확인합니다."], ["매칭 기부", "기부가 열리면 커뮤니티 기부액만큼 함께 기부합니다."], ["재능 지원", "회계·법률·디자인·엔지니어링·번역. 대부분 원격으로 가능합니다."], ["이야기 전하기", "미디어 파트너가 활동을 따라 기록합니다. 체인브리프가 이미 함께하고 있습니다."]],
+    cta: "대화를 시작해요", ctaBtn: "문의 남기기" },
+};
+function partners(t) {
+  const P = PARTNERS[t.lang];
+  return `${pageHead(P.title, P.lede)}
+<section class="wrap"><header class="sec-head"><h2>${esc(P.stepsTitle)}</h2></header>
+<ol class="steps">${P.steps.map(([h, x], i) => `<li><span class="step-no" aria-hidden="true">${i + 1}</span><div><h3>${esc(h)}</h3><p>${esc(x)}</p></div></li>`).join("")}</ol></section>
+<section class="wrap split"><header class="sec-head"><h2>${esc(P.lookTitle)}</h2></header><ul class="checks">${P.look.map((x) => `<li>${esc(x)}</li>`).join("")}</ul></section>
+<section class="wrap"><header class="sec-head"><h2>${esc(P.otherTitle)}</h2></header><div class="principles plain">${P.other.map(([h, x]) => `<div><h3>${esc(h)}</h3><p>${esc(x)}</p></div>`).join("")}</div></section>
+<section class="band cta-band"><div class="wrap cta"><h2>${esc(P.cta)}</h2><p>${esc(t.partnerWanted)}</p><a class="btn btn-light" href="${u(t, "get-involved/")}#partner">${esc(P.ctaBtn)}</a></div></section>`;
+}
+
+const FAQ = {
+  en: { title: "Questions", lede: "Short answers to what people ask us most.", qs: [
+    ["Are you a registered charity?", "Not yet. First Brick is in formation. We will register before we accept any donation, and we will say so on this site the day it happens."],
+    ["Can I donate now?", "No. We are not taking donations of any kind yet. If anyone asks you to send money or crypto to First Brick today, it is not us."],
+    ["Where will you work first?", "In Southeast Asia, in one community, chosen with a local partner after visits and conversations. We will name it once a partner agrees."],
+    ["How will on-chain giving work?", "Gifts in stablecoins and crypto will go to one published wallet, so anyone can see them arrive. Each payout will be logged with a receipt and the partner who received it, and card or bank gifts will be recorded on the same ledger."],
+    ["Can I volunteer?", "Yes, with a skill a partner needs: teaching, building, health, translation, design, accounting, development. Much of it is remote. We do not organise short visits with children."],
+    ["Who is behind First Brick?", "Founder Sejun Park, who spent seven years in the crypto exchange industry. Advisers will be listed here as they join."],
+    ["How is CHAINBRIEF involved?", "CHAINBRIEF, a crypto news outlet, is our media partner and reports our progress."],
+  ] },
+  ko: { title: "자주 묻는 질문", lede: "가장 많이 받는 질문에 짧게 답합니다.", qs: [
+    ["등록된 공익단체인가요?", "아직 아닙니다. 설립 준비 중이며, 어떤 기부도 받기 전에 등록을 마치고 그날 이 사이트에 알립니다."],
+    ["지금 기부할 수 있나요?", "아니요. 아직 어떤 형태의 기부도 받지 않습니다. 지금 퍼스트브릭 이름으로 돈이나 암호화폐를 보내 달라는 연락은 저희가 아닙니다."],
+    ["어디서 먼저 활동하나요?", "동남아시아의 한 마을에서, 직접 방문하고 대화한 뒤 현지 파트너와 함께 정합니다. 파트너가 동의하면 공개합니다."],
+    ["온체인 기부는 어떻게 하나요?", "스테이블코인·암호화폐 기부는 공개된 지갑 하나로 받아 누구나 들어오는 것을 볼 수 있게 합니다. 모든 지출에 영수증과 받은 파트너를 기록하고, 카드·계좌 기부도 같은 장부에 남깁니다."],
+    ["봉사할 수 있나요?", "네, 파트너에게 필요한 재능으로요. 교육·건축·보건·번역·디자인·회계·개발 등이며 원격으로 하는 일도 많습니다. 아이들과의 단기 방문은 운영하지 않습니다."],
+    ["누가 만드나요?", "7년간 암호화폐 거래소 업계에서 일한 박세준이 설립합니다. 자문단은 합류하는 대로 소개합니다."],
+    ["체인브리프와는 어떤 관계인가요?", "코인 뉴스 매체 체인브리프가 미디어 파트너로서 진행 상황을 보도합니다."],
+  ] },
+};
+function faq(t) {
+  const F = FAQ[t.lang];
+  return `${pageHead(F.title, F.lede)}<section class="wrap"><div class="faq">${F.qs.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join("")}</div></section>`;
+}
+
 /* ---------- 쓰기 ---------- */
 for (const t of [T.en, T.ko]) {
   const P = t.pre;
@@ -465,13 +552,15 @@ for (const t of [T.en, T.ko]) {
   write(P + "thanks/index.html", layout(t, { title: t.lang === "ko" ? "고맙습니다" : "Thank you", p: "thanks/", body: thanks(t) }));
   write(P + "safeguarding/index.html", layout(t, { title: SAFE[t.lang].title, desc: SAFE[t.lang].lede, p: "safeguarding/", body: policyPage(t, SAFE[t.lang]) }));
   write(P + "transparency/index.html", layout(t, { title: TRANS[t.lang].title, desc: TRANS[t.lang].lede, p: "transparency/", body: policyPage(t, TRANS[t.lang]) }));
+  write(P + "partners/index.html", layout(t, { title: PARTNERS[t.lang].title, desc: PARTNERS[t.lang].lede, p: "partners/", active: "partners/", body: partners(t) }));
+  write(P + "faq/index.html", layout(t, { title: FAQ[t.lang].title, desc: FAQ[t.lang].lede, p: "faq/", body: faq(t) }));
   write(P + "about/index.html", layout(t, { title: ABOUT[t.lang].title, desc: ABOUT[t.lang].lede, p: "about/", active: "about/", body: about(t) }));
 }
 write("404.html", layout(T.en, { title: "Page not found", p: "", body: `${pageHead("This page isn't here", "It may have moved. Start again from the home page.")}<section class="wrap"><p><a class="btn" href="${BASE}">Go to the home page</a></p></section>` }));
 
 for (const f of fs.readdirSync(path.join(ROOT, "public"))) fs.cpSync(path.join(ROOT, "public", f), path.join(DIST, f), { recursive: true });
 copyDir(path.join(ROOT, "images"), "images");
-const pages = ["", "plan/", "journal/", "get-involved/", "safeguarding/", "transparency/", "about/", ...JOURNAL.map((p) => `journal/${p.slug}/`)];
+const pages = ["", "plan/", "partners/", "faq/", "journal/", "get-involved/", "safeguarding/", "transparency/", "about/", ...JOURNAL.map((p) => `journal/${p.slug}/`)];
 write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${pages.flatMap((p) => [ABS + p, ABS + "ko/" + p]).map((l) => `<url><loc>${l}</loc></url>`).join("")}</urlset>\n`);
 write("robots.txt", `User-agent: *\nAllow: /\nSitemap: ${ABS}sitemap.xml\n`);
 write(".nojekyll", "");

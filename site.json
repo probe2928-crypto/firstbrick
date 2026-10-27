@@ -14,9 +14,72 @@
   "givingOpen": false,
   "wallets": [],
   "phases": [
-    { "id": "founding", "when": "Oct–Dec 2026", "when_ko": "2026년 10~12월", "title": "Founding", "title_ko": "설립 준비", "text": "Charter, advisers, a first local partner, and the paperwork to register as a nonprofit.", "text_ko": "정관과 자문단을 꾸리고, 첫 현지 파트너를 찾고, 비영리 등록 서류를 준비해요." },
-    { "id": "launch", "when": "Jan 2027", "when_ko": "2027년 1월", "title": "Public launch", "title_ko": "공식 출범", "text": "The journal and social channels go live and the founding circle opens.", "text_ko": "활동 일지와 SNS 채널을 열고, 창립 서포터 모집을 시작해요." },
-    { "id": "programs", "when": "2027", "when_ko": "2027년", "title": "First programs", "title_ko": "첫 프로그램", "text": "One community, one partner: learning support and everyday basics, with the first on-chain reports.", "text_ko": "한 마을, 한 파트너와 함께 학습 지원과 생활 지원을 시작하고, 첫 온체인 보고서를 내요." },
-    { "id": "build", "when": "2028 onward", "when_ko": "2028년부터", "title": "Build", "title_ko": "짓기", "text": "Classrooms, libraries, water and safe routes to school, built with the communities we already know.", "text_ko": "이미 함께 일한 마을과 교실·도서관·식수 시설·안전한 등굣길을 지어요." }
-  ]
+    {
+      "id": "founding",
+      "when": "Oct–Dec 2026",
+      "when_ko": "2026년 10~12월",
+      "title": "Founding",
+      "title_ko": "설립 준비",
+      "text": "Charter, advisers, a first local partner, and the paperwork to register as a nonprofit.",
+      "text_ko": "정관과 자문단을 꾸리고, 첫 현지 파트너를 찾고, 비영리 등록 서류를 준비해요."
+    },
+    {
+      "id": "launch",
+      "when": "Jan 2027",
+      "when_ko": "2027년 1월",
+      "title": "Public launch",
+      "title_ko": "공식 출범",
+      "text": "The journal and social channels go live and the founding circle opens.",
+      "text_ko": "활동 일지와 SNS 채널을 열고, 창립 서포터 모집을 시작해요."
+    },
+    {
+      "id": "programs",
+      "when": "2027",
+      "when_ko": "2027년",
+      "title": "First programs",
+      "title_ko": "첫 프로그램",
+      "text": "One community, one partner: learning support and everyday basics, with the first on-chain reports.",
+      "text_ko": "한 마을, 한 파트너와 함께 학습 지원과 생활 지원을 시작하고, 첫 온체인 보고서를 내요."
+    },
+    {
+      "id": "build",
+      "when": "2028 onward",
+      "when_ko": "2028년부터",
+      "title": "Build",
+      "title_ko": "짓기",
+      "text": "Classrooms, libraries, water and safe routes to school, built with the communities we already know.",
+      "text_ko": "이미 함께 일한 마을과 교실·도서관·식수 시설·안전한 등굣길을 지어요."
+    }
+  ],
+  "tgChannel": "",
+  "ledger": [
+    {
+      "block": 0,
+      "date": "2026-10-27",
+      "items": [
+        "Name chosen: First Brick Foundation",
+        "Website, plan and field journal published",
+        "Safeguarding and transparency principles written",
+        "CHAINBRIEF signs on as media partner"
+      ],
+      "items_ko": [
+        "이름 확정: 퍼스트브릭 재단",
+        "홈페이지·계획·활동 일지 공개",
+        "아동보호·투명성 원칙 작성",
+        "체인브리프 미디어 파트너 합류"
+      ]
+    }
+  ],
+  "nextBlock": {
+    "when": "November 2026",
+    "when_ko": "2026년 11월",
+    "items": [
+      "Charter draft and first advisers",
+      "Shortlist of local partners"
+    ],
+    "items_ko": [
+      "정관 초안과 첫 자문단",
+      "현지 파트너 후보 정리"
+    ]
+  }
 }
