@@ -246,6 +246,7 @@ ${body}
   <div class="wrap foot-base"><p>${esc(t.footStatus)}</p><p>© 2026 ${esc(t.rights)}</p></div>
 </footer>
 <script src="${BASE}app.js?v=${V.js}" defer></script>
+<script src="https://probe2928-crypto.github.io/chainbrief/network.js" data-site="oriel" defer></script>
 </body>
 </html>`;
 }
