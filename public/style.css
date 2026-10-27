@@ -438,3 +438,83 @@ h1, h2, h3, .display, .sec-head h2, .page-head h1, .post-head h1, .cta h2 { font
   .hero-zh { text-align: left; }
   .site-foot { text-align: left; }
 }
+
+/* ================= 움직임 (2026-10-27) — 창밖 나뭇잎 그림자, 지나가는 구름, 흐르는 띠, 스크롤 등장 ================= */
+.hero-frame { position: relative; overflow: hidden; }
+.sun { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: multiply;
+  -webkit-mask: url(brand/sun-wide.webp) center / 100% 100% no-repeat; mask: url(brand/sun-wide.webp) center / 100% 100% no-repeat; }
+.sway { position: absolute; inset: 0; animation: breeze 13s ease-in-out infinite alternate; }
+.lv { position: absolute; width: 100%; aspect-ratio: 1; right: -2%; top: -34%; background: url(brand/leaves.webp) center / contain no-repeat; transform-origin: 100% 0; will-change: transform; }
+.lv-near { animation: sway 6.5s ease-in-out infinite alternate; }
+.lv-far { right: -12%; top: -24%; width: 104%; opacity: .45; filter: blur(5px); transform: scaleX(-1) rotate(8deg); animation: sway-far 10s ease-in-out infinite alternate; }
+.cloud { position: absolute; inset: 0; background: rgb(236, 214, 202); opacity: 0; animation: sunrise 2.8s cubic-bezier(.3,.1,.2,1) .2s both, cloud 29s ease-in-out 12s infinite; }
+@keyframes sway { 0% { transform: rotate(0) translate(0, 0); } 35% { transform: rotate(-.8deg) translate(-.4%, .2%); } 100% { transform: rotate(-1.9deg) translate(-1.2%, .7%); } }
+@keyframes sway-far { 0% { transform: scaleX(-1) rotate(8deg) translate(0, 0); } 100% { transform: scaleX(-1) rotate(9.4deg) translate(1%, .6%); } }
+@keyframes breeze { 0%, 40% { transform: translate(0, 0); } 70% { transform: translate(-.6%, .3%); } 100% { transform: translate(.3%, -.2%); } }
+@keyframes sunrise { from { opacity: .82; } to { opacity: 0; } }
+@keyframes cloud { 0%, 52% { opacity: 0; } 66% { opacity: .5; } 74% { opacity: .42; } 90%, 100% { opacity: 0; } }
+
+/* 첫 화면 라벨: 빛이 든 뒤 하나씩 */
+.js .hero-light .hl, .js .hero-foot { opacity: 0; transform: translateY(10px); animation: rise .9s cubic-bezier(.2,.7,.2,1) forwards; }
+.js .hero-light .hl0 { animation-delay: 1.1s; } .js .hero-light .hl1 { animation-delay: 1.25s; }
+.js .hero-light .hl2 { animation-delay: 1.4s; } .js .hero-light .hl3 { animation-delay: 1.55s; }
+.js .hero-foot { animation-delay: 1.8s; }
+@keyframes rise { to { opacity: 1; transform: none; } }
+
+/* 흐르는 띠 */
+.ticker { overflow: hidden; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); margin-top: clamp(40px, 6vw, 72px); padding: clamp(14px, 1.8vw, 22px) 0; }
+.tk-track { display: flex; width: max-content; animation: tick 48s linear infinite; }
+.ticker:hover .tk-track { animation-play-state: paused; }
+.tk-run { display: flex; align-items: center; flex: none; }
+.tk-run span { font: 700 clamp(38px, 5.6vw, 84px)/1 var(--f-disp); letter-spacing: -.045em; white-space: nowrap; padding: 0 .38em; }
+.lang-ko .tk-run span { font-family: "Familjen Grotesk", "Noto Sans KR", sans-serif; letter-spacing: -.05em; }
+.tk-run i { flex: none; width: clamp(18px, 2vw, 28px); aspect-ratio: 3 / 4; background: var(--ink); border-radius: 999px 999px 0 0; }
+@keyframes tick { to { transform: translateX(-50%); } }
+
+/* 배움·생활·짓기: 아침, 한낮, 오후의 빛 */
+.path li { border-top: 0; padding-top: 0; }
+.path-img { margin: 0 0 26px; overflow: hidden; aspect-ratio: 9 / 11; background: var(--paper); }
+.path-img img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.1); transition: transform 2.6s cubic-bezier(.2,.7,.2,1); }
+.path li.in .path-img img { transform: scale(1); }
+.path li:hover .path-img img { transform: scale(1.035); transition-duration: 1.2s; }
+.path-no { border-top: 1px solid var(--ink); padding-top: 18px; }
+
+/* 스크롤 등장 */
+.js .rv { opacity: 0; transform: translateY(22px); transition: opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1); transition-delay: var(--rd, 0ms); }
+.js .rv.in { opacity: 1; transform: none; }
+.blk.next .blk-no::after { content: ""; display: inline-block; width: 9px; height: 9px; margin-left: 12px; border-radius: 50%; background: var(--ink); vertical-align: middle; animation: beat 2.2s ease-in-out infinite; }
+@keyframes beat { 0%, 100% { opacity: .25; transform: scale(.8); } 50% { opacity: 1; transform: scale(1); } }
+
+/* 마지막 띠: 손전등처럼 따라오는 빛 */
+.cta-band { position: relative; overflow: hidden; isolation: isolate; }
+.cta-band::before { content: ""; position: absolute; inset: -20%; z-index: -1; pointer-events: none;
+  background: radial-gradient(circle at var(--mx, 70%) var(--my, 40%), rgba(233, 207, 187, .2) 0, rgba(233, 207, 187, .07) 22%, transparent 46%);
+  transition: background-position .2s; }
+.cta-btns { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.btn-line { background: transparent; color: var(--paper); border-color: rgba(233, 207, 187, .55); }
+.btn-line:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+.btn { transition: background .25s, color .25s, border-color .25s, transform .25s; }
+.btn:active { transform: translateY(1px); }
+
+/* 텔레그램 문의 */
+.tg-contact { display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap; margin: clamp(24px, 4vw, 48px) 0; padding: 28px 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+.tg-contact h2 { font: 700 clamp(24px, 2.6vw, 34px)/1.15 var(--f-disp); margin: 4px 0 8px; }
+.tg-contact p { margin: 0; }
+.tg-contact .small { margin: 0; }
+
+/* 헤더: 스크롤하면 조금 더 단단하게 */
+.site-head { transition: background .3s, box-shadow .3s; }
+.scrolled .site-head { background: color-mix(in srgb, var(--paper) 97%, transparent); box-shadow: 0 1px 0 var(--rule); }
+
+@media (max-width: 720px) {
+  .sun { -webkit-mask-image: url(brand/sun-tall.webp); mask-image: url(brand/sun-tall.webp); }
+  .lv { width: 190%; right: -34%; top: -18%; }
+  .lv-far { width: 200%; right: -48%; top: -10%; }
+  .js .hero-light .hl, .js .hero-foot { animation-delay: .3s !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lv, .sway, .cloud, .tk-track, .blk.next .blk-no::after { animation: none !important; }
+  .cloud { opacity: 0; }
+  .js .rv, .js .hero-light .hl, .js .hero-foot { opacity: 1 !important; transform: none !important; transition: none !important; animation: none !important; }
+  .path-img img { transform: none !important; transition: none !important; }
+}

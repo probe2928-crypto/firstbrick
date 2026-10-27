@@ -23,11 +23,11 @@ const T = {
   en: {
     lang: "en", htmlLang: "en", pre: "", other: "ko", otherLabel: "한국어", otherShort: "KO",
     name: S.name, tag: "Light for learning. Glass for giving.",
-    desc: "Oriel is a foundation in the making for children in Southeast Asia: learning first, then everyday support, then the classrooms and schools a community asks for. Every gift traceable on-chain.",
+    desc: "Oriel is a foundation in the making for children in Southeast Asia: learning first, then everyday support for children and the families struggling to get by, then the classrooms and schools a community asks for. Every gift traceable on-chain.",
     nav: [["plan/", "Plan"], ["partners/", "Partners"], ["journal/", "Journal"], ["columns/", "Column"], ["get-involved/", "Get involved", "Join"], ["about/", "About"]],
     join: "Join the founding circle", readPlan: "Read the plan",
     status: "Founding stage. We are not taking donations yet. Giving opens once the foundation is registered, and every transaction will be public from the first one.",
-    heroLede: "We are a foundation in the making for children in Southeast Asia. We start with learning, add the everyday support that keeps a child in class, and grow toward the roads, buildings and schools a community needs.",
+    heroLede: "We are a foundation in the making for children in Southeast Asia. We start with learning, add everyday support for children and for families who are struggling to get by, and grow toward the roads, buildings and schools a community needs.",
     heroNote: "Every gift will be traceable on a public blockchain.",
     oriel: "The oriel window",
     eyebrow: ["A foundation in formation", "Southeast Asia"], sub: "Foundation", joinShort: "Join",
@@ -35,7 +35,7 @@ const T = {
     pathLede: "Three steps, in this order. We take the next one only when the one before it works and a local partner asks for it.",
     path: [
       ["Learn", "Tutoring, books, school supplies, reading corners and scholarships, run with local teachers."],
-      ["Live", "Meals, clean water, health checks and a safe way to get to school. The things that decide whether a child keeps showing up."],
+      ["Live", "Meals, clean water, health checks, a safe way to school, and living support for families having the hardest time. The things that decide whether a child keeps showing up."],
       ["Build", "Classrooms, libraries, toilets, safe paths and, when a community asks for it, a whole school."],
     ],
     chainTitle: "Proof, not promises",
@@ -82,11 +82,11 @@ const T = {
   ko: {
     lang: "ko", htmlLang: "ko", pre: "ko/", other: "en", otherLabel: "English", otherShort: "EN",
     name: S.name_ko, tag: "배움에는 빛을, 기부에는 창을.",
-    desc: "오리엘은 동남아시아 아이들을 위해 준비 중인 재단입니다. 배움에서 시작해 생활을 돕고, 마을이 원하는 교실과 학교까지 짓습니다. 모든 기부는 블록체인에 기록됩니다.",
+    desc: "오리엘은 동남아시아 아이들을 위해 준비 중인 재단입니다. 배움에서 시작해 아이와 어려운 가정의 생활을 돕고, 마을이 원하는 교실과 학교까지 짓습니다. 모든 기부는 블록체인에 기록됩니다.",
     nav: [["plan/", "계획"], ["partners/", "파트너"], ["journal/", "활동 일지"], ["columns/", "칼럼"], ["get-involved/", "함께하기"], ["about/", "소개"]],
     join: "창립 서포터 신청", readPlan: "계획 보기",
     status: "설립 준비 단계입니다. 아직 기부를 받지 않습니다. 재단 등록을 마친 뒤 기부를 열고, 첫 거래부터 모두 공개합니다.",
-    heroLede: "동남아시아 아이들을 위해 준비 중인 재단입니다. 배움에서 시작해, 아이가 계속 학교에 올 수 있게 하는 생활 지원을 더하고, 마을에 필요한 길과 건물, 학교까지 짓는 것이 목표입니다.",
+    heroLede: "동남아시아 아이들을 위해 준비 중인 재단입니다. 배움에서 시작해, 아이와 형편이 어려운 가정의 생활을 함께 돕고, 마을에 필요한 길과 건물, 학교까지 짓는 것이 목표입니다.",
     heroNote: "모든 기부는 공개 블록체인에서 확인할 수 있게 됩니다.",
     oriel: "오리엘 창",
     eyebrow: ["설립 준비 중", "동남아시아"], sub: "Foundation", joinShort: "참여하기",
@@ -94,7 +94,7 @@ const T = {
     pathLede: "세 단계를 이 순서대로 밟습니다. 앞 단계가 제대로 돌아가고 현지 파트너가 원할 때만 다음으로 넘어갑니다.",
     path: [
       ["배움", "현지 선생님과 함께하는 보충수업, 책과 학용품, 독서 공간, 장학금."],
-      ["생활", "급식, 깨끗한 물, 건강검진, 안전한 등굣길. 아이가 계속 학교에 나올 수 있느냐를 가르는 것들."],
+      ["생활", "급식, 깨끗한 물, 건강검진, 안전한 등굣길, 그리고 형편이 어려운 가정의 생활비 지원. 아이가 계속 학교에 나올 수 있느냐를 가르는 것들."],
       ["짓기", "교실, 도서관, 화장실, 안전한 길, 그리고 마을이 원할 때는 학교 한 채."],
     ],
     chainTitle: "약속 대신 기록으로",
@@ -150,10 +150,11 @@ const logo = (cls = "logo-mark") => wordmark(cls);
 function heroLight(t) {
   const ko = t.lang === "ko";
   const labs = ko
-    ? [["01 배움", "현지 선생님과 함께하는 보충수업, 책, 장학금"], ["02 생활", "급식, 깨끗한 물, 안전한 등굣길"], ["03 짓기", "마을이 원할 때만 교실과 도서관"], ["온체인", "모든 기부와 지출을 공개 장부에"]]
-    : [["01 Learn", "Tutoring, books and scholarships with local teachers"], ["02 Live", "Meals, clean water, a safe way to school"], ["03 Build", "Classrooms and libraries, only when a community asks"], ["On-chain", "Every gift and payout on a public ledger"]];
+    ? [["01 배움", "현지 선생님과 함께하는 보충수업, 책, 장학금"], ["02 생활", "급식, 깨끗한 물, 어려운 가정 생활비 지원"], ["03 짓기", "마을이 원할 때만 교실과 도서관"], ["온체인", "모든 기부와 지출을 공개 장부에"]]
+    : [["01 Learn", "Tutoring, books and scholarships with local teachers"], ["02 Live", "Meals, clean water, living support for families"], ["03 Build", "Classrooms and libraries, only when a community asks"], ["On-chain", "Every gift and payout on a public ledger"]];
   return `<section class="hero-light" aria-labelledby="hero-title">
-  <picture><source media="(max-width: 720px)" srcset="${BASE}brand/hero-tall.jpg"><img class="hero-img" src="${BASE}brand/hero-wide.jpg" alt="${esc(ko ? "창으로 들어온 햇빛이 복숭아색 벽에 떨어져 있고, 그 위에 oriel이라고 쓰여 있다" : "Sunlight from an arched window falls across a peach plaster wall painted with the word oriel")}" width="2880" height="1710" fetchpriority="high"></picture>
+  <div class="hero-frame"><picture><source media="(max-width: 720px)" srcset="${BASE}brand/hero-tall.jpg"><img class="hero-img" src="${BASE}brand/hero-wide.jpg" alt="${esc(ko ? "창으로 들어온 햇빛이 복숭아색 벽에 떨어져 있고, 그 위에 oriel이라고 쓰여 있다" : "Sunlight from an arched window falls across a peach plaster wall painted with the word oriel")}" width="2880" height="1710" fetchpriority="high"></picture>
+  <div class="sun" aria-hidden="true"><div class="sway"><i class="lv lv-far"></i><i class="lv lv-near"></i></div><i class="cloud"></i></div></div>
   <h1 id="hero-title" class="vh">${esc(t.name)} — ${esc(t.tag)}</h1>
   <ul class="hero-labs">${labs.map(([h, x], i) => `<li class="hl hl${i}"><b>${esc(h)}</b>${esc(x)}</li>`).join("")}</ul>
   <div class="hero-foot"><p class="hero-tag">${esc(t.tag)}</p><p class="hero-zh" lang="zh-Hant">明窗基金會</p><p class="hero-st">${esc(ko ? "설립 준비 중 · 아직 기부를 받지 않습니다" : "In formation · Not taking donations yet")}</p></div>
@@ -239,7 +240,7 @@ ${body}
   <div class="wrap">
     <p class="foot-mark">${wordmark("foot-wm")}</p><p class="foot-zh" lang="zh-Hant">${esc(S.name_zh)}</p>
     <p class="foot-tag">${esc(t.tag)}</p>
-    <nav class="foot-links" aria-label="${t.lang === "ko" ? "바닥 메뉴" : "Footer"}">${t.footLinks.map(([h, l]) => `<a href="${u(t, h)}">${esc(l)}</a>`).join("")}<a class="mail" href="mailto:${S.email}">${esc(S.email)}</a></nav>
+    <nav class="foot-links" aria-label="${t.lang === "ko" ? "바닥 메뉴" : "Footer"}">${t.footLinks.map(([h, l]) => `<a href="${u(t, h)}">${esc(l)}</a>`).join("")}<a class="mail" href="mailto:${S.email}">${esc(S.email)}</a><a class="mail" href="${TG}" target="_blank" rel="noopener">${t.lang === "ko" ? "텔레그램 문의" : "Telegram"} @${esc(S.telegram || "btcbullit")}</a></nav>
     <div class="foot-partner"><p class="small">${esc(t.media)}</p><a class="cb" href="${S.chainbrief}" target="_blank" rel="noopener">CHAINBRIEF</a>${socials(t)}</div>
   </div>
   <div class="wrap foot-base"><p>${esc(t.footStatus)}</p><p>© 2026 ${esc(t.rights)}</p></div>
@@ -269,6 +270,13 @@ function ledger(t) {
   return `<ol class="chain">${blocks}${nb}</ol>`;
 }
 
+// 흐르는 띠: 단계와 태그라인
+function ticker(t) {
+  const words = t.lang === "ko" ? ["배움", "생활", "짓기", "온체인", "배움에는 빛을", "기부에는 창을"] : ["Learn", "Live", "Build", "On-chain", "Light for learning", "Glass for giving"];
+  const run = words.map((w) => `<span>${esc(w)}</span><i></i>`).join("");
+  return `<div class="ticker" aria-hidden="true"><div class="tk-track"><div class="tk-run">${run}</div><div class="tk-run">${run}</div></div></div>`;
+}
+
 // 배움·생활·짓기 번호
 function courses(i) { return `<span class="path-no">0${i + 1}</span>`; }
 
@@ -282,11 +290,12 @@ ${heroLight(t)}
   <div class="actions"><a class="btn" href="${u(t, "get-involved/")}#circle">${esc(t.join)}</a><a class="btn btn-quiet" href="${u(t, "plan/")}">${esc(t.readPlan)}</a></div>
 </section>
 <div class="wrap">${statusBar(t)}</div>
+${ticker(t)}
 
 <section class="band path-band">
   <div class="wrap">
     <header class="sec-head"><h2>${esc(t.pathTitle)}</h2><p>${esc(t.pathLede)}</p></header>
-    <ol class="path">${t.path.map(([h, x], i) => `<li style="--step:${i}">${courses(i)}<h3>${esc(h)}</h3><p>${esc(x)}</p></li>`).join("")}</ol>
+    <ol class="path">${t.path.map(([h, x], i) => `<li style="--step:${i}"><figure class="path-img"><img src="${BASE}brand/path-${["learn", "live", "build"][i]}.jpg" alt="" width="900" height="1100" loading="lazy"></figure>${courses(i)}<h3>${esc(h)}</h3><p>${esc(x)}</p></li>`).join("")}</ol>
   </div>
 </section>
 
@@ -334,7 +343,7 @@ ${COLUMNS.length ? `<section class="wrap notes-sec">
 </section>
 
 <section class="band cta-band">
-  <div class="wrap cta"><h2>${esc(t.ctaTitle)}</h2><p>${esc(t.ctaText)}</p><a class="btn btn-light" href="${u(t, "get-involved/")}#circle">${esc(t.join)}</a></div>
+  <div class="wrap cta"><h2>${esc(t.ctaTitle)}</h2><p>${esc(t.ctaText)}</p><div class="cta-btns"><a class="btn btn-light" href="${u(t, "get-involved/")}#circle">${esc(t.join)}</a><a class="btn btn-line" href="${TG}" target="_blank" rel="noopener">${t.lang === "ko" ? "텔레그램 문의" : "Ask on Telegram"}</a></div></div>
 </section>`;
 }
 
@@ -344,10 +353,10 @@ const PLAN = {
     sections: [
       ["Why Southeast Asia, why children", "Across parts of Southeast Asia, many children still leave school early, often because of costs, distance or work at home rather than lack of interest. Small, steady help close to the classroom can change that. We will choose our first community with a local partner, after visiting, listening and checking what others already do there, so we add to existing work instead of duplicating it."],
       ["Learn: keep children learning", "Our first programs support learning that is already happening: after-school tutoring with local teachers, books and supplies, reading corners in existing schools, and scholarships that cover the costs that make families pull children out. Every program has a local lead and a simple measure we report on, such as attendance or reading levels."],
-      ["Live: remove what stops a child coming", "Once learning support works, we add the everyday basics that decide whether a child turns up: school meals, clean drinking water, health and eye checks, hygiene kits and safe transport. We fund what the partner asks for, buy locally when we can, and publish what each item cost."],
+      ["Live: support children and the families around them", "Once learning support works, we add the everyday basics that decide whether a child turns up: school meals, clean drinking water, health and eye checks, hygiene kits and safe transport. For families having the hardest time, we also give living support: a set monthly amount for a fixed period, toward food, rent or medical bills, so a child does not have to leave school to earn. A local partner chooses the families against published criteria. Families are recorded by code, never by name, and each quarter we publish how many households we supported and the total paid. We fund what the partner asks for, buy locally when we can, and publish what each item cost."],
       ["Build: classrooms, then schools", "Buildings come last. When a community has a working program and asks for space, we help build it: a classroom, a library, toilets, a water point, a safer path or bridge, and eventually a school. Communities contribute land, labour or upkeep plans so each building has an owner after we leave."],
       ["How giving will work", "We will register the foundation before accepting a single donation. Gifts in stablecoins and crypto will go to one published wallet, card and bank gifts to a named account, and every payout will be logged with a receipt and the partner who received it. A quarterly report in English and Korean will put the numbers and the on-chain record side by side."],
-      ["How we will measure progress", "For each program: children reached, attendance, learning results where a partner can measure them, and cost per child. For each building: cost against budget, date finished, and whether it is still in use a year later. We will publish misses as well as wins."],
+      ["How we will measure progress", "For each program: children reached, households given living support and for how long, attendance, learning results where a partner can measure them, and cost per child. For each building: cost against budget, date finished, and whether it is still in use a year later. We will publish misses as well as wins."],
     ],
   },
   ko: {
@@ -355,10 +364,10 @@ const PLAN = {
     sections: [
       ["왜 동남아시아, 왜 아이들인가", "동남아시아 곳곳에는 아직도 일찍 학교를 그만두는 아이들이 많습니다. 공부가 싫어서라기보다 비용, 거리, 집안일 때문인 경우가 많습니다. 교실 가까이에서 작고 꾸준하게 돕는 일이 그 흐름을 바꿀 수 있습니다. 첫 마을은 현지 파트너와 함께 직접 가서 듣고, 이미 그곳에서 일하는 단체들을 확인한 뒤 정합니다. 있는 일을 겹치게 하지 않고 보태기 위해서입니다."],
       ["배움: 아이가 계속 배우게", "첫 프로그램은 이미 일어나고 있는 배움을 돕습니다. 현지 선생님과의 방과후 보충수업, 책과 학용품, 기존 학교 안의 독서 공간, 가정이 아이를 학교에서 빼게 만드는 비용을 덮는 장학금. 모든 프로그램에는 현지 책임자와 출석률·읽기 수준 같은 간단한 지표가 있고, 이를 보고합니다."],
-      ["생활: 학교에 못 오게 막는 것을 없애기", "학습 지원이 자리 잡으면, 아이가 학교에 나오느냐를 가르는 생활의 기본을 더합니다. 급식, 깨끗한 식수, 건강·시력 검진, 위생용품, 안전한 등하굣길. 파트너가 요청한 것을 지원하고, 가능하면 현지에서 사며, 항목별 비용을 공개합니다."],
+      ["생활: 아이와 가정의 하루를 받치기", "학습 지원이 자리 잡으면, 아이가 학교에 나오느냐를 가르는 생활의 기본을 더합니다. 급식, 깨끗한 식수, 건강·시력 검진, 위생용품, 안전한 등하굣길. 형편이 가장 어려운 가정에는 생활비도 지원합니다. 정해진 기간 동안 매달 일정 금액을 식비·집세·병원비에 보태, 아이가 돈을 벌러 학교를 그만두지 않아도 되게 합니다. 지원 가정은 현지 파트너가 공개된 기준으로 고르고, 이름 대신 코드로 기록하며, 지원한 가구 수와 총액을 분기마다 공개합니다. 파트너가 요청한 것을 지원하고, 가능하면 현지에서 사며, 항목별 비용을 공개합니다."],
       ["짓기: 교실에서 학교까지", "건물은 마지막입니다. 프로그램이 돌아가는 마을이 공간을 원할 때 함께 짓습니다. 교실, 도서관, 화장실, 식수대, 더 안전한 길이나 다리, 그리고 언젠가는 학교. 마을은 땅이나 일손, 유지 계획을 보태 우리가 떠난 뒤에도 건물의 주인이 됩니다."],
       ["기부는 이렇게 받습니다", "재단 등록을 마치기 전에는 기부를 한 푼도 받지 않습니다. 스테이블코인·암호화폐 기부는 공개된 지갑 하나로, 카드·계좌 기부는 재단 명의 계좌로 받고, 모든 지출은 영수증·받은 파트너와 함께 기록합니다. 분기마다 영어·한국어 보고서에 숫자와 온체인 기록을 나란히 싣습니다."],
-      ["잘되고 있는지 확인하는 법", "프로그램마다 지원한 아이 수, 출석률, 파트너가 측정할 수 있는 학습 결과, 아이 1인당 비용을 봅니다. 건물마다 예산 대비 비용, 완공일, 1년 뒤에도 쓰이고 있는지를 봅니다. 잘된 것만이 아니라 안 된 것도 공개합니다."],
+      ["잘되고 있는지 확인하는 법", "프로그램마다 지원한 아이 수, 생활비를 지원한 가구 수와 기간, 출석률, 파트너가 측정할 수 있는 학습 결과, 아이 1인당 비용을 봅니다. 건물마다 예산 대비 비용, 완공일, 1년 뒤에도 쓰이고 있는지를 봅니다. 잘된 것만이 아니라 안 된 것도 공개합니다."],
     ],
   },
 };
@@ -369,7 +378,7 @@ function plan(t) {
 <div class="wrap">${statusBar(t)}</div>
 <section class="wrap prose-grid">${P.sections.map(([h, x]) => `<article class="prose-block"><h2>${esc(h)}</h2><p>${esc(x)}</p></article>`).join("")}</section>
 <section class="wrap"><header class="sec-head"><h2>${esc(t.roadTitle)}</h2></header>${roadmap(t, true)}</section>
-<section class="band cta-band"><div class="wrap cta"><h2>${esc(t.ctaTitle)}</h2><p>${esc(t.ctaText)}</p><a class="btn btn-light" href="${u(t, "get-involved/")}#circle">${esc(t.join)}</a></div></section>`;
+<section class="band cta-band"><div class="wrap cta"><h2>${esc(t.ctaTitle)}</h2><p>${esc(t.ctaText)}</p><div class="cta-btns"><a class="btn btn-light" href="${u(t, "get-involved/")}#circle">${esc(t.join)}</a><a class="btn btn-line" href="${TG}" target="_blank" rel="noopener">${t.lang === "ko" ? "텔레그램 문의" : "Ask on Telegram"}</a></div></div></section>`;
 }
 
 function noteRow(t, n, base = "notes/") {
@@ -436,9 +445,17 @@ const INV = {
   },
 };
 
+const TG = `https://t.me/${(S.telegram || "btcbullit").replace(/^@/, "")}`;
+const tgContact = (t) => `<section class="wrap" aria-labelledby="tg-title"><div class="tg-contact">
+  <div><p class="small">${t.lang === "ko" ? "텔레그램 문의" : "Telegram"}</p><h2 id="tg-title">${t.lang === "ko" ? "궁금한 건 텔레그램으로 바로 물어보세요" : "Ask us anything on Telegram"}</h2>
+  <p>${t.lang === "ko" ? "파트너, 봉사, 행사, 언론 문의 모두 받습니다." : "Partners, volunteering, events or press, all welcome."}</p></div>
+  <a class="btn" href="${TG}" target="_blank" rel="noopener">@${esc(S.telegram || "btcbullit")} →</a>
+</div></section>`;
+
 function involve(t) {
   const I = INV[t.lang], F = I.form;
   return `${pageHead(I.title, I.lede)}
+${tgContact(t)}
 <section class="wrap ways">${I.ways.map(([id, h, x]) => `<article id="${id}" class="way"><h2>${esc(h)}</h2><p>${esc(x)}</p></article>`).join("")}</section>
 <section class="wrap form-wrap" aria-labelledby="form-title">
   <h2 id="form-title">${esc(F.title)}</h2>
@@ -454,7 +471,7 @@ function involve(t) {
     <label class="wide"><span>${esc(F.msg)}</span><textarea name="message" rows="4"></textarea></label>
     <div class="wide form-end"><button class="btn" type="submit">${esc(F.send)}</button><p class="small">${esc(F.privacy)}</p></div>
   </form>
-  <p class="small">${t.lang === "ko" ? "이메일로 직접 연락하셔도 됩니다:" : "Or write to us directly:"} <a href="mailto:${S.email}">${esc(S.email)}</a></p>
+  <p class="small">${t.lang === "ko" ? "이메일이나 텔레그램으로 직접 연락하셔도 됩니다:" : "Or write to us directly:"} <a href="mailto:${S.email}">${esc(S.email)}</a> · <a href="${TG}" target="_blank" rel="noopener">Telegram @${esc(S.telegram || "btcbullit")}</a></p>
 </section>`;
 }
 
@@ -490,18 +507,18 @@ const policyPage = (t, D) => `${pageHead(D.title, D.lede)}<section class="wrap p
 
 const ABOUT = {
   en: { title: "About", lede: "Who is starting Oriel, and why.",
-    founderH: "Founder", founder: "Sejun Park", founderRole: "Founder",
-    bio: ["Sejun has spent seven years in the crypto exchange industry, working with global exchanges including Bitget, MEXC, Digifinex and Huobi. He studied history in Incheon, has organised or taken part in more than twenty art exhibitions in Seoul and Incheon, and has run restaurant and investment businesses.", "He is starting Oriel to put what the crypto industry does well, open ledgers and fast cross-border payments, to work for children's education, and he plans to spend time in the field himself, travelling and volunteering alongside local partners."],
+    founderH: "Founder", founder: "Scott Park", founderRole: "Founder",
+    bio: ["Scott Park has volunteered abroad for years, including in Thailand in 2020 and in Congo in 2025.", "Those trips changed how he thinks about giving. A big one-off gift matters less than small help that keeps coming. The people in a community know best what they need, so outsiders should follow their lead. And the people who give deserve to see exactly where their money went, because that is what makes them give again.", "Oriel is built on those lessons. It starts with children's learning, reaches out to the families who are struggling to get by, and keeps every gift and payout on a public ledger anyone can check. Scott plans to go back to the field about once a quarter, to work alongside local partners and post what he sees here."],
     whyH: "Why the name", why: "An oriel is a window that leans out from a wall to catch more light and a wider view. We want to be that for children's learning: more light, in places that have too little of it. It is also how we want to be seen: through clear glass, with every gift and every payout in view on a public chain. Our Chinese name, 明窗, comes from 明窗淨几, the bright window and clean desk of a good place to study." },
   ko: { title: "소개", lede: "누가, 왜 오리엘을 시작하는지.",
-    founderH: "설립자", founder: "박세준", founderRole: "설립자",
-    bio: ["박세준은 비트겟, MEXC, 디지파이넥스, 후오비 등 글로벌 거래소와 함께 7년간 암호화폐 거래소 업계에서 일했습니다. 인천에서 사학을 공부했고, 서울과 인천에서 20회 넘는 미술 전시를 열거나 참여했으며, 요식업과 투자 사업도 운영했습니다.", "공개 장부와 빠른 국경 간 송금이라는 크립토 업계의 강점을 아이들의 교육에 쓰기 위해 오리엘을 시작합니다. 직접 현장을 다니며 현지 파트너와 함께 봉사할 계획입니다."],
+    founderH: "설립자", founder: "스캇 박 (Scott Park)", founderRole: "설립자",
+    bio: ["스캇 박은 2020년 태국, 2025년 아프리카 콩고 등 해외 현장에서 봉사해 왔습니다.", "그 시간이 기부를 보는 눈을 바꿨습니다. 한 번의 큰 선물보다 끊기지 않는 작은 도움이 더 중요하다는 것. 무엇이 필요한지는 그 마을 사람들이 가장 잘 알고, 밖에서 온 사람은 그 뜻을 따라야 한다는 것. 그리고 기부한 사람은 자기 돈이 어디에 쓰였는지 볼 수 있어야 하고, 그래야 다음 기부가 이어진다는 것.", "오리엘은 그 깨달음 위에서 시작합니다. 아이들의 배움에서 출발해 형편이 어려운 가정의 생활까지 돕고, 모든 기부와 지출을 누구나 확인할 수 있는 공개 장부에 남깁니다. 앞으로 분기마다 직접 현장에 가서 현지 파트너와 함께 일하고, 보고 겪은 것을 이곳에 기록합니다."],
     whyH: "이름의 뜻", why: "오리엘은 벽에서 바깥으로 내민 창입니다. 빛을 더 들이고, 더 멀리 보게 해 줍니다. 우리는 아이들의 배움에 그런 창이 되고 싶습니다. 빛이 모자란 곳에 빛을 더 들이는 일입니다. 동시에 우리 자신도 그렇게 보이고 싶습니다. 맑은 유리 너머로, 모든 기부와 지출이 공개 블록체인에 그대로 보이도록. 중국어 이름 明窗(밝은 창)은 공부하기 좋은 방을 뜻하는 明窗淨几에서 따왔습니다." },
 };
 function about(t) {
   const A = ABOUT[t.lang];
   return `${pageHead(A.title, A.lede)}
-<section class="wrap split"><header class="sec-head"><h2>${esc(A.founderH)}</h2></header><div class="prose"><p class="person"><strong>${esc(A.founder)}</strong></p>${A.bio.map((x) => `<p>${esc(x)}</p>`).join("")}${S.linkedin ? `<p><a class="text-link" href="${esc(S.linkedin)}" target="_blank" rel="noopener">LinkedIn</a></p>` : ""}</div></section>
+<section class="wrap split"><header class="sec-head"><h2>${esc(A.founderH)}</h2></header><div class="prose"><p class="person"><strong>${esc(A.founder)}</strong></p>${A.bio.map((x) => `<p>${esc(x)}</p>`).join("")}</div></section>
 <section class="wrap split"><header class="sec-head"><h2>${esc(A.whyH)}</h2></header><div class="prose"><p>${esc(A.why)}</p></div></section>
 <section class="wrap split partners"><header class="sec-head"><h2>${esc(t.partnerTitle)}</h2></header><div><p class="partner-line"><a class="cb" href="${S.chainbrief}" target="_blank" rel="noopener">CHAINBRIEF</a><span>${esc(t.partnerText)}</span></p>${S.qurator ? `<p class="partner-line"><a class="cb" href="${S.qurator}" target="_blank" rel="noopener">QURATOR</a><span>${esc(t.quratorText)}</span></p>` : ""}<p>${esc(t.partnerWanted)}</p></div></section>`;
 }
@@ -552,19 +569,23 @@ const FAQ = {
   en: { title: "Questions", lede: "Short answers to what people ask us most.", qs: [
     ["Are you a registered charity?", "Not yet. Oriel is in formation. We will register before we accept any donation, and we will say so on this site the day it happens."],
     ["Can I donate now?", "No. We are not taking donations of any kind yet. If anyone asks you to send money or crypto to Oriel today, it is not us."],
+    ["Is it only education?", "No. Learning comes first, but we also cover the everyday basics around it, such as meals, clean water and health checks, and give living support to families having the hardest time, so children are not pulled out of school to earn."],
     ["Where will you work first?", "In Southeast Asia, in one community, chosen with a local partner after visits and conversations. We will name it once a partner agrees."],
     ["How will on-chain giving work?", "Gifts in stablecoins and crypto will go to one published wallet, so anyone can see them arrive. Each payout will be logged with a receipt and the partner who received it, and card or bank gifts will be recorded on the same ledger."],
     ["Can I volunteer?", "Yes, with a skill a partner needs: teaching, building, health, translation, design, accounting, development. Much of it is remote. We do not organise short visits with children."],
-    ["Who is behind Oriel?", "Founder Sejun Park, who spent seven years in the crypto exchange industry. Advisers will be listed here as they join."],
+    ["How do I contact you?", "The fastest way is Telegram: @btcbullit. You can also use the form on the Get involved page or email us."],
+    ["Who is behind Oriel?", "Founder Scott Park, who has volunteered abroad in places including Thailand and Congo. Advisers will be listed here as they join."],
     ["How is CHAINBRIEF involved?", "CHAINBRIEF, a crypto news outlet, is our media partner and reports our progress."],
   ] },
   ko: { title: "자주 묻는 질문", lede: "가장 많이 받는 질문에 짧게 답합니다.", qs: [
     ["등록된 공익단체인가요?", "아직 아닙니다. 설립 준비 중이며, 어떤 기부도 받기 전에 등록을 마치고 그날 이 사이트에 알립니다."],
     ["지금 기부할 수 있나요?", "아니요. 아직 어떤 형태의 기부도 받지 않습니다. 지금 오리엘 이름으로 돈이나 암호화폐를 보내 달라는 연락은 저희가 아닙니다."],
+    ["교육만 지원하나요?", "아니요. 배움이 먼저지만 급식·식수·건강검진 같은 생활의 기본도 함께 돕고, 형편이 가장 어려운 가정에는 생활비를 지원합니다. 아이가 돈을 벌러 학교를 그만두지 않게 하기 위해서입니다."],
     ["어디서 먼저 활동하나요?", "동남아시아의 한 마을에서, 직접 방문하고 대화한 뒤 현지 파트너와 함께 정합니다. 파트너가 동의하면 공개합니다."],
     ["온체인 기부는 어떻게 하나요?", "스테이블코인·암호화폐 기부는 공개된 지갑 하나로 받아 누구나 들어오는 것을 볼 수 있게 합니다. 모든 지출에 영수증과 받은 파트너를 기록하고, 카드·계좌 기부도 같은 장부에 남깁니다."],
     ["봉사할 수 있나요?", "네, 파트너에게 필요한 재능으로요. 교육·건축·보건·번역·디자인·회계·개발 등이며 원격으로 하는 일도 많습니다. 아이들과의 단기 방문은 운영하지 않습니다."],
-    ["누가 만드나요?", "7년간 암호화폐 거래소 업계에서 일한 박세준이 설립합니다. 자문단은 합류하는 대로 소개합니다."],
+    ["문의는 어디로 하나요?", "텔레그램 @btcbullit 로 하시는 게 가장 빠릅니다. 함께하기 페이지의 신청서나 이메일도 괜찮습니다."],
+    ["누가 만드나요?", "태국, 콩고 등 해외 현장에서 봉사해 온 스캇 박이 설립합니다. 자문단은 합류하는 대로 소개합니다."],
     ["체인브리프와는 어떤 관계인가요?", "코인 뉴스 매체 체인브리프가 미디어 파트너로서 진행 상황을 보도합니다."],
   ] },
 };

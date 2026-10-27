@@ -14,6 +14,7 @@ The daily improvement task reads and updates this file. Top = highest priority. 
 - 현장 사진 올리는 법: PC의 `문서\FirstBrick\inbox\<날짜-장소>\` 폴더에 사진 + note.txt(무슨 일이 있었는지, 아이 얼굴이 나온 사진이 있으면 보호자 동의를 받았는지 `consent: yes`) → 다음 날 아침 고도화 작업이 활동 일지로 올림
 
 ## 다음 작업 (Claude)
+- **표기 원칙 (세준, 2026-10-27):** 설립자는 가명 **Scott Park / 스캇 박**으로만 쓴다. 거래소 경력·실명·개인 링크드인은 쓰지 않는다. 소개는 해외 봉사(2020 태국, 2025 아프리카 콩고 등)에서 얻은 깨달음 중심. 사업 범위에 **어려운 가정 생활비 지원**이 포함된다(생활 단계).
 - [ ] /journal/ 사진 갤러리 라이트박스 (키보드·스와이프)
 - [ ] 뉴스레터 아카이브: 창립 서포터에게 보낸 소식을 /updates/ 로
 - [ ] 국가 선정 페이지 (현지 파트너 확정 후)
@@ -21,6 +22,7 @@ The daily improvement task reads and updates this file. Top = highest priority. 
 - [ ] 페이지별 og 이미지
 
 ## 완료
+- 2026-10-27 홈 모션: 창빛 위로 흔들리는 나뭇잎 그림자·지나가는 구름(sun-*.webp 마스크 + leaves.webp, multiply), 배움·생활·짓기에 아침·한낮·오후 빛 렌더(path-*.jpg), 흐르는 띠, 스크롤 등장, 마지막 띠 따라오는 빛. reduced-motion 대응. 텔레그램 @btcbullit 문의(함께하기·푸터·FAQ·CTA). 설립자 소개 Scott Park로 교체. 생활비 지원 문구 추가.
 - 2026-10-27 저장소 이름 변경 firstbrick → oriel (사이트 주소 probe2928-crypto.github.io/oriel). 디자인 C(말뫼) 적용: 햇빛 든 복숭아색 벽 첫 화면(scripts 밖에서 렌더한 public/brand/hero-wide.jpg·hero-tall.jpg), Familjen Grotesk 하나, 복숭아 #E9CFBB·크림 #F1DCCB·검정 #161514, 작은 문장형 라벨. **금색·세리프·로마 숫자는 더 쓰지 않음.**
 - 2026-10-27 이름 변경: First Brick → **Oriel Foundation / 오리엘 재단 / 明窗基金會**. 오리엘 = 벽에서 내민, 빛을 더 들이는 창(배움에는 빛, 기부에는 맑은 창). 카피 'Light for learning. Glass for giving.' / '배움에는 빛을, 기부에는 창을.' 히어로 입면도 왼쪽 창을 오리엘 창으로(유리만 금색), 로고·파비콘 = 받침 달린 창 + 금빛 유리 4칸, 배움/생활/짓기 아이콘 = 밝혀진 유리 2→4→6칸. og·프로필·커버 이미지, 릴스 템플릿 같은 그림으로 교체. **금색은 창 유리에만, 벽돌 모티프는 쓰지 않음.**
 - 2026-10-27 링크드인 프로필 연결 (linkedin.com/in/parksejun1004) — 소개 페이지·푸터
