@@ -36,4 +36,44 @@
       band.style.setProperty("--my", ((e.clientY - r.top) / r.height * 100).toFixed(1) + "%");
     });
   }
+
+  // 활동 일지 사진: 크게 보기 (키보드 ←/→/Esc, 밀어서 넘기기)
+  var shots = [].slice.call(d.querySelectorAll(".post .post-cover, .post .prose img, .post .gallery img"));
+  if (shots.length && window.HTMLDialogElement) {
+    var ko = root.lang === "ko";
+    var L = ko ? { open: "사진 크게 보기", close: "닫기", prev: "이전", next: "다음", label: "사진" } : { open: "View photo larger", close: "Close", prev: "Previous", next: "Next", label: "Photo" };
+    var dlg = d.createElement("dialog"); dlg.className = "lb"; dlg.setAttribute("aria-label", L.label);
+    dlg.innerHTML = '<div class="lb-stage"><img alt=""></div><div class="lb-bar"><span class="lb-count" aria-live="polite"></span><span class="lb-nav"><button type="button" class="lb-btn lb-prev" aria-label="' + L.prev + '">&larr;</button><button type="button" class="lb-btn lb-next" aria-label="' + L.next + '">&rarr;</button></span><button type="button" class="lb-btn lb-close">' + L.close + '</button></div>';
+    d.body.appendChild(dlg);
+    var big = dlg.querySelector(".lb-stage img"), count = dlg.querySelector(".lb-count"), prev = dlg.querySelector(".lb-prev"), next = dlg.querySelector(".lb-next"), cur = 0, opener = null;
+    var show = function (i) {
+      cur = (i + shots.length) % shots.length;
+      big.src = shots[cur].currentSrc || shots[cur].src; big.alt = shots[cur].alt || "";
+      big.style.animation = "none"; void big.offsetWidth; big.style.animation = "";
+      count.textContent = (cur + 1) + " / " + shots.length;
+    };
+    prev.hidden = next.hidden = shots.length < 2;
+    shots.forEach(function (img, i) {
+      img.classList.add("zoomable"); img.tabIndex = 0; img.setAttribute("role", "button");
+      img.setAttribute("aria-label", (img.alt ? img.alt + " — " : "") + L.open);
+      var open = function () { opener = img; show(i); dlg.showModal(); dlg.querySelector(".lb-close").focus(); };
+      img.addEventListener("click", open);
+      img.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
+    });
+    prev.addEventListener("click", function () { show(cur - 1); });
+    next.addEventListener("click", function () { show(cur + 1); });
+    dlg.querySelector(".lb-close").addEventListener("click", function () { dlg.close(); });
+    dlg.querySelector(".lb-stage").addEventListener("click", function (e) { if (e.target !== big) dlg.close(); });
+    dlg.addEventListener("close", function () { if (opener) opener.focus(); });
+    dlg.addEventListener("keydown", function (e) {
+      if (shots.length > 1 && e.key === "ArrowLeft") { e.preventDefault(); show(cur - 1); }
+      if (shots.length > 1 && e.key === "ArrowRight") { e.preventDefault(); show(cur + 1); }
+    });
+    var x0 = null;
+    dlg.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    dlg.addEventListener("touchend", function (e) {
+      if (x0 === null || shots.length < 2) return; var dx = e.changedTouches[0].clientX - x0; x0 = null;
+      if (Math.abs(dx) > 50) show(cur + (dx < 0 ? 1 : -1));
+    });
+  }
 })();

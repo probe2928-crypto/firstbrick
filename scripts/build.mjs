@@ -147,6 +147,17 @@ const wordmark = (cls = "wm") => `<svg class="${cls}" viewBox="20 -845 2110 875"
 const logo = (cls = "logo-mark") => wordmark(cls);
 
 // 첫 화면: 창으로 들어온 햇빛이 떨어진 복숭아색 회벽(렌더 이미지, 워드마크 포함) + 둘레의 작은 라벨
+// 창빛 속 먼지: 빛이 든 자리에서만 보이는 작은 입자 (위치는 고정값 — 빌드마다 같다)
+function motes() {
+  let r = 7; const rnd = () => ((r = (r * 9301 + 49297) % 233280) / 233280);
+  const dots = Array.from({ length: 22 }, () => {
+    const x = (32 + rnd() * 46).toFixed(1), y = (52 + rnd() * 42).toFixed(1), s = (1.6 + rnd() * 3).toFixed(1);
+    const d = (-rnd() * 24).toFixed(1), t = (16 + rnd() * 14).toFixed(1), dx = ((rnd() - .3) * 60).toFixed(0), dy = (-20 - rnd() * 45).toFixed(0);
+    return `<i style="--x:${x}%;--y:${y}%;--s:${s}px;--d:${d}s;--t:${t}s;--dx:${dx}px;--dy:${dy}px"></i>`;
+  }).join("");
+  return `<div class="motes" aria-hidden="true">${dots}</div>`;
+}
+
 function heroLight(t) {
   const ko = t.lang === "ko";
   const labs = ko
@@ -154,7 +165,7 @@ function heroLight(t) {
     : [["01 Learn", "Tutoring, books and scholarships with local teachers"], ["02 Live", "Meals, clean water, living support for families"], ["03 Build", "Classrooms and libraries, only when a community asks"], ["On-chain", "Every gift and payout on a public ledger"]];
   return `<section class="hero-light" aria-labelledby="hero-title">
   <div class="hero-frame"><picture><source media="(max-width: 720px)" srcset="${BASE}brand/hero-tall.jpg"><img class="hero-img" src="${BASE}brand/hero-wide.jpg" alt="${esc(ko ? "창으로 들어온 햇빛이 복숭아색 벽에 떨어져 있고, 그 위에 oriel이라고 쓰여 있다" : "Sunlight from an arched window falls across a peach plaster wall painted with the word oriel")}" width="2880" height="1710" fetchpriority="high"></picture>
-  <div class="sun" aria-hidden="true"><div class="sway"><i class="lv lv-far"></i><i class="lv lv-near"></i></div><i class="cloud"></i></div></div>
+  <div class="sun" aria-hidden="true"><div class="sway"><i class="lv lv-far"></i><i class="lv lv-near"></i></div><i class="cloud"></i></div>${motes()}</div>
   <h1 id="hero-title" class="vh">${esc(t.name)} — ${esc(t.tag)}</h1>
   <ul class="hero-labs">${labs.map(([h, x], i) => `<li class="hl hl${i}"><b>${esc(h)}</b>${esc(x)}</li>`).join("")}</ul>
   <div class="hero-foot"><p class="hero-tag">${esc(t.tag)}</p><p class="hero-zh" lang="zh-Hant">明窗基金會</p><p class="hero-st">${esc(ko ? "설립 준비 중 · 아직 기부를 받지 않습니다" : "In formation · Not taking donations yet")}</p></div>

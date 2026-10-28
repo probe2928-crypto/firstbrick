@@ -518,3 +518,29 @@ h1, h2, h3, .display, .sec-head h2, .page-head h1, .post-head h1, .cta h2 { font
   .js .rv, .js .hero-light .hl, .js .hero-foot { opacity: 1 !important; transform: none !important; transition: none !important; animation: none !important; }
   .path-img img { transform: none !important; transition: none !important; }
 }
+
+/* 창빛 속 먼지 (2026-10-28): 빛이 든 자리에서만 떠다닌다 */
+.motes { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.motes i { position: absolute; left: var(--x); top: var(--y); width: var(--s); height: var(--s); border-radius: 50%;
+  background: rgba(255, 250, 241, .95); box-shadow: 0 0 calc(var(--s) * 1.6) rgba(255, 246, 230, .9);
+  opacity: 0; animation: mote var(--t) linear var(--d) infinite; will-change: transform, opacity; }
+@keyframes mote { 0% { opacity: 0; transform: translate(0, 0); } 18% { opacity: .9; } 70% { opacity: .65; } 100% { opacity: 0; transform: translate(var(--dx), var(--dy)); } }
+@media (prefers-reduced-motion: reduce) { .motes { display: none; } }
+
+/* 활동 일지 사진 크게 보기 (2026-10-28) */
+.zoomable { cursor: zoom-in; }
+.zoomable:focus-visible { outline: 1px solid var(--ink); outline-offset: 4px; }
+.lb { position: fixed; inset: 0; z-index: 100; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: var(--ink); color: var(--paper); }
+.lb::backdrop { background: transparent; }
+.lb[open] { display: grid; grid-template-rows: 1fr auto; }
+.lb-stage { display: grid; place-items: center; min-height: 0; padding: clamp(16px, 4vw, 56px) clamp(16px, 7vw, 96px) 0; touch-action: pan-y; }
+.lb-stage img { max-width: 100%; max-height: calc(100vh - 150px); max-height: calc(100dvh - 150px); object-fit: contain; user-select: none; -webkit-user-drag: none; }
+.lb-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px clamp(16px, 4vw, 48px) max(18px, env(safe-area-inset-bottom)); font: 600 14px/1 var(--f-head); }
+.lb-bar .lb-count { font-variant-numeric: tabular-nums; color: #DCCFC2; }
+.lb-btn { min-width: 48px; min-height: 48px; padding: 0 16px; background: transparent; color: var(--paper); border: 1px solid rgba(233, 207, 187, .5); border-radius: 0; font: 600 14px/1 var(--f-head); cursor: pointer; }
+.lb-btn:hover, .lb-btn:focus-visible { background: var(--paper); color: var(--ink); outline: none; }
+.lb-btn[hidden] { display: none; }
+.lb-nav { display: flex; gap: 8px; }
+.lb-stage img { animation: lbin .35s cubic-bezier(.2,.7,.2,1); }
+@keyframes lbin { from { opacity: 0; transform: scale(.985); } }
+@media (prefers-reduced-motion: reduce) { .lb-stage img { animation: none; } }
