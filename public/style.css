@@ -544,3 +544,31 @@ h1, h2, h3, .display, .sec-head h2, .page-head h1, .post-head h1, .cta h2 { font
 .lb-stage img { animation: lbin .35s cubic-bezier(.2,.7,.2,1); }
 @keyframes lbin { from { opacity: 0; transform: scale(.985); } }
 @media (prefers-reduced-motion: reduce) { .lb-stage img { animation: none; } }
+
+/* 소개 페이지: 한눈에 · 지키는 것 · 이야기 나누기 */
+.facts { margin: 0; }
+.facts div { padding: 20px 0; grid-template-columns: minmax(0, 9em) minmax(0, 1fr); }
+.facts dt { font: var(--caps); letter-spacing: var(--track); text-transform: uppercase; color: var(--muted); padding-top: 4px; }
+.facts dd { font-size: 17px; }
+.facts a, .talk-list a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 1px; }
+.facts a:hover, .talk-list a:hover { color: var(--muted); border-color: var(--muted); }
+.holds { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 clamp(24px, 3vw, 48px); }
+.holds li { border-top: 1px solid var(--ink); padding: 18px 0 34px; }
+.hold-no { display: block; font: var(--caps); letter-spacing: var(--track); color: var(--muted); margin-bottom: 18px; font-variant-numeric: tabular-nums; }
+.holds h3 { font: 600 22px/1.25 var(--f-head); margin: 0 0 10px; color: var(--ink); }
+.holds p { font: 400 16px/1.7 var(--f-read); color: var(--text); margin: 0; }
+.hold-more { display: flex; flex-wrap: wrap; gap: 14px 32px; margin: 10px 0 0; }
+.talk-lede { font: 400 19px/1.6 var(--f-read); color: var(--ink); margin: 0 0 28px; max-width: 34em; }
+.talk-list { margin: 0; }
+.talk-list div { padding: 18px 0; grid-template-columns: minmax(0, 9em) minmax(0, 1fr); }
+.talk-list dt { font: var(--caps); letter-spacing: var(--track); text-transform: uppercase; color: var(--muted); padding-top: 4px; }
+.talk-list dd { font-size: 17px; }
+.talk-follow { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+@media (max-width: 760px) {
+  .holds { grid-template-columns: minmax(0, 1fr); }
+  .facts div, .talk-list div { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+}
+
+/* 푸터 맨 아래 선: 본문 폭(여백 안쪽)에 맞추기 */
+.foot-base { border-top: 0; position: relative; }
+.foot-base::before { content: ""; position: absolute; top: 0; left: var(--gut); right: var(--gut); border-top: 1px solid var(--rule); }

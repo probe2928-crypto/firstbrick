@@ -9,7 +9,7 @@
   onScroll(); window.addEventListener("scroll", onScroll, { passive: true });
 
   // 스크롤 등장: 같은 부모 안에서는 차례로
-  var sel = ".intro .lede, .intro .actions, .sec-head, .path > li, .defs > div, .chain > li, .principles > div, .road > li, .note-row, .post-card, .partner-line, .cta > *, .tg-contact, .way, .faq details, .prose > *, .steps > li";
+  var sel = ".intro .lede, .intro .actions, .sec-head, .path > li, .defs > div, .chain > li, .principles > div, .road > li, .note-row, .post-card, .partner-line, .cta > *, .tg-contact, .way, .faq details, .prose > *, .steps > li, .holds > li, .facts > div, .talk-list > div";
   var els = [].slice.call(d.querySelectorAll(sel));
   if (reduce || !("IntersectionObserver" in window)) { els.forEach(function (el) { el.classList.add("in"); }); }
   else {
