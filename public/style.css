@@ -572,3 +572,13 @@ h1, h2, h3, .display, .sec-head h2, .page-head h1, .post-head h1, .cta h2 { font
 /* 푸터 맨 아래 선: 본문 폭(여백 안쪽)에 맞추기 */
 .foot-base { border-top: 0; position: relative; }
 .foot-base::before { content: ""; position: absolute; top: 0; left: var(--gut); right: var(--gut); border-top: 1px solid var(--rule); }
+
+/* 접근성: 키보드 초점이 어느 바탕에서나 보이게 (2026-10-30) */
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.ink-band :focus-visible, .cta-band :focus-visible { outline-color: var(--paper); }
+.btn:focus-visible { outline-offset: 4px; }
+.form input:focus-visible, .form select:focus-visible { outline: none; border-bottom-color: var(--ink); box-shadow: 0 2px 0 var(--ink); }
+.form textarea:focus-visible { outline: none; border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.form label:focus-within { color: var(--ink); }
+.skip:focus { outline: 2px solid var(--paper); outline-offset: -5px; }
+@media (forced-colors: active) { :focus-visible, .form input:focus-visible, .form select:focus-visible, .form textarea:focus-visible { outline: 2px solid CanvasText; } }

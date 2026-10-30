@@ -15,7 +15,7 @@ Website of Oriel Foundation (오리엘 재단) — a foundation in formation for
 | Field journal posts | `content/journal/YYYY-MM-DD-slug.md` (see `docs/CONTENT_GUIDE.md`) |
 | Photos | `images/journal/<slug>/…` |
 | Design | `public/style.css` (tokens at the top), hero schoolhouse in `schoolhouse()` |
-| Social preview | `public/og.png` |
+| Social preview | `public/og/<page>.jpg` per page (make with `node scripts/build.mjs && NODE_PATH=$(npm root -g) node scripts/og.mjs`, needs Playwright + local fonts), `public/og.png` fallback |
 | Plan and backlog | `docs/ROADMAP.md` |
 | Marketing kit and weekly content | `marketing/` |
 

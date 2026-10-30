@@ -214,10 +214,21 @@ function socials(t) {
 const u = (t, p = "") => BASE + t.pre + p;
 const fmtDate = (d, t) => { try { return new Date(d + "T00:00:00Z").toLocaleDateString(t.lang === "ko" ? "ko-KR" : "en-GB", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" }); } catch { return d; } };
 
-function layout(t, { title, desc, p = "", body, active = "", og = "" }) {
+// 페이지별 공유 이미지: public/og/<key>.jpg 가 있으면 그걸 쓰고(만드는 법: node scripts/og.mjs), 없으면 og.png
+const OG_PAGES = [];
+const OG_KICK = {
+  en: { plan: "The plan", partners: "Partners", journal: "Field journal", columns: "Column", notes: "Notes", "get-involved": "Get involved", faq: "Questions", about: "About", safeguarding: "Safeguarding", transparency: "Transparency" },
+  ko: { plan: "계획", partners: "파트너", journal: "활동 일지", columns: "칼럼", notes: "읽을거리", "get-involved": "함께하기", faq: "자주 묻는 질문", about: "소개", safeguarding: "아동보호", transparency: "투명성" },
+};
+const ogKey = (t, p) => (t.pre + (p || "home/")).replace(/\/$/, "").replace(/\//g, "--");
+function layout(t, { title, desc, p = "", body, active = "", og = "", kicker = "" }) {
   const full = title ? `${title} | ${t.name}` : `${t.name} | ${t.tag}`;
   const altP = BASE + (t.lang === "en" ? "ko/" : "") + p;
-  const ogImg = ABS + "og.png";
+  const key = ogKey(t, p), sec = p.split("/")[0];
+  if (!og && p !== "thanks/" && title !== "Page not found") OG_PAGES.push({ key, lang: t.lang, title: title || t.tag, desc: desc || t.desc, kicker: kicker || (OG_KICK[t.lang][sec] && OG_KICK[t.lang][sec] !== title ? OG_KICK[t.lang][sec] : ""), path: t.pre + p });
+  const ogFile = path.join(ROOT, "public", "og", key + ".jpg");
+  const ogImg = og || (fs.existsSync(ogFile) ? `${ABS}og/${key}.jpg?v=${hash("og/" + key + ".jpg")}` : ABS + "og.png");
+  const ogAlt = title ? `${title} — ${S.name}` : `${S.name}: ${t.tag}`;
   return `<!doctype html>
 <html lang="${t.htmlLang}">
 <head>
@@ -226,7 +237,9 @@ function layout(t, { title, desc, p = "", body, active = "", og = "" }) {
 <meta name="description" content="${esc(desc || t.desc)}">
 <link rel="canonical" href="${ABS + t.pre + p}">
 <link rel="alternate" hreflang="en" href="${ABS + p}"><link rel="alternate" hreflang="ko" href="${ABS + "ko/" + p}"><link rel="alternate" hreflang="x-default" href="${ABS + p}">
-<meta property="og:type" content="website"><meta property="og:site_name" content="${esc(S.name)}"><meta property="og:title" content="${esc(full)}"><meta property="og:description" content="${esc(desc || t.desc)}"><meta property="og:image" content="${og || ogImg}"><meta name="twitter:card" content="summary_large_image">
+<meta property="og:type" content="${/^(journal|columns|notes)\/./.test(p) ? "article" : "website"}"><meta property="og:site_name" content="${esc(S.name)}"><meta property="og:url" content="${ABS + t.pre + p}"><meta property="og:locale" content="${t.lang === "ko" ? "ko_KR" : "en_US"}"><meta property="og:locale:alternate" content="${t.lang === "ko" ? "en_US" : "ko_KR"}"><meta property="og:title" content="${esc(full)}"><meta property="og:description" content="${esc(desc || t.desc)}">
+<meta property="og:image" content="${ogImg}">${og ? "" : `<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">`}<meta property="og:image:alt" content="${esc(ogAlt)}">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(full)}"><meta name="twitter:description" content="${esc(desc || t.desc)}"><meta name="twitter:image" content="${ogImg}"><meta name="twitter:image:alt" content="${esc(ogAlt)}">
 <meta name="theme-color" content="#E9CFBB">
 <link rel="icon" href="${BASE}favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -630,9 +643,9 @@ for (const t of [T.en, T.ko]) {
   write(P + "journal/index.html", layout(t, { title: t.journalTitle, desc: t.journalLede, p: "journal/", active: "journal/", body: journalIndex(t) }));
   for (const post of JOURNAL) write(P + `journal/${post.slug}/index.html`, layout(t, { title: t.lang === "ko" ? post.title_ko : post.title, desc: t.lang === "ko" ? post.summary_ko : post.summary, p: `journal/${post.slug}/`, active: "journal/", body: journalPost(t, post), og: post.cover ? ABS + post.cover : "" }));
   write(P + "columns/index.html", layout(t, { title: t.colTitle, desc: t.colLede, p: "columns/", active: "columns/", body: colsIndex(t) }));
-  for (const n of COLUMNS) write(P + `columns/${n.slug}/index.html`, layout(t, { title: t.lang === "ko" ? n.title_ko : n.title, desc: t.lang === "ko" ? n.summary_ko : n.summary, p: `columns/${n.slug}/`, active: "columns/", body: notePost(t, n, "columns/", t.allCols) }));
+  for (const n of COLUMNS) write(P + `columns/${n.slug}/index.html`, layout(t, { title: t.lang === "ko" ? n.title_ko : n.title, desc: t.lang === "ko" ? n.summary_ko : n.summary, p: `columns/${n.slug}/`, kicker: OG_KICK[t.lang].columns + (n.no ? ` · No. ${n.no}` : ""), active: "columns/", body: notePost(t, n, "columns/", t.allCols) }));
   write(P + "notes/index.html", layout(t, { title: t.notesTitle, desc: t.notesLede, p: "notes/", body: notesIndex(t) }));
-  for (const n of NOTES) write(P + `notes/${n.slug}/index.html`, layout(t, { title: t.lang === "ko" ? n.title_ko : n.title, desc: t.lang === "ko" ? n.summary_ko : n.summary, p: `notes/${n.slug}/`, body: notePost(t, n) }));
+  for (const n of NOTES) write(P + `notes/${n.slug}/index.html`, layout(t, { title: t.lang === "ko" ? n.title_ko : n.title, desc: t.lang === "ko" ? n.summary_ko : n.summary, p: `notes/${n.slug}/`, kicker: OG_KICK[t.lang].notes + (n.no ? ` · No. ${n.no}` : ""), body: notePost(t, n) }));
   write(P + "get-involved/index.html", layout(t, { title: INV[t.lang].title, desc: INV[t.lang].lede, p: "get-involved/", active: "get-involved/", body: involve(t) }));
   write(P + "thanks/index.html", layout(t, { title: t.lang === "ko" ? "고맙습니다" : "Thank you", p: "thanks/", body: thanks(t) }));
   write(P + "safeguarding/index.html", layout(t, { title: SAFE[t.lang].title, desc: SAFE[t.lang].lede, p: "safeguarding/", body: policyPage(t, SAFE[t.lang]) }));
@@ -647,6 +660,7 @@ for (const f of fs.readdirSync(path.join(ROOT, "public"))) fs.cpSync(path.join(R
 copyDir(path.join(ROOT, "images"), "images");
 const pages = ["", "plan/", "partners/", "faq/", "journal/", "get-involved/", "safeguarding/", "transparency/", "about/", "notes/", "columns/", ...COLUMNS.map((n) => `columns/${n.slug}/`), ...JOURNAL.map((p) => `journal/${p.slug}/`), ...NOTES.map((n) => `notes/${n.slug}/`)];
 write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${pages.flatMap((p) => [ABS + p, ABS + "ko/" + p]).map((l) => `<url><loc>${l}</loc></url>`).join("")}</urlset>\n`);
+write("og-pages.json", JSON.stringify(OG_PAGES, null, 1));
 write("robots.txt", `User-agent: *\nAllow: /\nSitemap: ${ABS}sitemap.xml\n`);
 write(".nojekyll", "");
 console.log(`built → dist/ (journal ${JOURNAL.length}, notes ${NOTES.length}, columns ${COLUMNS.length}, base ${BASE})`);
