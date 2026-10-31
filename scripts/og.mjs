@@ -1,6 +1,8 @@
 // 페이지별 공유(og) 이미지 만들기 — 사이트 빌드와 별개인 손작업 도구
 // 필요: Playwright(전역 설치), 로컬 글꼴 Familjen Grotesk · Noto Sans KR · Noto Sans TC
 // 실행: node scripts/build.mjs && NODE_PATH=$(npm root -g) node scripts/og.mjs [key...]
+//   --missing  이미지가 아직 없는 페이지만 (새 글을 올린 뒤)
+//   --all      전부 다시 (디자인을 바꾼 뒤). 인자가 없으면 --all 과 같다
 // 결과: public/og/<key>.jpg (1200×630). 빌드는 파일이 있으면 그 페이지의 og:image로 쓴다.
 import fs from "node:fs";
 import path from "node:path";
@@ -15,7 +17,9 @@ const require = createRequire(import.meta.url);
 const { chromium } = require("playwright");
 
 const pages = JSON.parse(fs.readFileSync(path.join(DIST, "og-pages.json"), "utf8"));
-const only = process.argv.slice(2);
+const args = process.argv.slice(2);
+const missingOnly = args.includes("--missing");
+const only = args.filter((a) => !a.startsWith("--"));
 const wm = fs.readFileSync(path.join(DIST, "index.html"), "utf8").match(/<svg class="brand-wm"[\s\S]*?<\/svg>/)[0].replace('class="brand-wm"', 'class="wm"');
 const b64 = (f) => fs.readFileSync(path.join(ROOT, "public", "brand", f)).toString("base64");
 const IMG = { learn: b64("path-learn.jpg"), live: b64("path-live.jpg"), build: b64("path-build.jpg"), hero: b64("hero-wide.jpg") };
@@ -70,6 +74,7 @@ const page = await browser.newPage({ viewport: { width: 1200, height: 630 }, dev
 let n = 0;
 for (const pg of pages) {
   if (only.length && !only.includes(pg.key)) continue;
+  if (missingOnly && fs.existsSync(path.join(OUT, pg.key + ".jpg"))) continue;
   await page.setContent(pageHTML(pg), { waitUntil: "load" });
   await page.evaluate(() => document.fonts.ready);
   // 제목 크기 맞추기: 크게 시작해 3줄·가로 폭 안에 들 때까지 줄인다, 설명은 제목이 길면 2줄로

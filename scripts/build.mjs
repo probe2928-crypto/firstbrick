@@ -82,11 +82,11 @@ const T = {
   ko: {
     lang: "ko", htmlLang: "ko", pre: "ko/", other: "en", otherLabel: "English", otherShort: "EN",
     name: S.name_ko, tag: "배움에는 빛을, 기부에는 창을.",
-    desc: "오리엘은 도움이 필요한 가정과 사랑스런 아이들을 위해 준비 중인 재단입니다. 배움에서 시작해 아이와 어려운 가정의 생활을 돕고, 마을이 원하는 교실과 학교까지 짓습니다. 모든 기부는 블록체인에 기록됩니다.",
+    desc: "오리엘은 도움이 필요한 가정과 사랑스러운 아이들을 위해 준비 중인 재단입니다. 배움에서 시작해 아이와 어려운 가정의 생활을 돕고, 마을이 원하는 교실과 학교까지 짓습니다. 모든 기부는 블록체인에 기록됩니다.",
     nav: [["plan/", "계획"], ["partners/", "파트너"], ["journal/", "활동 일지"], ["columns/", "칼럼"], ["get-involved/", "함께하기"], ["about/", "소개"]],
     join: "창립 서포터 신청", readPlan: "계획 보기",
     status: "설립 준비 단계입니다. 아직 기부를 받지 않습니다. 재단 등록을 마친 뒤 기부를 열고, 첫 거래부터 모두 공개합니다.",
-    heroLede: "도움이 필요한 가정과 사랑스런 아이들을 위해 준비 중인 재단입니다. 배움에서 시작해, 아이와 형편이 어려운 가정의 생활을 함께 돕고, 마을에 필요한 길과 건물, 학교까지 짓는 것이 목표입니다.",
+    heroLede: "도움이 필요한 가정과 사랑스러운 아이들을 위해 준비 중인 재단입니다. 배움에서 시작해, 아이와 형편이 어려운 가정의 생활을 함께 돕고, 마을에 필요한 길과 건물, 학교까지 짓는 것이 목표입니다.",
     heroNote: "모든 기부는 공개 블록체인에서 확인할 수 있게 됩니다.",
     oriel: "오리엘 창",
     eyebrow: ["설립 준비 중", "한국 · 해외"], sub: "Foundation", joinShort: "참여하기",
@@ -115,7 +115,7 @@ const T = {
     roadTitle: "가려는 길",
     now: "지금",
     journalTitle: "활동 일지",
-    journalLede: "현장의 기록과 사진, 숫자를 일어나는 대로 올립니다.",
+    journalLede: "현장에서 있었던 일을 사진·숫자와 함께 그때그때 올립니다.",
     journalEmpty: "첫 현장 기록은 첫 방문과 함께 올라옵니다.",
     allPosts: "전체 보기",
     partnerTitle: "파트너",
@@ -661,6 +661,14 @@ copyDir(path.join(ROOT, "images"), "images");
 const pages = ["", "plan/", "partners/", "faq/", "journal/", "get-involved/", "safeguarding/", "transparency/", "about/", "notes/", "columns/", ...COLUMNS.map((n) => `columns/${n.slug}/`), ...JOURNAL.map((p) => `journal/${p.slug}/`), ...NOTES.map((n) => `notes/${n.slug}/`)];
 write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${pages.flatMap((p) => [ABS + p, ABS + "ko/" + p]).map((l) => `<url><loc>${l}</loc></url>`).join("")}</urlset>\n`);
 write("og-pages.json", JSON.stringify(OG_PAGES, null, 1));
+// 공유 이미지 점검: 이미지가 없는 페이지와, 페이지가 없어진 이미지를 알려 준다 (빌드는 계속)
+{
+  const have = new Set(fs.readdirSync(path.join(ROOT, "public", "og")).filter((f) => f.endsWith(".jpg")).map((f) => f.slice(0, -4)));
+  const keys = new Set(OG_PAGES.map((p) => p.key));
+  const missing = [...keys].filter((k) => !have.has(k)), orphan = [...have].filter((k) => !keys.has(k));
+  if (missing.length) console.log(`og 이미지 없음 ${missing.length}개 (og.png로 나감) → NODE_PATH=$(npm root -g) node scripts/og.mjs --missing\n  ${missing.join("\n  ")}`);
+  if (orphan.length) console.log(`쓰지 않는 og 이미지 ${orphan.length}개: ${orphan.join(", ")}`);
+}
 write("robots.txt", `User-agent: *\nAllow: /\nSitemap: ${ABS}sitemap.xml\n`);
 write(".nojekyll", "");
 console.log(`built → dist/ (journal ${JOURNAL.length}, notes ${NOTES.length}, columns ${COLUMNS.length}, base ${BASE})`);

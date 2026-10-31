@@ -27,6 +27,9 @@ html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body { margin: 0; background: var(--paper); color: var(--ink); font: 400 var(--s0)/1.7 var(--f-read); -webkit-font-smoothing: antialiased; font-optical-sizing: auto; }
 .lang-ko { word-break: keep-all; overflow-wrap: anywhere; }
+/* 한국어: 어절 단위 줄바꿈이라 마지막 줄에 한 단어만 남기 쉽다 — 짧은 글은 줄 길이를 고르게, 본문은 외톨이 줄만 막는다 */
+.lang-ko p, .lang-ko li { text-wrap: pretty; }
+.lang-ko .lede, .lang-ko .hl, .lang-ko .status, .lang-ko h2, .lang-ko h3 { text-wrap: balance; }
 ::selection { background: var(--ink); color: var(--paper); }
 img { max-width: 100%; display: block; }
 a { color: inherit; }
